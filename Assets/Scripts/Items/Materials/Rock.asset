@@ -1,0 +1,28 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 301bdea6d35830549b1bfe26178b3004, type: 3}
+  m_Name: Rock
+  m_EditorClassIdentifier: 
+  itemName: Rock
+  image: {fileID: 21300000, guid: 2ed138c9bed1992438a4592f3a2693f9, type: 3}
+  handlerPrefab: {fileID: 1672959646362625515, guid: 745c6da5212a28a419d434967c5dabd2,
+    type: 3}
+  inHandModel: {fileID: 63406390201987199, guid: 04100150fbe5cbf4fac1e9939d662bdf,
+    type: 3}
+  stackable: 1
+  defaultData: 
+  maxInStack: 4
+  damage: 10
+  durability: 0
+  cooldownTime: 0
+  effectiveRange: 3
+  toolType: 3

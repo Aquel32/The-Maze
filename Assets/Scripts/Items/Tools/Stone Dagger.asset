@@ -1,0 +1,28 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 301bdea6d35830549b1bfe26178b3004, type: 3}
+  m_Name: Stone Dagger
+  m_EditorClassIdentifier: 
+  itemName: Stone Dagger
+  image: {fileID: 21300000, guid: 8007a53f46e5ba04ba4c82c4721d2372, type: 3}
+  handlerPrefab: {fileID: 1289820795770639219, guid: 0e539a6bfb3c1864082f633931f8ef74,
+    type: 3}
+  inHandModel: {fileID: 673531692740427555, guid: 4835e3ea2e3800f41b4d042c5b9d86e7,
+    type: 3}
+  stackable: 0
+  defaultData: 
+  maxInStack: 1
+  damage: 10
+  durability: 0
+  cooldownTime: 0
+  effectiveRange: 2
+  toolType: 0

@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 96c3fc1562a2f0f4ba6313176d645137, type: 3}
+  m_Name: Wood
+  m_EditorClassIdentifier: 
+  itemName: Wood
+  image: {fileID: 21300000, guid: b6e3c6805db468f4aa1367913f6f57d7, type: 3}
+  handlerPrefab: {fileID: 7169247204010394858, guid: 053a6b202bd86054c908124b8286e151,
+    type: 3}
+  inHandModel: {fileID: 3685974216548130553, guid: 7a8b7495784e46d43899bb3c08b32d36,
+    type: 3}
+  stackable: 1
+  defaultData: 
+  maxInStack: 4

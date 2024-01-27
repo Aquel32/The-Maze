@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 96c3fc1562a2f0f4ba6313176d645137, type: 3}
+  m_Name: Workbench
+  m_EditorClassIdentifier: 
+  itemName: Workbench
+  image: {fileID: 21300000, guid: a959be72311033342aa81a56e0f65929, type: 3}
+  handlerPrefab: {fileID: 3999076992838956268, guid: c1d47c14435cc9240920ae9e6f29e956,
+    type: 3}
+  inHandModel: {fileID: 1506979451153668858, guid: 14b1fd056ab77fc40831a1b7a8df135f,
+    type: 3}
+  stackable: 0
+  defaultData: 
+  maxInStack: 1
