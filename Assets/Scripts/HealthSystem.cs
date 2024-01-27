@@ -7,7 +7,7 @@ using UnityEngine.UI;
 
 public interface IDamageable
 {
-    public void Damage(int damage);
+    public void Damage(int damage, ToolType toolType);
 }
 
 public class HealthSystem : MonoBehaviourPunCallbacks, IDamageable
@@ -70,9 +70,9 @@ public class HealthSystem : MonoBehaviourPunCallbacks, IDamageable
         if (health < 0) { health = 0; RefreshCounter(); }
     }
 
-    public void Damage(int damage)
+    public void Damage(int damage, ToolType toolType)
     {
-        photonView.RPC("DamageRPC", RpcTarget.AllBuffered, damage, GetComponent<PlayerReference>().referencedPlayer.photonPlayer);
+        photonView.RPC("DamageRPC", RpcTarget.AllBuffered, DamageBuffer.instance.BufferDamage(damage, toolType, TargetType.Mob), GetComponent<PlayerReference>().referencedPlayer.photonPlayer);
     }
 
     [PunRPC]
@@ -83,4 +83,5 @@ public class HealthSystem : MonoBehaviourPunCallbacks, IDamageable
             RemoveHealth(damage);
         }
     }
+
 }

@@ -56,7 +56,7 @@ public class Weapon : MonoBehaviourPunCallbacks, IUsableItem
         {
             if (hitInfo.collider.gameObject.TryGetComponent(out IDamageable damageObj))
             {
-                damageObj.Damage(item.damage);
+                damageObj.Damage(item.damage, item.toolType);
             }
         }
 

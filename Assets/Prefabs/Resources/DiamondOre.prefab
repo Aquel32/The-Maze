@@ -71,6 +71,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   oreItemPrefab: {fileID: 1959829316553302502, guid: 572e3e624fe64b844bcd7d4b74986d30,
     type: 3}
+  health: 400
   howManyItemDrops: 1
 --- !u!114 &6827313091272130231
 MonoBehaviour:

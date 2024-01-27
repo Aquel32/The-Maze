@@ -13,4 +13,4 @@ public class Tool : Item
     public ToolType toolType;
 }
 
-public enum ToolType { Sword, Axe, Pickaxe, Other }
+public enum ToolType { Sword, Dagger, Axe, Pickaxe, Other }

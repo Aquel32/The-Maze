@@ -6,12 +6,12 @@ using UnityEngine;
 public class Ore : MonoBehaviourPunCallbacks, IDamageable
 {
     public GameObject oreItemPrefab;
-    int health = 100;
+    public int health = 100;
     public int howManyItemDrops = 3;
 
-    public void Damage(int damage)
+    public void Damage(int damage, ToolType toolType)
     {
-        photonView.RPC("HitOreRPC", RpcTarget.AllBuffered, damage);
+        photonView.RPC("HitOreRPC", RpcTarget.AllBuffered, DamageBuffer.instance.BufferDamage(damage, toolType, TargetType.Ore));
 
         if(health <= 0)
         {

@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 96c3fc1562a2f0f4ba6313176d645137, type: 3}
+  m_Name: Spruce Wood
+  m_EditorClassIdentifier: 
+  itemName: Spruce Wood
+  image: {fileID: 21300000, guid: 331f01bac90994545b7ecf4df493e6f6, type: 3}
+  handlerPrefab: {fileID: 4817796158892977466, guid: baf6c7e64eddb5a499158c7baafb44b9,
+    type: 3}
+  inHandModel: {fileID: 14885515895555103, guid: 607867120c90d3644bb5b4bd5d1163bd,
+    type: 3}
+  stackable: 1
+  defaultData: 
+  maxInStack: 4

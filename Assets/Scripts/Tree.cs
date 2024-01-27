@@ -5,33 +5,40 @@ using UnityEngine;
 
 public class Tree : MonoBehaviourPunCallbacks, IDamageable
 {
-    public GameObject stumpObject, mainTreeObject;
-    public GameObject woodItemPrefab;
-    int health = 100;
-    public int howManyWoodItemsDrop = 3;
+    [SerializeField] private int health = 100;
 
-    public bool state = false;
+    [SerializeField] private int howManyItemsDrop = 3;
+    [SerializeField] private GameObject dropItemPrefab;
 
-    public void Damage(int damage)
+    [SerializeField] private GameObject[] possibleModels;
+    [SerializeField] private GameObject stumpObject;
+    private GameObject mainTreeObject;
+
+    private bool state = true;
+
+    void Start()
     {
-        if(!state) photonView.RPC("CutTreeRPC", RpcTarget.AllBuffered, damage);
+        mainTreeObject = Instantiate(possibleModels[Random.Range(0, possibleModels.Length)], transform);
+    }
+
+    public void Damage(int damage, ToolType toolType)
+    {
+        if(state) photonView.RPC("HitTreeRPC", RpcTarget.AllBuffered, DamageBuffer.instance.BufferDamage(damage, toolType, TargetType.Tree));
+        if(!state) for (int i = 0; i < howManyItemsDrop; i++) PhotonNetwork.Instantiate(dropItemPrefab.name, transform.position + Vector3.up, Quaternion.identity);
     }
 
     [PunRPC]
-    public void CutTreeRPC(int damage)
+    public void HitTreeRPC(int damage)
     {
         health -= damage;
         if (health > 0) return;
 
-        print("Tree was cutted");
-
-        for (int i = 0; i < howManyWoodItemsDrop; i++) PhotonNetwork.Instantiate(woodItemPrefab.name, transform.position + Vector3.up, Quaternion.identity);
-
         mainTreeObject.SetActive(false);
         stumpObject.SetActive(true);
 
-        state = true;
+        state = false;
         GetComponent<BoxCollider>().enabled = false;
+
         StartCoroutine(cooldownToDestroy());
     }
 

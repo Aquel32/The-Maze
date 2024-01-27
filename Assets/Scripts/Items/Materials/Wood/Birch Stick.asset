@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 96c3fc1562a2f0f4ba6313176d645137, type: 3}
+  m_Name: Birch Stick
+  m_EditorClassIdentifier: 
+  itemName: Birch Stick
+  image: {fileID: 21300000, guid: 6a3cb6a568304004a9e1e69b22437f2f, type: 3}
+  handlerPrefab: {fileID: 8491331866050595203, guid: eac5a2ddce3254345aee5192c9625365,
+    type: 3}
+  inHandModel: {fileID: 1254519202059778514, guid: 1a4c159d59ef1df47b61cc01bc22a474,
+    type: 3}
+  stackable: 1
+  defaultData: 
+  maxInStack: 4

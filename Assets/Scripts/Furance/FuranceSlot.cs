@@ -10,7 +10,7 @@ public class FuranceSlot : MonoBehaviour
 
     public Transform IngredientsImagesParent;
     public Image productImage;
-    public GameObject IngredientImagePrefab;
+    public IngredientSlot IngredientImagePrefab;
 
     public void Initialize(Recipe _recipe, FuranceSystem _furanceSystem)
     {
@@ -21,13 +21,25 @@ public class FuranceSlot : MonoBehaviour
 
         foreach(Item ingredient in recipe.ingredients)
         {
-            GameObject image = Instantiate(IngredientImagePrefab, IngredientsImagesParent);
+            IngredientSlot image = Instantiate(IngredientImagePrefab, IngredientsImagesParent);
             image.GetComponent<Image>().sprite = ingredient.image;
+            image.item = ingredient;
+            image.furanceSlot = this;
         }
     }
 
     public void Craft()
     {
         furanceSystem.Craft(this);
+    }
+
+    public void ShowProductHint()
+    {
+        furanceSystem.inventoryManager.ShowHint(recipe.product.itemName);
+    }
+
+    public void ShowIngredientHint(Item item)
+    {
+        furanceSystem.inventoryManager.ShowHint(item.itemName);
     }
 }

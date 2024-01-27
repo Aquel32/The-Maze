@@ -71,7 +71,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7872844c117e5b444a92d9183d64995f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  inventoryItem: {fileID: 0}
   item: {fileID: 11400000, guid: f85d7d0e7f23bb2498f3183e201e7e2e, type: 2}
   cooldown: 0
   audioSource: {fileID: 5583201260670722027}

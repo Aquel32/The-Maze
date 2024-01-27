@@ -342,6 +342,9 @@ MonoBehaviour:
   recipes:
   - {fileID: 11400000, guid: 4e63354d5e731c64f861298f2fc45f2d, type: 2}
   - {fileID: 11400000, guid: 75ed15c7848fa9d48826c1b8aa1dab85, type: 2}
+  - {fileID: 11400000, guid: 7f02d83d76ba4d6489d45e03ecb8344d, type: 2}
+  - {fileID: 11400000, guid: da0c2536e012e194cbeab8bd7dbc7d2e, type: 2}
+  - {fileID: 11400000, guid: 43062efe5f5f9334c8ab865d187dd559, type: 2}
   inventoryManager: {fileID: 6856449011805292653}
 --- !u!1 &735035638214881917
 GameObject:
@@ -3465,6 +3468,8 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 7fa70ebbc6647e54dad6a495f18d90c6, type: 2}
   - {fileID: 11400000, guid: 1499e71f4a09704479a115ebdb14b428, type: 2}
   - {fileID: 11400000, guid: d158e058cf89f974e85fc7e60eb56053, type: 2}
+  - {fileID: 11400000, guid: aae5f37cffa755c469bc4775ecdeb003, type: 2}
+  - {fileID: 11400000, guid: e5dc3cd4c7eec944b8f09e1bc6f5fdf5, type: 2}
   inventoryManager: {fileID: 6856449011805292653}
 --- !u!1 &5132507549292761494
 GameObject:

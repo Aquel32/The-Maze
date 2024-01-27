@@ -21,7 +21,7 @@ MonoBehaviour:
   stackable: 0
   defaultData: 
   maxInStack: 1
-  damage: 15
+  damage: 20
   durability: 0
   cooldownTime: 0
   effectiveRange: 5

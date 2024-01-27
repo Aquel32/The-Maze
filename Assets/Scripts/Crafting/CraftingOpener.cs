@@ -7,7 +7,7 @@ public class CraftingOpener : MonoBehaviourPunCallbacks, IInteractible, IDamagea
 {
     public GameObject TableHandler;
 
-    public void Damage(int damage)
+    public void Damage(int damage, ToolType toolType)
     {
         PhotonNetwork.Instantiate(TableHandler.name, transform.position, Quaternion.identity);
         PhotonNetwork.Destroy(this.gameObject);

@@ -10,7 +10,7 @@ public class CraftingSlot : MonoBehaviour
 
     public Transform IngredientsImagesParent;
     public Image productImage;
-    public GameObject IngredientImagePrefab;
+    public IngredientSlot IngredientImagePrefab;
 
     public void Initialize(Recipe _recipe, CraftingSystem _craftingSystem)
     {
@@ -21,13 +21,25 @@ public class CraftingSlot : MonoBehaviour
 
         foreach(Item ingredient in recipe.ingredients)
         {
-            GameObject image = Instantiate(IngredientImagePrefab, IngredientsImagesParent);
+            IngredientSlot image = Instantiate(IngredientImagePrefab, IngredientsImagesParent);
             image.GetComponent<Image>().sprite = ingredient.image;
+            image.item = ingredient;
+            image.craftingSlot = this;
         }
     }
 
     public void Craft()
     {
         craftingSystem.Craft(this);
+    }
+    
+    public void ShowProductHint()
+    {
+        craftingSystem.inventoryManager.ShowHint(recipe.product.itemName);
+    }
+
+    public void ShowIngredientHint(Item item) 
+    {
+        craftingSystem.inventoryManager.ShowHint(item.itemName);
     }
 }

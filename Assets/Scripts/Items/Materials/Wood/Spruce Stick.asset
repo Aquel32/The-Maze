@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 96c3fc1562a2f0f4ba6313176d645137, type: 3}
+  m_Name: Spruce Stick
+  m_EditorClassIdentifier: 
+  itemName: Spruce Stick
+  image: {fileID: 21300000, guid: 0b507c51e271d4c4085f5c02bf0b4c85, type: 3}
+  handlerPrefab: {fileID: 4039178166363850831, guid: b307abf393b182b40b91425a21b2299f,
+    type: 3}
+  inHandModel: {fileID: 2389066431616699482, guid: 965bcf720c71c08449018ff381913745,
+    type: 3}
+  stackable: 1
+  defaultData: 
+  maxInStack: 4

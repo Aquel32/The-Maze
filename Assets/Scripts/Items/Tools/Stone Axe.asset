@@ -25,4 +25,4 @@ MonoBehaviour:
   durability: 0
   cooldownTime: 0
   effectiveRange: 3
-  toolType: 1
+  toolType: 2

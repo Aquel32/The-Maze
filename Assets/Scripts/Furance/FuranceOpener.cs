@@ -7,7 +7,7 @@ public class FuranceOpener : MonoBehaviourPunCallbacks, IInteractible, IDamageab
 {
     public GameObject TableHandler;
 
-    public void Damage(int damage)
+    public void Damage(int damage, ToolType toolType)
     {
         PhotonNetwork.Instantiate(TableHandler.name, transform.position, Quaternion.identity);
         PhotonNetwork.Destroy(this.gameObject);
