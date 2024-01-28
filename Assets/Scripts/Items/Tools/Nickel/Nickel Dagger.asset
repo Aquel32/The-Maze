@@ -1,0 +1,28 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 301bdea6d35830549b1bfe26178b3004, type: 3}
+  m_Name: Nickel Dagger
+  m_EditorClassIdentifier: 
+  itemName: Nickel Dagger
+  image: {fileID: 21300000, guid: 35b938f5a13e362459d4b9fe11b92cd7, type: 3}
+  handlerPrefab: {fileID: 3337340873778514683, guid: 63c09e23356919143af98b31ed28e4a7,
+    type: 3}
+  inHandModel: {fileID: 6164838399621781305, guid: 9c5c7f6155acf6e40a25d59e09b1a13d,
+    type: 3}
+  stackable: 0
+  defaultData: 
+  maxInStack: 1
+  damage: 400
+  durability: 0
+  cooldownTime: 0
+  effectiveRange: 2
+  toolType: 1

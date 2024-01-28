@@ -1,0 +1,28 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 301bdea6d35830549b1bfe26178b3004, type: 3}
+  m_Name: Chromium Axe
+  m_EditorClassIdentifier: 
+  itemName: Chromium Axe
+  image: {fileID: 21300000, guid: 6a794c4d8111e4447b901823a8683d15, type: 3}
+  handlerPrefab: {fileID: 7509134716247864666, guid: 12f55da9d990a82429c9087337f29658,
+    type: 3}
+  inHandModel: {fileID: 795872462075610729, guid: d02824e11721dcd4d88296984090b276,
+    type: 3}
+  stackable: 0
+  defaultData: 
+  maxInStack: 1
+  damage: 200
+  durability: 0
+  cooldownTime: 0
+  effectiveRange: 3
+  toolType: 2

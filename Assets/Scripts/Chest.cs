@@ -4,47 +4,45 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(AudioSource))]
-public class Chest : MonoBehaviourPunCallbacks, IInteractible
+public class Chest : MonoBehaviourPunCallbacks, IInteractible, IDamageable
 {
-    public Item[] possibleLoot;
-    public Transform lootPlace;
+    [SerializeField] private GameObject chestItemHandlerPrefab;
 
-    bool isOpened;
-    Animator animator;
-
-    AudioSource audioSource;
-    public AudioClip openSound;
+    private AudioSource audioSource;
+    [SerializeField] private Animator animator;
+    [SerializeField] private AudioClip sound;
+    private bool animationState;
 
     void Start()
     {
+        animationState = false;
         audioSource = GetComponent<AudioSource>();
-        animator = GetComponent<Animator>();
-        isOpened = false;
+    }
+
+    public void Damage(int damage, ToolType toolType)
+    {
+        PhotonNetwork.Instantiate(chestItemHandlerPrefab.name, transform.position, Quaternion.identity);
+
+        //DROP ALL ITEMS THAT ARE INSIDE
+
+        PhotonNetwork.Destroy(this.gameObject);
     }
 
     public void Interact()
     {
-        if (isOpened == true) return;
-
-        photonView.RPC("OpenChestRPC", RpcTarget.AllBuffered);
-
-        SpawnRandomLoot();
+        animationState = !animationState;
+        photonView.RPC("ChangeAnimationStateRPC", RpcTarget.AllBuffered, animationState);
+        if (animationState == true)
+        {
+            //Player.myPlayer.playerObject.GetComponent<InventoryManager>().ChangeUIState(AdditionalPanelType.Chest);
+        }
     }
 
     [PunRPC]
-    public void OpenChestRPC()
+    public void ChangeAnimationStateRPC(bool newState)
     {
-        audioSource.PlayOneShot(openSound);
-        isOpened = true;
-        animator.SetBool("IsOpened", isOpened);
+        audioSource.PlayOneShot(sound);
+        animationState = newState;
+        animator.SetBool("IsOpened", animationState);
     }
-
-    public void SpawnRandomLoot()
-    {
-        int lootIndex = Random.Range(0, possibleLoot.Length);
-        Item itemToSpawn = possibleLoot[lootIndex];
-
-        PhotonNetwork.Instantiate(itemToSpawn.handlerPrefab.name, lootPlace.position, Quaternion.identity);
-    }
-
 }

@@ -1,0 +1,28 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 301bdea6d35830549b1bfe26178b3004, type: 3}
+  m_Name: Diamond Dagger
+  m_EditorClassIdentifier: 
+  itemName: Diamond Dagger
+  image: {fileID: 21300000, guid: 3ba2c8091f6045545a5b94ab177626a9, type: 3}
+  handlerPrefab: {fileID: 1671861627408294667, guid: 9574cc73426bf8d4e9956942cbc5cfbc,
+    type: 3}
+  inHandModel: {fileID: 3821146806730234205, guid: 8648be0f3bb981d4cac408f28d9ba234,
+    type: 3}
+  stackable: 0
+  defaultData: 
+  maxInStack: 1
+  damage: 80
+  durability: 0
+  cooldownTime: 0
+  effectiveRange: 2
+  toolType: 1

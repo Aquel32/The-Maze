@@ -1,3 +1,4 @@
+using Photon.Pun;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -60,7 +61,11 @@ public class FuranceSystem : MonoBehaviour, ITable
         }
 
         yield return new WaitForSeconds(0.1f);
-        inventoryManager.AddItem(furanceSlot.recipe.product, furanceSlot.recipe.product.defaultData);
+
+        if (inventoryManager.AddItem(furanceSlot.recipe.product, furanceSlot.recipe.product.defaultData) == false)
+        {
+            PhotonNetwork.Instantiate(furanceSlot.recipe.product.handlerPrefab.name, transform.position + (Vector3.up * 3), transform.rotation);
+        }
 
         LookForNewPossibleRecipes();
 

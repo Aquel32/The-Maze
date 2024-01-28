@@ -1514,10 +1514,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   possibleClips:
-  - {fileID: 8300000, guid: 786e0e7b689da8c44a5ccc7b98a69e04, type: 3}
-  - {fileID: 8300000, guid: e786612a7377c104a8cfe9ec1d8781b0, type: 3}
-  - {fileID: 8300000, guid: eecbd73c451b5f24e85d67e9a893b82e, type: 3}
-  - {fileID: 8300000, guid: 2f4d0bfa1ff796d408ddbef43491191c, type: 3}
+  - {fileID: 8300000, guid: 70a7d461933099044af799b6c488ab64, type: 3}
+  - {fileID: 8300000, guid: a6e10bd26c15cec4bb4b7994144646e3, type: 3}
+  - {fileID: 8300000, guid: cc3b8bd6ba277074c889936e2dd7070b, type: 3}
+  - {fileID: 8300000, guid: 32b9adc948e04a745b6d6ac990da5536, type: 3}
   timeBetweenFootsteps: 0.3
 --- !u!114 &8665775969817737491
 MonoBehaviour:
@@ -1583,9 +1583,11 @@ MonoBehaviour:
   playerCamera: {fileID: 5609379967542127275}
   handBoneTarget: {fileID: 0}
   isThereSomethingInHand: 0
+  uiManager: {fileID: 0}
   craftingSystem: {fileID: 8363490799396893864}
   items: []
   hintItemNameText: {fileID: 1790672067013692028}
+  cameraTransform: {fileID: 5609379967542127275}
 --- !u!114 &174947394629331916
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3470,6 +3472,42 @@ MonoBehaviour:
   - {fileID: 11400000, guid: d158e058cf89f974e85fc7e60eb56053, type: 2}
   - {fileID: 11400000, guid: aae5f37cffa755c469bc4775ecdeb003, type: 2}
   - {fileID: 11400000, guid: e5dc3cd4c7eec944b8f09e1bc6f5fdf5, type: 2}
+  - {fileID: 11400000, guid: 50455dd9703164f4ca00b8f7d64f3825, type: 2}
+  - {fileID: 11400000, guid: 8b66b22ef352c534189181013d8e7829, type: 2}
+  - {fileID: 11400000, guid: 23bc1d59a7659e944b7f8404af44646e, type: 2}
+  - {fileID: 11400000, guid: 45b4c553598fb464aa7da5c74a84275e, type: 2}
+  - {fileID: 11400000, guid: c825fc6e197596c46afbabfa9fa63fe2, type: 2}
+  - {fileID: 11400000, guid: c85e082bf173e9147aceb88e71d2542b, type: 2}
+  - {fileID: 11400000, guid: 4d336de70e38a3746af3817bc6fecdaa, type: 2}
+  - {fileID: 11400000, guid: 504361e665e9d464094d7fb504384ed0, type: 2}
+  - {fileID: 11400000, guid: 52f6ba9822fa7e240ab10fa53a528bf1, type: 2}
+  - {fileID: 11400000, guid: 2b10ab9fed5eb9a44ba3091d05c73168, type: 2}
+  - {fileID: 11400000, guid: 155e0cc667a685c4e846031d2eeb41a3, type: 2}
+  - {fileID: 11400000, guid: 9fac3a9e19f1f0b409813047a396b326, type: 2}
+  - {fileID: 11400000, guid: 0a3815252e428ba46b7a7255027be988, type: 2}
+  - {fileID: 11400000, guid: 61d36e0afb792a84b8499025624ac6f0, type: 2}
+  - {fileID: 11400000, guid: 1bc2c8365fb15a64dba4f38a5f22b00f, type: 2}
+  - {fileID: 11400000, guid: 339917aa1f098e440a4f1f97827832f2, type: 2}
+  - {fileID: 11400000, guid: 19f88f72f22dfca43b01f7e583c68288, type: 2}
+  - {fileID: 11400000, guid: 58ae6c15a1f46eb45a71cddad1bc27f9, type: 2}
+  - {fileID: 11400000, guid: f4ab511dfb4670d489760b144e4f852e, type: 2}
+  - {fileID: 11400000, guid: 2af73aaf81ca1914b8d855b75b36f3d4, type: 2}
+  - {fileID: 11400000, guid: 535b7b3150601eb4a98e2d9911bb546d, type: 2}
+  - {fileID: 11400000, guid: 740caa769d4966a46ace470ea7929da4, type: 2}
+  - {fileID: 11400000, guid: 64295647c5271b24084f096c04006aa7, type: 2}
+  - {fileID: 11400000, guid: 643d6c00e6f135e49977358499fff0b9, type: 2}
+  - {fileID: 11400000, guid: b5cd1dbe2d498ec45947ba47947750b5, type: 2}
+  - {fileID: 11400000, guid: e41bb0e0fac599f40922c74caff9a193, type: 2}
+  - {fileID: 11400000, guid: b0654c3cf1dde8c42878b00be2bbe9e9, type: 2}
+  - {fileID: 11400000, guid: 484c6c95938502642929535b36a68eea, type: 2}
+  - {fileID: 11400000, guid: 6bc97fd43e7f3f243a5c1ba21d9035b2, type: 2}
+  - {fileID: 11400000, guid: 73646f65a126d5f4a919f6ef8224ce6c, type: 2}
+  - {fileID: 11400000, guid: 21768606236afe54cbe531d23ea970a1, type: 2}
+  - {fileID: 11400000, guid: 8cc864781019ff042ab23830eeee90c5, type: 2}
+  - {fileID: 11400000, guid: 9128eceabf38a744c80d6acc6ee0ab2e, type: 2}
+  - {fileID: 11400000, guid: 4ffcabcea626ba24e8656fe31c6cb8a6, type: 2}
+  - {fileID: 11400000, guid: 39c2259bfe58d34449c2c3b5eb7aa9c2, type: 2}
+  - {fileID: 11400000, guid: fe7b81e989c4a3a438ec5651155e0c21, type: 2}
   inventoryManager: {fileID: 6856449011805292653}
 --- !u!1 &5132507549292761494
 GameObject:

@@ -14,6 +14,8 @@ public class Tree : MonoBehaviourPunCallbacks, IDamageable
     [SerializeField] private GameObject stumpObject;
     private GameObject mainTreeObject;
 
+    [SerializeField] private GameObject applePrefab;
+
     private bool state = true;
 
     void Start()
@@ -24,7 +26,11 @@ public class Tree : MonoBehaviourPunCallbacks, IDamageable
     public void Damage(int damage, ToolType toolType)
     {
         if(state) photonView.RPC("HitTreeRPC", RpcTarget.AllBuffered, DamageBuffer.instance.BufferDamage(damage, toolType, TargetType.Tree));
-        if(!state) for (int i = 0; i < howManyItemsDrop; i++) PhotonNetwork.Instantiate(dropItemPrefab.name, transform.position + Vector3.up, Quaternion.identity);
+        if (!state)
+        {
+            for (int i = 0; i < howManyItemsDrop; i++) PhotonNetwork.Instantiate(dropItemPrefab.name, transform.position + Vector3.up, Quaternion.identity);
+            PhotonNetwork.Instantiate(applePrefab.name, transform.position + Vector3.up, Quaternion.identity);
+        }
     }
 
     [PunRPC]

@@ -17,15 +17,12 @@ public class Weapon : MonoBehaviourPunCallbacks, IUsableItem
 
     private UiManager uiManager;
     private InventoryManager inventoryManager;
-
-    void Awake()
-    {
-        audioSource = GetComponent<AudioSource>();
-    }    
+    private Transform attackDirection;
 
     void Start()
     {
         this.enabled = photonView.IsMine;
+        audioSource = GetComponent<AudioSource>();
     }
 
     public void Initialize(InventoryItem newInventoryItem)
@@ -33,6 +30,7 @@ public class Weapon : MonoBehaviourPunCallbacks, IUsableItem
         uiManager = Player.myPlayer.playerObject.GetComponent<UiManager>();
         inventoryManager = Player.myPlayer.playerObject.GetComponent<InventoryManager>();
         inventoryItem = newInventoryItem;
+        attackDirection = inventoryManager.cameraTransform;
     }
 
     public void Update()
@@ -50,7 +48,6 @@ public class Weapon : MonoBehaviourPunCallbacks, IUsableItem
 
         print("Attacked with " + item.name);
 
-        Transform attackDirection = inventoryManager.hand.transform.GetChild(0).Find("AttackDirection");
         Ray ray = new Ray(attackDirection.position, attackDirection.forward);
         if (Physics.Raycast(ray, out RaycastHit hitInfo, item.effectiveRange))
         {

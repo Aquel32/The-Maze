@@ -1,0 +1,28 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 301bdea6d35830549b1bfe26178b3004, type: 3}
+  m_Name: Uranium Sword
+  m_EditorClassIdentifier: 
+  itemName: Uranium Sword
+  image: {fileID: 21300000, guid: f548033310ac82a448832efa65469481, type: 3}
+  handlerPrefab: {fileID: 8954729000578773128, guid: 4e3824ecbe14aa64cb5974b4db208434,
+    type: 3}
+  inHandModel: {fileID: 7305397240975041103, guid: f3abd153f2ec9be4bb358b7fb97c0528,
+    type: 3}
+  stackable: 0
+  defaultData: 
+  maxInStack: 1
+  damage: 600
+  durability: 0
+  cooldownTime: 0
+  effectiveRange: 5
+  toolType: 0

@@ -32,12 +32,14 @@ public class InventoryManager : MonoBehaviourPunCallbacks
     public Transform handBoneTarget;
     public bool isThereSomethingInHand;
 
-    private UiManager uiManager;
+    public UiManager uiManager;
     public CraftingSystem craftingSystem;
 
     public List<Item> items;
 
     public TextMeshProUGUI hintItemNameText;
+
+    public Transform cameraTransform;
 
     private void Start()
     {

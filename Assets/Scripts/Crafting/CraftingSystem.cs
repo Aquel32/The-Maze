@@ -1,3 +1,4 @@
+using Photon.Pun;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -60,7 +61,10 @@ public class CraftingSystem : MonoBehaviour, ITable
         }
 
         yield return new WaitForSeconds(0.1f);
-        inventoryManager.AddItem(craftingSlot.recipe.product, craftingSlot.recipe.product.defaultData);
+        if(inventoryManager.AddItem(craftingSlot.recipe.product, craftingSlot.recipe.product.defaultData) == false)
+        {
+            PhotonNetwork.Instantiate(craftingSlot.recipe.product.handlerPrefab.name, transform.position + Vector3.up, transform.rotation);
+        }
 
         LookForNewPossibleRecipes();
 

@@ -34,7 +34,7 @@ Transform:
   m_Children:
   - {fileID: 7835393895148460694}
   m_Father: {fileID: 0}
-  m_RootOrder: 13
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!65 &7037596026478395814
 BoxCollider:
@@ -55,8 +55,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.06, y: 0.55, z: 0.7637805}
-  m_Center: {x: 0, y: 0, z: 0.028109789}
+  m_Size: {x: 0.06, y: 0.75612, z: 0.5992174}
+  m_Center: {x: 0, y: 0.040848166, z: 0.0043587685}
 --- !u!114 &7719505572023279811
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -141,12 +141,12 @@ PrefabInstance:
     - target: {fileID: 7149886062633303769, guid: db4eb07af11197e458b10283ad0fdaca,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.04270473
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7149886062633303769, guid: db4eb07af11197e458b10283ad0fdaca,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.03475868
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7149886062633303769, guid: db4eb07af11197e458b10283ad0fdaca,
         type: 3}

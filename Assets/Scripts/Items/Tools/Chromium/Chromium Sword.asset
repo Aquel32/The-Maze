@@ -1,0 +1,28 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 301bdea6d35830549b1bfe26178b3004, type: 3}
+  m_Name: Chromium Sword
+  m_EditorClassIdentifier: 
+  itemName: Chromium Sword
+  image: {fileID: 21300000, guid: bbc11ae8f1a2cb647a847e4292a91bec, type: 3}
+  handlerPrefab: {fileID: 9137736533277570515, guid: 3139ebb83ee566f40b0c3464d5fb2d0a,
+    type: 3}
+  inHandModel: {fileID: 169989910032169003, guid: f777d1e7575109541999e176bb914549,
+    type: 3}
+  stackable: 0
+  defaultData: 
+  maxInStack: 1
+  damage: 140
+  durability: 0
+  cooldownTime: 0
+  effectiveRange: 5
+  toolType: 0

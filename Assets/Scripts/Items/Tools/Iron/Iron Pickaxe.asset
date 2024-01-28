@@ -1,0 +1,28 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 301bdea6d35830549b1bfe26178b3004, type: 3}
+  m_Name: Iron Pickaxe
+  m_EditorClassIdentifier: 
+  itemName: Iron Pickaxe
+  image: {fileID: 21300000, guid: 527b49362d06c5045981275610c88bec, type: 3}
+  handlerPrefab: {fileID: 8302473046023597412, guid: 0553c0162d6761e48b27c70daeaafadd,
+    type: 3}
+  inHandModel: {fileID: 3664240157987309708, guid: ff0f20579d67a9346a770c81fad641f0,
+    type: 3}
+  stackable: 0
+  defaultData: 
+  maxInStack: 1
+  damage: 30
+  durability: 0
+  cooldownTime: 0
+  effectiveRange: 3
+  toolType: 3

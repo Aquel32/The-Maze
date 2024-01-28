@@ -57,6 +57,8 @@ MonoBehaviour:
   - {fileID: 4032642331417584291, guid: e133dac167ef59c40b7678ba58107c6a, type: 3}
   - {fileID: 6846767348704259191, guid: 273b8f4150121d249ac7e2fd11da7005, type: 3}
   stumpObject: {fileID: 3803006380673909441}
+  applePrefab: {fileID: 466716929826389674, guid: 3fb8a47010a59b14593508204fc1f258,
+    type: 3}
 --- !u!65 &3158182113414064083
 BoxCollider:
   m_ObjectHideFlags: 0

@@ -125,4 +125,4 @@ public enum Panels
     Inventory,
 }
 
-public enum AdditionalPanelType { Crafting, Furance, None }
+public enum AdditionalPanelType { Crafting, Furance, Chest, None }

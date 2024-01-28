@@ -20,7 +20,7 @@ public class InventoryItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
     public Transform whileDraggingParent;
 
     private InventoryItem secondInventoryItem;
-    private InventoryManager inventoryManager;
+    public InventoryManager inventoryManager;
 
     void Start()
     {
