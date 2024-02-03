@@ -11,4 +11,5 @@ public class Item : ScriptableObject
     public bool stackable = true;
     public string defaultData;
     public int maxInStack = 4;
+    public SlotType slotType;
 }

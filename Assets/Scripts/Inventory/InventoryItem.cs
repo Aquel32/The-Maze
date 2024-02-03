@@ -21,6 +21,7 @@ public class InventoryItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
 
     private InventoryItem secondInventoryItem;
     public InventoryManager inventoryManager;
+    public InventorySlot currentSlot;
 
     void Start()
     {
@@ -28,12 +29,14 @@ public class InventoryItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
         parentBeforeDrag = transform.parent;
     }
 
-    public void InitializeItem(Item newItem, string newCustomData, InventoryManager _inventoryManager)
+    public void InitializeItem(Item newItem, string newCustomData, InventoryManager _inventoryManager, InventorySlot slot)
     {
         item = newItem;
         image.sprite = newItem.image;
         customData = newCustomData;
         inventoryManager = _inventoryManager;
+        currentSlot = slot;
+        currentSlot.currentInventoryItem = this;
         RefreshCount();
     }
 
@@ -58,8 +61,10 @@ public class InventoryItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
                 RefreshCount();
             }
 
-            secondInventoryItem.InitializeItem(item, customData, inventoryManager);
+            secondInventoryItem.InitializeItem(item, customData, inventoryManager, currentSlot);
         }
+
+        currentSlot = null;
 
         image.raycastTarget = false;
         parentBeforeDrag = transform.parent;
@@ -82,14 +87,31 @@ public class InventoryItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
             secondInventoryItem = null;
             Destroy(temp);
         }
+        else if(secondInventoryItem == null && parentAfterDrag != parentBeforeDrag)
+        {
+            parentBeforeDrag.GetComponent<InventorySlot>().currentInventoryItem = null;
+        }
+        else if(secondInventoryItem == null && parentAfterDrag == parentBeforeDrag)
+        {
+            currentSlot = parentBeforeDrag.GetComponent<InventorySlot>();
+        }
 
         image.raycastTarget = true;
         transform.SetParent(parentAfterDrag);
         Player.myPlayer.playerObject.GetComponent<InventoryManager>().UpdateHand();
+        Player.myPlayer.playerObject.GetComponent<InventoryManager>().armorSystem.LookForChanges();
     }
 
     public void OnPointerEnter(PointerEventData eventData)
     {
-        inventoryManager.ShowHint(item.itemName);
+        Armor tempArmor = item as Armor;
+        if (tempArmor != null)
+        {
+            inventoryManager.ShowHint(item.itemName + "(" + customData + "/" + tempArmor.durability + ")");
+        }
+        else
+        {
+            inventoryManager.ShowHint(item.itemName);
+        }
     }
 }

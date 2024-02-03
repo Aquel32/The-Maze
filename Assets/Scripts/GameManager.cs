@@ -14,6 +14,8 @@ public class GameManager : MonoBehaviourPunCallbacks
     public GameObject playerPrefab;
     public Transform spawnsParent;
 
+    public List<Item> items = new List<Item>();
+
     void Start()
     {
         if (!PhotonNetwork.IsConnected)
@@ -43,15 +45,6 @@ public class GameManager : MonoBehaviourPunCallbacks
         }
     }
 
-    [PunRPC]
-    public void RemovePlayerRPC(Player playerToRemove)
-    {
-        Player tempPlayer = playerToRemove;
-        playerList.Remove(playerToRemove);
-
-        DespawnPlayer(tempPlayer);
-    }
-
     public void SpawnPlayer(Player playerToSpawn)
     {
         GameObject newPlayerObject = PhotonNetwork.Instantiate(playerPrefab.name, GetRandomSpawn(), Quaternion.identity);
@@ -75,15 +68,12 @@ public class GameManager : MonoBehaviourPunCallbacks
 
     public void DespawnPlayer(Player playerToDespawn)
     {
-        photonView.RPC("DespawnPlayerRPC", RpcTarget.AllBuffered, playerToDespawn.photonPlayer);
+        photonView.RPC("DespawnPlayerRPC", RpcTarget.AllBuffered, playerToDespawn.playerObject.GetComponent<PhotonView>().ViewID);
     }
     [PunRPC]
-    public void DespawnPlayerRPC(Photon.Realtime.Player photonPlayerToDespawn)
+    public void DespawnPlayerRPC(int goViewId)
     {
-        Player playerToDespawn = Player.FindPlayer(photonPlayerToDespawn);
-        GameObject objectToDestroy = playerToDespawn.playerObject;
-        playerToDespawn.playerObject = null;
-        Destroy(objectToDestroy);
+        Destroy(PhotonView.Find(goViewId).gameObject);
     }
 
     public Vector3 GetRandomSpawn()
@@ -94,10 +84,17 @@ public class GameManager : MonoBehaviourPunCallbacks
 
     public override void OnPlayerLeftRoom(Photon.Realtime.Player otherPlayer)
     {
-        Player tempPlayer = Player.FindPlayer(otherPlayer);
-        playerList.Remove(tempPlayer);
-
-        DespawnPlayer(tempPlayer);
+        DespawnPlayer(Player.FindPlayer(otherPlayer));
+        playerList.Remove(Player.FindPlayer(otherPlayer));
     }
 
+    public Item getItemFromName(string name)
+    {
+        for (int i = 0; i < items.Count; i++)
+        {
+            if (items[i].name == name) return items[i];
+        }
+
+        return null;
+    }    
 }

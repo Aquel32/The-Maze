@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d806fabfd126750438c08c12c039e5ae, type: 3}
+  m_Name: Iron Shoes
+  m_EditorClassIdentifier: 
+  itemName: Iron Shoes
+  image: {fileID: 21300000, guid: 27051257bddf06e4c8331b78b7bcd2d2, type: 3}
+  handlerPrefab: {fileID: 4050923774346569205, guid: bb1737d94f057924295d256b65427070,
+    type: 3}
+  inHandModel: {fileID: 533999783602678983, guid: 62585234febf00d4d897b87e02ea195d,
+    type: 3}
+  stackable: 0
+  defaultData: 60
+  maxInStack: 1
+  slotType: 5
+  durability: 60
+  OnBodyPrefab: {fileID: 8957782262681397918, guid: 43ca4e8688bc4614fbca7ee9d4f5b2d4,
+    type: 3}

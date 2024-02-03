@@ -94,7 +94,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   TableHandler: {fileID: 1996042601069726409, guid: f67ff32e7f673394988a8fad62c45ed6,
     type: 3}
-  TableType: 1
 --- !u!1 &7200390942596527407
 GameObject:
   m_ObjectHideFlags: 0

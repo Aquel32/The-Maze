@@ -1,8 +1,4 @@
 using Photon.Pun;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEditor.PackageManager;
-using UnityEditor.ShaderGraph.Internal;
 using UnityEngine;
 
 public class Placeable : MonoBehaviourPunCallbacks, IUsableItem
@@ -16,10 +12,15 @@ public class Placeable : MonoBehaviourPunCallbacks, IUsableItem
     private Transform attackDirection;
 
     private float yRotation;
+    private float zRotation;
 
     void Start()
     {
         this.enabled = photonView.IsMine;
+        if(buildPrefab.TryGetComponent<BuildingData>(out BuildingData data))
+        {
+            zRotation = data.zRotation;
+        }
     }
 
     public void Update()
@@ -38,7 +39,7 @@ public class Placeable : MonoBehaviourPunCallbacks, IUsableItem
         else pos = ray.GetPoint(4f);
 
         placeholder.position = pos;
-        placeholder.rotation = Quaternion.Euler(0, yRotation, 0);
+        placeholder.rotation = Quaternion.Euler(0, yRotation, zRotation);
 
         if (Input.GetKeyDown(KeyCode.Mouse0))
         {

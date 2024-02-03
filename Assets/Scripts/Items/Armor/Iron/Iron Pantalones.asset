@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d806fabfd126750438c08c12c039e5ae, type: 3}
+  m_Name: Iron Pantalones
+  m_EditorClassIdentifier: 
+  itemName: Iron Pantalones
+  image: {fileID: 21300000, guid: 31f1ee78dfca2234393c9d0c97a10531, type: 3}
+  handlerPrefab: {fileID: 3192067637850324893, guid: 1e7ba201007ecfa458d7878037e359fa,
+    type: 3}
+  inHandModel: {fileID: 4265678609391310000, guid: 21470bebd86ca6b4cbffd6a3d2fa85cf,
+    type: 3}
+  stackable: 0
+  defaultData: 60
+  maxInStack: 1
+  slotType: 4
+  durability: 60
+  OnBodyPrefab: {fileID: 2960049685097824985, guid: 9a1593e40f0294648bfd39ea6c3a8f38,
+    type: 3}

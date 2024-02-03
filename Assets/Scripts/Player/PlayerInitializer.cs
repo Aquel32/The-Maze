@@ -10,11 +10,12 @@ public class PlayerInitializer : MonoBehaviour
 
     private void Start()
     {
+        model.GetComponent<RandomModelChooser>().enabled = true;
         GetComponent<UiManager>().enabled = true;
         canvas.SetActive(true);
         GetComponent<InventoryManager>().enabled = true;
+        GetComponent<ArmorSystem>().enabled = true;
         cam.SetActive(true);
-        model.GetComponent<RandomModelChooser>().enabled = true;
         GetComponent<PlayerMovement>().enabled = true;
         GetComponent<HealthSystem>().enabled = true;
         GetComponent<PlayerAudioSource>().enabled = true;

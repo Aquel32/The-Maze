@@ -41,9 +41,11 @@ public class InventoryManager : MonoBehaviourPunCallbacks
 
     public Transform cameraTransform;
 
+    public ArmorSystem armorSystem;
     private void Start()
     {
         uiManager = GetComponent<UiManager>();
+        armorSystem = GetComponent<ArmorSystem>();
 
         ChangeSelectedSlot(0);
     }
@@ -170,7 +172,7 @@ public class InventoryManager : MonoBehaviourPunCallbacks
         {
             InventoryItem itemInSlot = inventorySlots[i].GetComponentInChildren<InventoryItem>();
 
-            if (itemInSlot != null && itemInSlot.item == item && itemInSlot.count < item.maxInStack && itemInSlot.item.stackable)
+            if (itemInSlot != null && itemInSlot.item == item && itemInSlot.count < item.maxInStack && itemInSlot.item.stackable && (inventorySlots[i].slotType == SlotType.All || inventorySlots[i].slotType == item.slotType))
             {
                 items.Add(item);
                 itemInSlot.count++;
@@ -184,7 +186,7 @@ public class InventoryManager : MonoBehaviourPunCallbacks
             InventorySlot slot = inventorySlots[i];
             InventoryItem itemInSlot = slot.GetComponentInChildren<InventoryItem>();
 
-            if(itemInSlot == null)
+            if(itemInSlot == null && (slot.slotType == SlotType.All || slot.slotType == item.slotType))
             {
                 items.Add(item);
                 SpawnNewItem(item, slot, customData);
@@ -199,7 +201,7 @@ public class InventoryManager : MonoBehaviourPunCallbacks
     void SpawnNewItem(Item item, InventorySlot slot, string customData)
     {
         InventoryItem inventoryItem = Instantiate(inventoryItemPrefab, slot.transform);
-        inventoryItem.InitializeItem(item, customData, this);
+        inventoryItem.InitializeItem(item, customData, this, slot);
     }
 
     public Item GetItem(int index, bool use)
@@ -246,7 +248,10 @@ public class InventoryManager : MonoBehaviourPunCallbacks
         InventoryItem inventoryItem = inventorySlots[index].GetComponentInChildren<InventoryItem>();
         if(inventoryItem != null) 
         {
-            GameObject handlerObject = PhotonNetwork.Instantiate(inventoryItem.item.handlerPrefab.name, transform.Find("Hand").Find("ItemHolder").GetChild(0).position, Quaternion.identity);
+            Vector3 position = transform.Find("Hand").Find("ItemHolder").position;
+            if (transform.Find("Hand").Find("ItemHolder").childCount > 0) position = transform.Find("Hand").Find("ItemHolder").GetChild(0).position;
+
+            GameObject handlerObject = PhotonNetwork.Instantiate(inventoryItem.item.handlerPrefab.name, position, Quaternion.identity);
             photonView.RPC("SpawnNewItemHandler", RpcTarget.AllBuffered, inventoryItem.customData, handlerObject.GetComponent<PhotonView>().ViewID);
 
             GetItem(index, true);

@@ -9,6 +9,9 @@ public class InventorySlot : MonoBehaviour, IDropHandler
     public Image image;
     public Color selectedColor, notSelectedColor;
 
+    public SlotType slotType;
+
+    public InventoryItem currentInventoryItem;
 
     void Awake()
     {
@@ -28,9 +31,14 @@ public class InventorySlot : MonoBehaviour, IDropHandler
     public void OnDrop(PointerEventData eventData)
     {
         InventoryItem inventoryItem = eventData.pointerDrag.GetComponent<InventoryItem>();
+
+        if (inventoryItem.item.slotType != slotType && slotType != SlotType.All) return;
+
         if (transform.childCount == 0)
         {
             inventoryItem.parentAfterDrag = transform;
+            currentInventoryItem = inventoryItem;
+            currentInventoryItem.currentSlot = this;
         }
         else if (GetComponentInChildren<InventoryItem>().item != null && GetComponentInChildren<InventoryItem>().item == inventoryItem.item)
         {
@@ -54,3 +62,5 @@ public class InventorySlot : MonoBehaviour, IDropHandler
 
     
 }
+
+public enum SlotType { All, Normal, Head, Body, Legs, Shoes }

@@ -58,6 +58,12 @@ MonoBehaviour:
   - HitTreeRPC
   - DestroyRPC
   - ChangeAnimationStateRPC
+  - NewDropRPC
+  - RemoveDropRPC
+  - InstantiateCopyRPC
+  - RefreshCountRPC
+  - SpawnNewItemRPC
+  - InstantiateRPC
   DisableAutoOpenWizard: 1
   ShowSettings: 1
   DevRegionSetOnce: 1

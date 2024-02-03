@@ -1,6 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
-using System.Linq.Expressions;
+using Photon.Pun;
 using TMPro;
 using UnityEngine;
 
@@ -18,6 +16,8 @@ public class UiManager : MonoBehaviour
 
     [SerializeField] private PlayerCamera playerCamera;
     private PlayerMovement playerMovement;
+
+    public GameObject currentChestPanel;
 
     private void Start()
     {
@@ -71,30 +71,27 @@ public class UiManager : MonoBehaviour
         }   
     }
 
+    public void SetChestPanel(GameObject chestPanel) { currentChestPanel = chestPanel; }
+
     public void ChangeAdditionalPanelState(AdditionalPanelType tableType)
     {
         GameObject currentAdditionalPanel = null;
-        switch (tableType)
+
+        if (currentChestPanel != null)
         {
-            case AdditionalPanelType.None:
-                craftingPanel.SetActive(false);
-                furancePanel.SetActive(false);
-                break;
-            case AdditionalPanelType.Crafting:
-                craftingPanel.SetActive(true);
-                furancePanel.SetActive(false);
-                currentAdditionalPanel = craftingPanel;
-                break;
-            case AdditionalPanelType.Furance:
-                craftingPanel.SetActive(false);
-                furancePanel.SetActive(true);
-                currentAdditionalPanel = furancePanel;
-                break;
-            default:
-                craftingPanel.SetActive(false);
-                furancePanel.SetActive(false);
-                break;
+            currentChestPanel.SetActive(tableType == AdditionalPanelType.Chest);
+            if(tableType == AdditionalPanelType.None)
+            {
+                currentChestPanel.GetComponentInParent<Chest>().animationState = false;
+                currentChestPanel.GetComponentInParent<Chest>().photonView.RPC("ChangeAnimationStateRPC", RpcTarget.AllBuffered, false);
+            }
         }
+        furancePanel.SetActive(tableType == AdditionalPanelType.Furance);
+        craftingPanel.SetActive(tableType == AdditionalPanelType.Crafting);
+
+        if (tableType == AdditionalPanelType.Furance) currentAdditionalPanel = furancePanel;
+        if (tableType == AdditionalPanelType.Crafting) currentAdditionalPanel = craftingPanel;
+
 
         if (currentAdditionalPanel == null) return;
         if (currentAdditionalPanel.TryGetComponent<ITable>(out ITable table)) table.Initialize();

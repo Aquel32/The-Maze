@@ -1,0 +1,28 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 301bdea6d35830549b1bfe26178b3004, type: 3}
+  m_Name: Platinum Axe
+  m_EditorClassIdentifier: 
+  itemName: Platinum Axe
+  image: {fileID: 21300000, guid: 0f94a23adcd14d94e8e127413478c56d, type: 3}
+  handlerPrefab: {fileID: 6656586187311307538, guid: 186269551a68ac64590704c158555813,
+    type: 3}
+  inHandModel: {fileID: 8401801001798256258, guid: 9baf06dddb8248346b452b7967d7e92e,
+    type: 3}
+  stackable: 0
+  defaultData: 
+  maxInStack: 1
+  damage: 500
+  durability: 0
+  cooldownTime: 0
+  effectiveRange: 3
+  toolType: 2
