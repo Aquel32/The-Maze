@@ -32,9 +32,9 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 673092868551748598}
+  - {fileID: 4864459344480934496}
   m_Father: {fileID: 0}
-  m_RootOrder: 10
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!65 &2382435614023403034
 BoxCollider:
@@ -120,7 +120,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   item: {fileID: 11400000, guid: 22b56e910423fff458e2cfbb00d8223c, type: 2}
   customData: 60
---- !u!1001 &8217450612988530006
+--- !u!1001 &4098127976519105728
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -131,7 +131,7 @@ PrefabInstance:
     - target: {fileID: 3931197745534747231, guid: 974a77a7c6027d045b0d2e54ea46278d,
         type: 3}
       propertyPath: m_Name
-      value: IronShoesModel
+      value: Shoes
       objectReference: {fileID: 0}
     - target: {fileID: 8889386234734929568, guid: 974a77a7c6027d045b0d2e54ea46278d,
         type: 3}
@@ -193,9 +193,9 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 974a77a7c6027d045b0d2e54ea46278d, type: 3}
---- !u!4 &673092868551748598 stripped
+--- !u!4 &4864459344480934496 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8889386234734929568, guid: 974a77a7c6027d045b0d2e54ea46278d,
     type: 3}
-  m_PrefabInstance: {fileID: 8217450612988530006}
+  m_PrefabInstance: {fileID: 4098127976519105728}
   m_PrefabAsset: {fileID: 0}

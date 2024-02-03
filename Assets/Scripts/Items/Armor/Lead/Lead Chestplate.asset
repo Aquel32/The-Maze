@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d806fabfd126750438c08c12c039e5ae, type: 3}
+  m_Name: Lead Chestplate
+  m_EditorClassIdentifier: 
+  itemName: Lead Chestplate
+  image: {fileID: 21300000, guid: c8b86cd62b3ee04499adbd250808472c, type: 3}
+  handlerPrefab: {fileID: 5379216616890428567, guid: 983b4c9bef4b1e143b1ad51207428268,
+    type: 3}
+  inHandModel: {fileID: 118878537643059617, guid: 020105ed36ba81c4bbb9f7a1b1f1bc0e,
+    type: 3}
+  stackable: 0
+  defaultData: 480
+  maxInStack: 1
+  slotType: 3
+  durability: 480
+  OnBodyPrefab: {fileID: 9202535752892578856, guid: 95ccb9a7c799d684abcc95c7712ecf25,
+    type: 3}

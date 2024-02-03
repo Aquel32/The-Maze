@@ -32,7 +32,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 5317300352697820069}
+  - {fileID: 7851243477693283814}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -120,7 +120,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   item: {fileID: 11400000, guid: eb3cf6b94e707e94e8f5e4705c06884d, type: 2}
   customData: 60
---- !u!1001 &5602317999950934122
+--- !u!1001 &7530175455379615273
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -186,16 +186,16 @@ PrefabInstance:
     - target: {fileID: 688289580449947788, guid: 101433223f7063f4fa07f7d9dadc9176,
         type: 3}
       propertyPath: m_Name
-      value: IronChestplateModel
+      value: Chestplate
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 101433223f7063f4fa07f7d9dadc9176, type: 3}
---- !u!4 &5317300352697820069 stripped
+--- !u!4 &7851243477693283814 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 321364118240416719, guid: 101433223f7063f4fa07f7d9dadc9176,
     type: 3}
-  m_PrefabInstance: {fileID: 5602317999950934122}
+  m_PrefabInstance: {fileID: 7530175455379615273}
   m_PrefabAsset: {fileID: 0}

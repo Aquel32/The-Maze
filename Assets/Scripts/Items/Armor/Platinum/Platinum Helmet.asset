@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d806fabfd126750438c08c12c039e5ae, type: 3}
+  m_Name: Platinum Helmet
+  m_EditorClassIdentifier: 
+  itemName: Platinum Helmet
+  image: {fileID: 21300000, guid: 92105d1a14c06bb4f995d154c5d46389, type: 3}
+  handlerPrefab: {fileID: 3099090643932304302, guid: 51cec964021f4044cab2078cca38e9f9,
+    type: 3}
+  inHandModel: {fileID: 2821654533004708825, guid: 5e7acda363ad9074da99c5eb5abae26b,
+    type: 3}
+  stackable: 0
+  defaultData: 3840
+  maxInStack: 1
+  slotType: 2
+  durability: 3840
+  OnBodyPrefab: {fileID: 7034458568598397701, guid: 81965c0bf2be6c840b49f39ed627c2d9,
+    type: 3}

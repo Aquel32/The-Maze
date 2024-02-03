@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d806fabfd126750438c08c12c039e5ae, type: 3}
+  m_Name: Nickel Chestplate
+  m_EditorClassIdentifier: 
+  itemName: Nickel Chestplate
+  image: {fileID: 21300000, guid: 522912b028038b649a8ea16d18e17c07, type: 3}
+  handlerPrefab: {fileID: 394525780080048535, guid: 9991861ec44980e49bf270cb716751f8,
+    type: 3}
+  inHandModel: {fileID: 7180132391279942194, guid: 4eb4b34439aa7194bb095f1e2ecc43c3,
+    type: 3}
+  stackable: 0
+  defaultData: 1920
+  maxInStack: 1
+  slotType: 3
+  durability: 1920
+  OnBodyPrefab: {fileID: 2813822815322793240, guid: 068c7c0d38e988841bb0574bb856e9a9,
+    type: 3}

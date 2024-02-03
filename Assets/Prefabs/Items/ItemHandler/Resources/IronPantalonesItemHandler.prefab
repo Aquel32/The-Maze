@@ -32,7 +32,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 5885221661196091211}
+  - {fileID: 345479246052147258}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -120,7 +120,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   item: {fileID: 11400000, guid: b119ad24e64d1f249af602ce3d67aec5, type: 2}
   customData: 60
---- !u!1001 &795963530677125962
+--- !u!1001 &6803873599353437243
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -131,12 +131,12 @@ PrefabInstance:
     - target: {fileID: 4319785981562083459, guid: 4a1026beb7889514a99d94e43b294003,
         type: 3}
       propertyPath: m_Name
-      value: IronPantalonesModel
+      value: Pantalones
       objectReference: {fileID: 0}
     - target: {fileID: 6532283750895320065, guid: 4a1026beb7889514a99d94e43b294003,
         type: 3}
       propertyPath: m_RootOrder
-      value: 9
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6532283750895320065, guid: 4a1026beb7889514a99d94e43b294003,
         type: 3}
@@ -193,9 +193,9 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4a1026beb7889514a99d94e43b294003, type: 3}
---- !u!4 &5885221661196091211 stripped
+--- !u!4 &345479246052147258 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6532283750895320065, guid: 4a1026beb7889514a99d94e43b294003,
     type: 3}
-  m_PrefabInstance: {fileID: 795963530677125962}
+  m_PrefabInstance: {fileID: 6803873599353437243}
   m_PrefabAsset: {fileID: 0}

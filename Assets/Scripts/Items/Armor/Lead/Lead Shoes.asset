@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d806fabfd126750438c08c12c039e5ae, type: 3}
+  m_Name: Lead Shoes
+  m_EditorClassIdentifier: 
+  itemName: Lead Shoes
+  image: {fileID: 21300000, guid: c5ca750d58cc10549914334d0f629dd0, type: 3}
+  handlerPrefab: {fileID: 7013566302034413365, guid: 01dd3b5e85b2f4543832640b8f088950,
+    type: 3}
+  inHandModel: {fileID: 4028940885611700269, guid: 1841e3f040b1d694392f02e2e28ffe11,
+    type: 3}
+  stackable: 0
+  defaultData: 480
+  maxInStack: 1
+  slotType: 5
+  durability: 480
+  OnBodyPrefab: {fileID: 5456111945027494577, guid: 6fb24a0c69a6eec45899da767da9480b,
+    type: 3}

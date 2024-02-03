@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d806fabfd126750438c08c12c039e5ae, type: 3}
+  m_Name: Uranium Chestplate
+  m_EditorClassIdentifier: 
+  itemName: Uranium Chestplate
+  image: {fileID: 21300000, guid: 91088026e713a164c89c3db7b6bc89fd, type: 3}
+  handlerPrefab: {fileID: 5481404490035678927, guid: 11e47c69909cefb4da649f67baae583a,
+    type: 3}
+  inHandModel: {fileID: 6279941820596587833, guid: 9e3c92b1f0137b3499887027fd7f3e87,
+    type: 3}
+  stackable: 0
+  defaultData: 7680
+  maxInStack: 1
+  slotType: 3
+  durability: 7680
+  OnBodyPrefab: {fileID: 6841454124612285130, guid: 67bfd5a795bccff42891a0783ee83331,
+    type: 3}

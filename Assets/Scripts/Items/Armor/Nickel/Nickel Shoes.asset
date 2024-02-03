@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d806fabfd126750438c08c12c039e5ae, type: 3}
+  m_Name: Nickel Shoes
+  m_EditorClassIdentifier: 
+  itemName: Nickel Shoes
+  image: {fileID: 21300000, guid: fca452891d0384540b189bb214a8c354, type: 3}
+  handlerPrefab: {fileID: 8452849207237631517, guid: a8a466c085772fa4d8e4af98df41f2f4,
+    type: 3}
+  inHandModel: {fileID: 885151606481280481, guid: 126c34649d2c0e04faec5929af2c030f,
+    type: 3}
+  stackable: 0
+  defaultData: 1920
+  maxInStack: 1
+  slotType: 5
+  durability: 1920
+  OnBodyPrefab: {fileID: 2283813861834189491, guid: afc0a557a3d172748b705c276923ce67,
+    type: 3}

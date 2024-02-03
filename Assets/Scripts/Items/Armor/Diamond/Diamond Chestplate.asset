@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d806fabfd126750438c08c12c039e5ae, type: 3}
+  m_Name: Diamond Chestplate
+  m_EditorClassIdentifier: 
+  itemName: Diamond Chestplate
+  image: {fileID: 21300000, guid: 8fb1db9dcdc4b97438ae1847658b2ac6, type: 3}
+  handlerPrefab: {fileID: 252975169272817427, guid: c7ed50fa581988b418fcdaf059416959,
+    type: 3}
+  inHandModel: {fileID: 987741897042685626, guid: aafbb57bdf50147438c750c8e736abc1,
+    type: 3}
+  stackable: 0
+  defaultData: 240
+  maxInStack: 1
+  slotType: 3
+  durability: 240
+  OnBodyPrefab: {fileID: 7131190481235711074, guid: 5f7b0fb2d9c759c458b3e7e123c4289d,
+    type: 3}
