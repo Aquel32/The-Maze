@@ -23,5 +23,5 @@ MonoBehaviour:
   maxInStack: 1
   slotType: 2
   durability: 240
-  OnBodyPrefab: {fileID: 3499477663399524991, guid: 01395f599b144d841b6260f69333569b,
+  OnBodyPrefab: {fileID: 7453405769966449411, guid: 01395f599b144d841b6260f69333569b,
     type: 3}

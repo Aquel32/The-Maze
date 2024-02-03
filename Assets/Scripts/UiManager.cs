@@ -9,7 +9,7 @@ public class UiManager : MonoBehaviour
 
     public Panels currentPanel;
 
-    public GameObject pauseMenu, mainInventory, craftingPanel, furancePanel;
+    public GameObject pauseMenu, mainInventory, craftingPanel, furancePanel, anvilPanel;
     public GameObject crosshair;
 
     public bool somePanelTurnedOn;
@@ -88,9 +88,11 @@ public class UiManager : MonoBehaviour
         }
         furancePanel.SetActive(tableType == AdditionalPanelType.Furance);
         craftingPanel.SetActive(tableType == AdditionalPanelType.Crafting);
+        anvilPanel.SetActive(tableType == AdditionalPanelType.Anvil);
 
         if (tableType == AdditionalPanelType.Furance) currentAdditionalPanel = furancePanel;
         if (tableType == AdditionalPanelType.Crafting) currentAdditionalPanel = craftingPanel;
+        if (tableType == AdditionalPanelType.Anvil) currentAdditionalPanel = anvilPanel;
 
 
         if (currentAdditionalPanel == null) return;
@@ -122,4 +124,4 @@ public enum Panels
     Inventory,
 }
 
-public enum AdditionalPanelType { Crafting, Furance, Chest, None }
+public enum AdditionalPanelType { Crafting, Furance, Anvil, Chest, None }

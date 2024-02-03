@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 96c3fc1562a2f0f4ba6313176d645137, type: 3}
+  m_Name: Anvil
+  m_EditorClassIdentifier: 
+  itemName: Anvil
+  image: {fileID: 21300000, guid: ef4837acb074909478e1d47fdcc85d39, type: 3}
+  handlerPrefab: {fileID: 1840741914637659123, guid: 7b3b4d9defaf79a4287aa3ead511d6b0,
+    type: 3}
+  inHandModel: {fileID: 6598469554426892919, guid: 1f1cd53e504ff3e4db4782005c91a6d6,
+    type: 3}
+  stackable: 0
+  defaultData: 
+  maxInStack: 1
+  slotType: 0

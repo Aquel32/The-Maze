@@ -16,8 +16,9 @@ MonoBehaviour:
   image: {fileID: 21300000, guid: 294091dd49a79a64893361f1d300c70d, type: 3}
   handlerPrefab: {fileID: 1959829316553302502, guid: 572e3e624fe64b844bcd7d4b74986d30,
     type: 3}
-  inHandModel: {fileID: 3549428477517654645, guid: 3b0bff13f67d4dd41b1e7c31c0484812,
+  inHandModel: {fileID: 929713882138583565, guid: 3b0bff13f67d4dd41b1e7c31c0484812,
     type: 3}
   stackable: 1
   defaultData: 
   maxInStack: 4
+  slotType: 0

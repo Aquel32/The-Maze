@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d806fabfd126750438c08c12c039e5ae, type: 3}
   m_Name: Lead Helmet
   m_EditorClassIdentifier: 
-  itemName: Iron Helmet
+  itemName: Lead Helmet
   image: {fileID: 21300000, guid: 10df27d3586fcd44dad60c7161a76e00, type: 3}
   handlerPrefab: {fileID: 4384812416087019635, guid: b37a693004e8c8346894990636eb2cff,
     type: 3}
@@ -23,5 +23,5 @@ MonoBehaviour:
   maxInStack: 1
   slotType: 2
   durability: 480
-  OnBodyPrefab: {fileID: 4814366565834444740, guid: 65238a0436e3a3c4c8fc5b65039baa7a,
+  OnBodyPrefab: {fileID: 5882526037979352412, guid: 65238a0436e3a3c4c8fc5b65039baa7a,
     type: 3}
