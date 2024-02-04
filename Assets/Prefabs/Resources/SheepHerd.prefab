@@ -1,0 +1,54 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &9065929921568810891
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8980678212785905014}
+  - component: {fileID: 9217544469975678220}
+  m_Layer: 0
+  m_Name: SheepHerd
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8980678212785905014
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9065929921568810891}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 8
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &9217544469975678220
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9065929921568810891}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a835e9512d7ae1848af86b90d9001565, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  radius: 10
+  possibleAnimals:
+  - {fileID: 6409159035078613806, guid: d18aa2444a3fa8c429f4fe5d0cc90a5d, type: 3}
+  - {fileID: 5776032249075293806, guid: 8307f449fbafc9c4e8cef380c3972321, type: 3}
+  - {fileID: 5776032249075293806, guid: 8307f449fbafc9c4e8cef380c3972321, type: 3}
+  - {fileID: 1410151113284709043, guid: 66eee84c240ac1347a5fc5c805193973, type: 3}
+  - {fileID: 1410151113284709043, guid: 66eee84c240ac1347a5fc5c805193973, type: 3}
+  animals: []

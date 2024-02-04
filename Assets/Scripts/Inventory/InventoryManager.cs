@@ -235,7 +235,6 @@ public class InventoryManager : MonoBehaviourPunCallbacks
         {
             if (inventorySlots[i].GetComponentInChildren<InventoryItem>() != null && inventorySlots[i].GetComponentInChildren<InventoryItem>().item == item)
             {
-                print(item.name + " | " + i);
                 return GetItem(i, use);
             }
         }

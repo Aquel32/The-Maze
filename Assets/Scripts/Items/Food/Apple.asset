@@ -21,4 +21,5 @@ MonoBehaviour:
   stackable: 1
   defaultData: 
   maxInStack: 4
-  healthToAdd: 10
+  slotType: 0
+  healthToAdd: 5

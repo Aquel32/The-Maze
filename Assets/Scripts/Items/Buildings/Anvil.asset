@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Anvil
   m_EditorClassIdentifier: 
   itemName: Anvil
-  image: {fileID: 21300000, guid: ef4837acb074909478e1d47fdcc85d39, type: 3}
+  image: {fileID: 21300000, guid: a329bf4641785b84b9d3347a0dccd2ee, type: 3}
   handlerPrefab: {fileID: 1840741914637659123, guid: 7b3b4d9defaf79a4287aa3ead511d6b0,
     type: 3}
   inHandModel: {fileID: 6598469554426892919, guid: 1f1cd53e504ff3e4db4782005c91a6d6,

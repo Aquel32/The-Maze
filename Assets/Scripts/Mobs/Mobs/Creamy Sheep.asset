@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ad800593e465eac46b53a814c54111b5, type: 3}
+  m_Name: Creamy Sheep
+  m_EditorClassIdentifier: 
+  mobName: Creamy Sheep
+  health: 100
+  mobType: 1
+  drops:
+  - {fileID: 11400000, guid: 53d8f92cbc3c9a646a5111865dabf427, type: 2}
+  prefab: {fileID: 5776032249075293806, guid: 8307f449fbafc9c4e8cef380c3972321, type: 3}
