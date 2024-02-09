@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d6bdcf4c5687d3a4fab30e885c2b8d21, type: 3}
   m_Name: Oak Ramp
   m_EditorClassIdentifier: 
-  product: {fileID: 11400000, guid: 9f1f366d1f30a854cae93ad8ea44dad5, type: 2}
+  product: {fileID: 11400000, guid: 922ea6a7d078b0b4f9eb028f3726040f, type: 2}
   ingredients:
   - {fileID: 11400000, guid: 0ecaf823dd8fa8f41adef49d3d84c99a, type: 2}
   - {fileID: 11400000, guid: 0ecaf823dd8fa8f41adef49d3d84c99a, type: 2}

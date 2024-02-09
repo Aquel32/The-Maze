@@ -18,7 +18,7 @@ public class Herd : MonoBehaviour
         for (int i = 0; i < possibleAnimals.Count; i++)
         {
             animals.Add(PhotonNetwork.Instantiate(possibleAnimals[i].name, transform.position + new Vector3(Random.Range(-radius, radius), 0, Random.Range(-radius, radius)), Quaternion.identity));
-            animals[i].GetComponent<Entity>().herd = this;
+            animals[i].GetComponent<Animal>().herd = this;
         }
     }
 }

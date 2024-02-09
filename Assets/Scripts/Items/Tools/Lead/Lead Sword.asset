@@ -21,8 +21,9 @@ MonoBehaviour:
   stackable: 0
   defaultData: 
   maxInStack: 1
+  slotType: 0
   damage: 70
-  durability: 0
+  durability: 480
   cooldownTime: 0
   effectiveRange: 5
   toolType: 0

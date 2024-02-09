@@ -9,7 +9,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 96c3fc1562a2f0f4ba6313176d645137, type: 3}
+  m_Script: {fileID: 11500000, guid: 9cd5e32be95578242925b4282ed35205, type: 3}
   m_Name: Furance
   m_EditorClassIdentifier: 
   itemName: Furance
@@ -18,6 +18,8 @@ MonoBehaviour:
     type: 3}
   inHandModel: {fileID: 2869784370256782808, guid: 06ee7bf16875328438bace90ea26e26f,
     type: 3}
-  stackable: 0
+  stackable: 1
   defaultData: 
-  maxInStack: 1
+  maxInStack: 4
+  slotType: 0
+  health: 100

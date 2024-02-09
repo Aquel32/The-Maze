@@ -222,6 +222,7 @@ GameObject:
   - component: {fileID: 5430684801843046349}
   - component: {fileID: 2167455058014724380}
   - component: {fileID: 5336181911544954784}
+  - component: {fileID: 9139970560455711319}
   m_Layer: 0
   m_Name: Chest
   m_TagString: Untagged
@@ -375,8 +376,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5e8a245289032b340a6cbf5ab1f4874a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  chestItemHandlerPrefab: {fileID: 8656042591498225506, guid: e348c28085f00904e84fb45de8a596e6,
-    type: 3}
   animator: {fileID: 856846993570066368}
   sound: {fileID: 8300000, guid: 2ef0d23669e50da488a003162565ed9e, type: 3}
   animationState: 0
@@ -420,6 +419,22 @@ MonoBehaviour:
   sceneViewId: 0
   InstantiationId: 0
   isRuntimeInstantiated: 0
+--- !u!114 &9139970560455711319
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7218104568808107470}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d5b9941143f472443b1244b5f67f0f3c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  build: {fileID: 11400000, guid: f8d3f255622842a43b9ed09d72de82fc, type: 2}
+  health: 0
+  dropPrefab: {fileID: 8656042591498225506, guid: e348c28085f00904e84fb45de8a596e6,
+    type: 3}
 --- !u!1 &8166962657768816937
 GameObject:
   m_ObjectHideFlags: 0

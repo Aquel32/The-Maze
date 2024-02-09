@@ -9,9 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6226468185136187987}
-  - component: {fileID: 1475185406442663854}
   - component: {fileID: 1928300634223447133}
-  - component: {fileID: 8555140120939540526}
   m_Layer: 7
   m_Name: ChromiumChestplateOnBody
   m_TagString: Untagged
@@ -33,29 +31,8 @@ Transform:
   m_Children:
   - {fileID: 3669500863504671596}
   m_Father: {fileID: 0}
-  m_RootOrder: -1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!65 &1475185406442663854
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5581765499169174111}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 0.5, y: 0.6, z: 0.7}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &1928300634223447133
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -78,22 +55,6 @@ MonoBehaviour:
   sceneViewId: 0
   InstantiationId: 0
   isRuntimeInstantiated: 0
---- !u!114 &8555140120939540526
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5581765499169174111}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9f380cb4421db2640805735373b876c8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  armor: {fileID: 11400000, guid: 85c332bba3a63654bae5ba0bebfc2087, type: 2}
-  inventoryItem: {fileID: 0}
-  armorSystem: {fileID: 0}
-  slotId: 0
 --- !u!1001 &3934203656293429411
 PrefabInstance:
   m_ObjectHideFlags: 0

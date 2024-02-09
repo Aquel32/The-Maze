@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9eba450d68d067645bc5d748ff6201a1, type: 3}
+  m_Name: Zombie
+  m_EditorClassIdentifier: 
+  mobName: Zombie
+  health: 100
+  mobType: 0
+  drops:
+  - {fileID: 11400000, guid: edd95a146cdad624f85e61fecfc14458, type: 2}
+  prefab: {fileID: 4514812927934395677, guid: 2eb76ff9f15138f41a950d29683a617d, type: 3}
+  experiencePoints: 20
+  damage: 25
+  visionRange: 15
+  attackRange: 2

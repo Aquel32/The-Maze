@@ -1,8 +1,6 @@
 using Photon.Pun;
-using System;
-using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting;
+using Unity.VisualScripting.Antlr3.Runtime.Tree;
 using UnityEngine;
 
 public class ArmorSystem : MonoBehaviourPunCallbacks
@@ -11,8 +9,11 @@ public class ArmorSystem : MonoBehaviourPunCallbacks
     public List<Armor> equipment = new List<Armor>();
     [HideInInspector] public Transform headBone, chestBone, RightLegBone, LeftLegBone, RightFootBone, LeftFootBone;
 
+    private HealthSystem healthSystem;
+
     private void Start()
     {
+        healthSystem = GetComponent<HealthSystem>();
         LookForChanges();
     }
 
@@ -84,6 +85,8 @@ public class ArmorSystem : MonoBehaviourPunCallbacks
                     break;
             }
         }
+
+        UpdateHealthSystem();
     }
 
     [PunRPC]
@@ -96,13 +99,9 @@ public class ArmorSystem : MonoBehaviourPunCallbacks
         go.transform.localPosition = Vector3.zero;
         go.transform.localRotation = new Quaternion(0, 0, 0, 0);
 
-        go.GetComponent<ArmorOnBody>().owner = Player.FindPlayer(pmi.Sender);
 
         if(pmi.Sender == Player.myPlayer.photonPlayer)
         {
-            go.GetComponent<ArmorOnBody>().inventoryItem = inventorySlots[slotIndex].currentInventoryItem;
-            go.GetComponent<ArmorOnBody>().armorSystem = this;
-            go.GetComponent<ArmorOnBody>().slotId = slotIndex;
             go.GetComponentInChildren<MeshRenderer>().shadowCastingMode = UnityEngine.Rendering.ShadowCastingMode.ShadowsOnly;
 
             foreach(Transform child in go.GetComponentInChildren<MeshRenderer>().transform)
@@ -116,6 +115,58 @@ public class ArmorSystem : MonoBehaviourPunCallbacks
     public void DestroyRPC(int viewId)
     {
         Destroy(PhotonView.Find(viewId).gameObject);
+    }
+
+    public void HitArmor(int damage)
+    {
+        int n = 0;
+
+        for (int i = 0; i < equipment.Count; i++)
+        {
+            if (equipment[i] != null) n++;
+        }
+
+        if (n == 0) return; 
+
+        damage = damage / n;
+
+        for (int i = 0; i < inventorySlots.Count; i++)
+        {
+            if (equipment[i] != null)
+            {
+                int health = int.Parse(inventorySlots[i].currentInventoryItem.customData);
+                health -= damage;
+                inventorySlots[i].currentInventoryItem.customData = health.ToString();
+
+                if(health <= 0)
+                {
+                    InventoryItem tempInventoryItem = inventorySlots[i].currentInventoryItem;
+                    inventorySlots[i].currentInventoryItem = null;
+                    Destroy(tempInventoryItem.gameObject);
+                    LookForChanges();
+                }
+            }
+        }
+    }
+
+    public void UpdateHealthSystem()
+    {
+        int maxValue = 0;
+        int value = 0;
+
+        for(int i = 0; i < inventorySlots.Count; i++)
+        {
+            if (inventorySlots[i].currentInventoryItem != null)
+            {
+                maxValue += equipment[i].durability;
+                value += int.Parse(inventorySlots[i].currentInventoryItem.customData);
+            }
+
+        }
+
+        healthSystem.armorMaxValue = maxValue;
+        healthSystem.armor = value;
+        healthSystem.RefreshCounter();
     }
 
 }

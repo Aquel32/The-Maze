@@ -21,3 +21,5 @@ MonoBehaviour:
   stackable: 1
   defaultData: 
   maxInStack: 4
+  slotType: 0
+  experiencePoints: 25

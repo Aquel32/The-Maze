@@ -13,13 +13,18 @@ public interface IDamageable
 public class HealthSystem : MonoBehaviourPunCallbacks, IDamageable
 {
     public int health;
-    public Slider slider;
+    public int armor;
+    public int armorMaxValue;
+    public Slider healthSlider;
+    public Slider armorSlider;
 
     private InventoryManager inventoryManager;
+    private ArmorSystem armorSystem;
 
     private void Start()
     {
         inventoryManager = GetComponent<InventoryManager>();
+        armorSystem = GetComponent<ArmorSystem>();
 
         ResetHealth();
         RefreshCounter();
@@ -28,20 +33,31 @@ public class HealthSystem : MonoBehaviourPunCallbacks, IDamageable
     public void ResetHealth()
     {
         health = 100;
+        armor = 0;
     }
 
     public void AddHealth(int healthToAdd)
     {
         health += healthToAdd;
-        RefreshCounter();
         CheckMaxAndMinHealth();
+        RefreshCounter();
     }
 
     public void RemoveHealth(int healthToRemove)
     {
-        health -= healthToRemove;
-        RefreshCounter();
+        armor -= healthToRemove;
+        int armorDamage = healthToRemove;
+
+        if (armor < 0)
+        {
+            health -= -armor;
+            armorDamage = -armor;
+        }
+
+        armorSystem.HitArmor(armorDamage);
+
         CheckMaxAndMinHealth();
+        RefreshCounter();
 
         if(health == 0)
         {
@@ -61,7 +77,9 @@ public class HealthSystem : MonoBehaviourPunCallbacks, IDamageable
 
     public void RefreshCounter()
     {
-        slider.value = health;
+        healthSlider.value = health;
+        armorSlider.maxValue = armorMaxValue;
+        armorSlider.value = armor;
     }
 
     public void CheckMaxAndMinHealth()

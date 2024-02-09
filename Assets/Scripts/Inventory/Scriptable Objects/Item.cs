@@ -12,4 +12,5 @@ public class Item : ScriptableObject
     public string defaultData;
     public int maxInStack = 4;
     public SlotType slotType;
+    public int experiencePoints;
 }

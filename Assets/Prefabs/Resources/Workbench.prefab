@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 6701818422833933892}
   - component: {fileID: 6426887200020878954}
   - component: {fileID: 7021230988949301090}
+  - component: {fileID: -7987235332310858483}
   m_Layer: 0
   m_Name: Workbench
   m_TagString: Untagged
@@ -69,8 +70,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e34ac797040eebb4c8804a4c88c32112, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  TableHandler: {fileID: 3999076992838956268, guid: c1d47c14435cc9240920ae9e6f29e956,
-    type: 3}
 --- !u!114 &7021230988949301090
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -93,6 +92,22 @@ MonoBehaviour:
   sceneViewId: 0
   InstantiationId: 0
   isRuntimeInstantiated: 0
+--- !u!114 &-7987235332310858483
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4445222541992187357}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d5b9941143f472443b1244b5f67f0f3c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  build: {fileID: 11400000, guid: 28552e37e0884cc45a28899e1aa2a971, type: 2}
+  health: 0
+  dropPrefab: {fileID: 3999076992838956268, guid: c1d47c14435cc9240920ae9e6f29e956,
+    type: 3}
 --- !u!1001 &445374755645445673
 PrefabInstance:
   m_ObjectHideFlags: 0

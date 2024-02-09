@@ -68,6 +68,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5b9941143f472443b1244b5f67f0f3c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  build: {fileID: 11400000, guid: 2602dabbfced70c459bd5f3cb51053d9, type: 2}
+  health: 0
   dropPrefab: {fileID: 2040328280973278448, guid: 01dedab3ed01bba43961ecae56433902,
     type: 3}
 --- !u!114 &8495328612987673402

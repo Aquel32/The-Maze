@@ -10,12 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ad800593e465eac46b53a814c54111b5, type: 3}
-  m_Name: White Sheep
+  m_Name: Black Sheep
   m_EditorClassIdentifier: 
-  mobName: White Sheep
+  mobName: Creamy Sheep
   health: 100
   mobType: 1
   drops:
-  - {fileID: 11400000, guid: ca75d9868e17065478239c6f07d0660d, type: 2}
-  - {fileID: 11400000, guid: 6bc03d32c052a3e4a89d91d2a408d36b, type: 2}
-  prefab: {fileID: 6409159035078613806, guid: d18aa2444a3fa8c429f4fe5d0cc90a5d, type: 3}
+  - {fileID: 11400000, guid: 92d8b76bb13b65248a8664d14e976d4c, type: 2}
+  prefab: {fileID: 1410151113284709043, guid: 66eee84c240ac1347a5fc5c805193973, type: 3}
+  experiencePoints: 5

@@ -6,6 +6,7 @@ using System.Linq;
 using TMPro;
 using UnityEngine;
 using UnityEngine.Animations.Rigging;
+using static UnityEditor.Progress;
 
 public interface IUsableItem
 {
@@ -103,9 +104,22 @@ public class InventoryManager : MonoBehaviourPunCallbacks
         inventorySlots[newValue].Select();
         selectedSlot = newValue;
 
-        if(inventorySlots[selectedSlot].GetComponentInChildren<InventoryItem>())
+        if(inventorySlots[selectedSlot].currentInventoryItem)
         {
-            ShowHint(inventorySlots[selectedSlot].GetComponentInChildren<InventoryItem>().item.itemName);
+            Armor tempArmor = inventorySlots[selectedSlot].currentInventoryItem.item as Armor;
+            Tool tempTool = inventorySlots[selectedSlot].currentInventoryItem.item as Tool;
+            if (tempArmor != null)
+            {
+                ShowHint(inventorySlots[selectedSlot].currentInventoryItem.item.itemName + " (" + inventorySlots[selectedSlot].currentInventoryItem.customData + "/" + tempArmor.durability + ")");
+            }
+            else if (tempTool != null)
+            {
+                ShowHint(inventorySlots[selectedSlot].currentInventoryItem.item.itemName + " (" + inventorySlots[selectedSlot].currentInventoryItem.customData + "/" + tempTool.durability + ")");
+            }
+            else
+            {
+                ShowHint(inventorySlots[selectedSlot].currentInventoryItem.item.itemName);
+            }
         }
 
         UpdateHand();
@@ -127,8 +141,6 @@ public class InventoryManager : MonoBehaviourPunCallbacks
             {
                 usableItem.Initialize(inventoryItem);
             }
-
-            ShowHint(inventoryItem.item.itemName);
 
             isThereSomethingInHand = true;
             photonView.RPC("SetBoneTargetWeightRPC", RpcTarget.AllBuffered, 1f, handBoneTarget.GetComponent<PhotonView>().ViewID);

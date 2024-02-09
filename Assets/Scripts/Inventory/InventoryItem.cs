@@ -105,9 +105,14 @@ public class InventoryItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
     public void OnPointerEnter(PointerEventData eventData)
     {
         Armor tempArmor = item as Armor;
+        Tool tempTool = item as Tool;
         if (tempArmor != null)
         {
-            inventoryManager.ShowHint(item.itemName + "(" + customData + "/" + tempArmor.durability + ")");
+            inventoryManager.ShowHint(item.itemName + " (" + customData + "/" + tempArmor.durability + ")");
+        }
+        else if(tempTool != null)
+        {
+            inventoryManager.ShowHint(item.itemName + " (" + customData + "/" + tempTool.durability + ")");
         }
         else
         {

@@ -19,6 +19,7 @@ public class Ore : MonoBehaviourPunCallbacks, IDamageable
             {
                 PhotonNetwork.Instantiate(oreItemPrefab.name, transform.position + Vector3.up, Quaternion.identity);
             }
+            Player.myPlayer.playerObject.GetComponent<ExperienceSystem>().ChangeExperience(oreItemPrefab.GetComponent<ItemHandler>().item.experiencePoints);
             PhotonNetwork.Destroy(this.gameObject);
         }
         

@@ -9,12 +9,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ad800593e465eac46b53a814c54111b5, type: 3}
-  m_Name: Black Goat
+  m_Script: {fileID: 11500000, guid: d6bdcf4c5687d3a4fab30e885c2b8d21, type: 3}
+  m_Name: Medium Meat
   m_EditorClassIdentifier: 
-  mobName: Creamy Sheep
-  health: 100
-  mobType: 1
-  drops:
+  product: {fileID: 11400000, guid: 53d8f92cbc3c9a646a5111865dabf427, type: 2}
+  ingredients:
+  - {fileID: 11400000, guid: edd95a146cdad624f85e61fecfc14458, type: 2}
   - {fileID: 11400000, guid: 92d8b76bb13b65248a8664d14e976d4c, type: 2}
-  prefab: {fileID: 6061000065310496730, guid: 10ce23d3973fbc24685ff67147722a89, type: 3}
+  - {fileID: 11400000, guid: 92d8b76bb13b65248a8664d14e976d4c, type: 2}

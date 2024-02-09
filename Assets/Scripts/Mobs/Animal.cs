@@ -5,7 +5,7 @@ using UnityEngine;
 using UnityEngine.AI;
 
 [RequireComponent(typeof(PhotonView))]
-public class Entity : MonoBehaviourPunCallbacks, IDamageable
+public class Animal : MonoBehaviourPunCallbacks, IDamageable
 {
     [SerializeField] private Mob mob;
 
@@ -61,6 +61,7 @@ public class Entity : MonoBehaviourPunCallbacks, IDamageable
                 PhotonNetwork.Instantiate(mob.drops[i].handlerPrefab.name, transform.position, Quaternion.identity);
             }
 
+            Player.myPlayer.playerObject.GetComponent<ExperienceSystem>().ChangeExperience(mob.experiencePoints);
             PhotonNetwork.Destroy(this.gameObject);
         }
     }

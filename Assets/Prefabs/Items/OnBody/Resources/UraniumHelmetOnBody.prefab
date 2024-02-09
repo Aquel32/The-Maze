@@ -9,9 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8036860401153154393}
-  - component: {fileID: 2290652022558353816}
   - component: {fileID: 397298264735571405}
-  - component: {fileID: 3876361713780007872}
   m_Layer: 7
   m_Name: UraniumHelmetOnBody
   m_TagString: Untagged
@@ -35,27 +33,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!65 &2290652022558353816
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 810109142465605829}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 0.4, y: 0.3, z: 0.4}
-  m_Center: {x: 0, y: -0.1, z: 0}
 --- !u!114 &397298264735571405
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -78,22 +55,6 @@ MonoBehaviour:
   sceneViewId: 0
   InstantiationId: 0
   isRuntimeInstantiated: 0
---- !u!114 &3876361713780007872
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 810109142465605829}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9f380cb4421db2640805735373b876c8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  armor: {fileID: 11400000, guid: 73eb0de27b11d694e9fd491090b6eaf4, type: 2}
-  inventoryItem: {fileID: 0}
-  armorSystem: {fileID: 0}
-  slotId: 0
 --- !u!1001 &7844380126965054699
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -92,7 +92,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   item: {fileID: 11400000, guid: 5064319bce0cd594baa24f7934b4da3e, type: 2}
-  customData: 
+  customData: 480
 --- !u!54 &759592652289025030
 Rigidbody:
   m_ObjectHideFlags: 0

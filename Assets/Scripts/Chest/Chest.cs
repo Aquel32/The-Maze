@@ -4,10 +4,8 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(AudioSource))]
-public class Chest : MonoBehaviourPunCallbacks, IInteractible, IDamageable
+public class Chest : MonoBehaviourPunCallbacks, IInteractible
 {
-    [SerializeField] private GameObject chestItemHandlerPrefab;
-
     private AudioSource audioSource;
     [SerializeField] private Animator animator;
     [SerializeField] private AudioClip sound;
@@ -21,15 +19,6 @@ public class Chest : MonoBehaviourPunCallbacks, IInteractible, IDamageable
     {
         animationState = false;
         audioSource = GetComponent<AudioSource>();
-    }
-
-    public void Damage(int damage, ToolType toolType)
-    {
-        PhotonNetwork.Instantiate(chestItemHandlerPrefab.name, transform.position, Quaternion.identity);
-
-        //DROP ALL ITEMS THAT ARE INSIDE
-
-        PhotonNetwork.Destroy(this.gameObject);
     }
 
     public void Interact()

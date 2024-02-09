@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d6bdcf4c5687d3a4fab30e885c2b8d21, type: 3}
   m_Name: Oak Floor
   m_EditorClassIdentifier: 
-  product: {fileID: 11400000, guid: 52670444bfd3ace44922e1eb33e66486, type: 2}
+  product: {fileID: 11400000, guid: 2602dabbfced70c459bd5f3cb51053d9, type: 2}
   ingredients:
   - {fileID: 11400000, guid: 0ecaf823dd8fa8f41adef49d3d84c99a, type: 2}
   - {fileID: 11400000, guid: 0ecaf823dd8fa8f41adef49d3d84c99a, type: 2}

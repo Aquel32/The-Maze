@@ -21,5 +21,6 @@ public class PlayerInitializer : MonoBehaviour
         GetComponent<PlayerAudioSource>().enabled = true;
         GetComponent<Footstep>().enabled = true;
         GetComponent<PauseMenu>().enabled = true;
+        GetComponent<ExperienceSystem>().enabled = true;
     }
 }

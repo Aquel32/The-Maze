@@ -22,3 +22,4 @@ MonoBehaviour:
   defaultData: 
   maxInStack: 4
   slotType: 0
+  experiencePoints: 30
