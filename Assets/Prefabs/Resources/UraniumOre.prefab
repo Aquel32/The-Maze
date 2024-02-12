@@ -69,8 +69,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: efd4336072e2b4d49b649cfcac64c78f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  oreItemPrefab: {fileID: 7183505993008981172, guid: 13a431046804fd441beb119cbcd0c421,
-    type: 3}
+  ore: {fileID: 11400000, guid: c722f404ceb74bc479027d843eec6779, type: 2}
   health: 10000
   howManyItemDrops: 1
 --- !u!114 &3814838789056768989

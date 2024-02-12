@@ -9,7 +9,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 96c3fc1562a2f0f4ba6313176d645137, type: 3}
+  m_Script: {fileID: 11500000, guid: eababd02f8e36f14b957137e8b5e28f4, type: 3}
   m_Name: GoldOre
   m_EditorClassIdentifier: 
   itemName: Gold Ore
@@ -22,4 +22,4 @@ MonoBehaviour:
   defaultData: 
   maxInStack: 4
   slotType: 0
-  experiencePoints: 25
+  experiencePoints: 30

@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class Ore : MonoBehaviourPunCallbacks, IDamageable
 {
-    public GameObject oreItemPrefab;
+    public Item ore;
     public int health = 100;
     public int howManyItemDrops = 3;
 
@@ -17,10 +17,12 @@ public class Ore : MonoBehaviourPunCallbacks, IDamageable
         {
             for (int i = 0; i < howManyItemDrops; i++)
             {
-                PhotonNetwork.Instantiate(oreItemPrefab.name, transform.position + Vector3.up, Quaternion.identity);
+                PhotonNetwork.Instantiate(ore.handlerPrefab.name, transform.position + Vector3.up, Quaternion.identity);
             }
-            Player.myPlayer.playerObject.GetComponent<ExperienceSystem>().ChangeExperience(oreItemPrefab.GetComponent<ItemHandler>().item.experiencePoints);
             PhotonNetwork.Destroy(this.gameObject);
+            
+            MaterialOre m_ore = ore as MaterialOre;
+            if(m_ore != null) Player.myPlayer.playerObject.GetComponent<ExperienceSystem>().ChangeExperience(m_ore.experiencePoints);
         }
         
     }
