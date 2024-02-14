@@ -2872,8 +2872,7 @@ MonoBehaviour:
   Synchronization: 3
   OwnershipTransfer: 0
   observableSearch: 2
-  ObservedComponents:
-  - {fileID: 0}
+  ObservedComponents: []
   sceneViewId: 0
   InstantiationId: 0
   isRuntimeInstantiated: 0
@@ -2892,6 +2891,8 @@ MonoBehaviour:
   mob: {fileID: 11400000, guid: f7afbb9ba1411184a8a8e687bdad66ca, type: 2}
   health: 0
   herd: {fileID: 0}
+  healthBarPrefab: {fileID: 5146569065832745692, guid: eb94ca31b18c0144691fa93a26d964f8,
+    type: 3}
 --- !u!195 &5117733195231690636
 NavMeshAgent:
   m_ObjectHideFlags: 0

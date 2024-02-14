@@ -7,6 +7,7 @@ public class Tool : Item
 {
     [Header("Tool")]
     public int damage;
+    public bool haveDurability = true;
     public int durability;
     public float cooldownTime = 0;
     public int effectiveRange = 0;

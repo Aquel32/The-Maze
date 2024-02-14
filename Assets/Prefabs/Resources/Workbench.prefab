@@ -108,6 +108,8 @@ MonoBehaviour:
   health: 0
   dropPrefab: {fileID: 3999076992838956268, guid: c1d47c14435cc9240920ae9e6f29e956,
     type: 3}
+  healthBarPrefab: {fileID: 5146569065832745692, guid: eb94ca31b18c0144691fa93a26d964f8,
+    type: 3}
 --- !u!1001 &445374755645445673
 PrefabInstance:
   m_ObjectHideFlags: 0

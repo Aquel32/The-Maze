@@ -2130,6 +2130,8 @@ MonoBehaviour:
   mob: {fileID: 11400000, guid: a0c309e27989d4f43940e13bd43e9b00, type: 2}
   health: 0
   herd: {fileID: 0}
+  healthBarPrefab: {fileID: 5146569065832745692, guid: eb94ca31b18c0144691fa93a26d964f8,
+    type: 3}
 --- !u!195 &-3843073828891448312
 NavMeshAgent:
   m_ObjectHideFlags: 0

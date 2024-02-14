@@ -431,9 +431,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5b9941143f472443b1244b5f67f0f3c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  healthBar: {fileID: 0}
   build: {fileID: 11400000, guid: f8d3f255622842a43b9ed09d72de82fc, type: 2}
   health: 0
   dropPrefab: {fileID: 8656042591498225506, guid: e348c28085f00904e84fb45de8a596e6,
+    type: 3}
+  healthBarPrefab: {fileID: 5146569065832745692, guid: eb94ca31b18c0144691fa93a26d964f8,
     type: 3}
 --- !u!1 &8166962657768816937
 GameObject:

@@ -47,6 +47,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 70970d650658346439686703dd1625c9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  healthBar: {fileID: 0}
   health: 100
   howManyItemsDrop: 3
   dropItemPrefab: {fileID: 7169247204010394858, guid: 053a6b202bd86054c908124b8286e151,
@@ -57,6 +58,8 @@ MonoBehaviour:
   - {fileID: 2807449429036958551, guid: f0c16f0ea935ea64297ca1d4d55d9746, type: 3}
   stumpObject: {fileID: 3803006380673909441}
   applePrefab: {fileID: 466716929826389674, guid: 3fb8a47010a59b14593508204fc1f258,
+    type: 3}
+  healthBarPrefab: {fileID: 5146569065832745692, guid: eb94ca31b18c0144691fa93a26d964f8,
     type: 3}
 --- !u!65 &3158182113414064083
 BoxCollider:

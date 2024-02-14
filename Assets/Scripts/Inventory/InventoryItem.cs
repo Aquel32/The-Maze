@@ -110,7 +110,7 @@ public class InventoryItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
         {
             inventoryManager.ShowHint(item.itemName + " (" + customData + "/" + tempArmor.durability + ")");
         }
-        else if(tempTool != null)
+        else if(tempTool != null && tempTool.haveDurability)
         {
             inventoryManager.ShowHint(item.itemName + " (" + customData + "/" + tempTool.durability + ")");
         }

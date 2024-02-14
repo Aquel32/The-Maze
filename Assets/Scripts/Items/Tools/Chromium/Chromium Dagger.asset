@@ -23,6 +23,7 @@ MonoBehaviour:
   maxInStack: 1
   slotType: 0
   damage: 200
+  haveDurability: 1
   durability: 960
   cooldownTime: 0
   effectiveRange: 2

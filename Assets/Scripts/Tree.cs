@@ -3,9 +3,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Tree : MonoBehaviourPunCallbacks, IDamageable
+public class Tree : HealthBarHandler, IDamageable
 {
     [SerializeField] private int health = 100;
+    private int maxHealth = 100;
 
     [SerializeField] private int howManyItemsDrop = 3;
     [SerializeField] private GameObject dropItemPrefab;
@@ -17,6 +18,8 @@ public class Tree : MonoBehaviourPunCallbacks, IDamageable
     [SerializeField] private GameObject applePrefab;
 
     private bool state = true;
+
+    [SerializeField] private GameObject healthBarPrefab;
 
     void Start()
     {
@@ -30,6 +33,10 @@ public class Tree : MonoBehaviourPunCallbacks, IDamageable
         {
             for (int i = 0; i < howManyItemsDrop; i++) PhotonNetwork.Instantiate(dropItemPrefab.name, transform.position + Vector3.up, Quaternion.identity);
             PhotonNetwork.Instantiate(applePrefab.name, transform.position + Vector3.up, Quaternion.identity);
+        }
+        else
+        {
+            UpdateHealthBar(health, maxHealth, healthBarPrefab);
         }
     }
 

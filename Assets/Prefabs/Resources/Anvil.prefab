@@ -103,9 +103,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5b9941143f472443b1244b5f67f0f3c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  healthBar: {fileID: 0}
   build: {fileID: 11400000, guid: bd335d74ee882ce45ba3d17eea8cabbe, type: 2}
   health: 0
   dropPrefab: {fileID: 1840741914637659123, guid: 7b3b4d9defaf79a4287aa3ead511d6b0,
+    type: 3}
+  healthBarPrefab: {fileID: 5146569065832745692, guid: eb94ca31b18c0144691fa93a26d964f8,
     type: 3}
 --- !u!1001 &698013499063236013
 PrefabInstance:

@@ -48,9 +48,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5b9941143f472443b1244b5f67f0f3c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  healthBar: {fileID: 0}
   build: {fileID: 11400000, guid: 922ea6a7d078b0b4f9eb028f3726040f, type: 2}
   health: 0
   dropPrefab: {fileID: 2908242909902533917, guid: b110e466f20bbef4885a255f51535cac,
+    type: 3}
+  healthBarPrefab: {fileID: 5146569065832745692, guid: eb94ca31b18c0144691fa93a26d964f8,
     type: 3}
 --- !u!114 &3334563706531472800
 MonoBehaviour:

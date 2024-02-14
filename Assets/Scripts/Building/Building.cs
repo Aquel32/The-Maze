@@ -3,11 +3,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Building : MonoBehaviourPunCallbacks, IDamageable
+public class Building : HealthBarHandler, IDamageable
 {
+
     [SerializeField] private Build build;
     [SerializeField] private int health;
     [SerializeField] private GameObject dropPrefab;
+    [SerializeField] private GameObject healthBarPrefab;
 
     void Start()
     {
@@ -18,10 +20,14 @@ public class Building : MonoBehaviourPunCallbacks, IDamageable
     {
         photonView.RPC("DamageRPC", RpcTarget.AllBuffered, DamageBuffer.instance.BufferDamage(damage, toolType, TargetType.Building));
 
-        if(health <= 0)
+        if (health <= 0)
         {
             PhotonNetwork.Instantiate(dropPrefab.name, transform.position, Quaternion.identity);
             PhotonNetwork.Destroy(this.gameObject);
+        }
+        else
+        {
+            UpdateHealthBar(health, build.health, healthBarPrefab);
         }
     }
 

@@ -55,10 +55,13 @@ public class Weapon : MonoBehaviourPunCallbacks, IUsableItem
             {
                 damageObj.Damage(item.damage, item.toolType);
 
-                int customData = int.Parse(inventoryItem.customData);
-                customData -= 1;
-                inventoryItem.customData = customData.ToString();
-                if (customData <= 0) inventoryManager.GetItem(inventoryManager.selectedSlot, true);
+                if (item.haveDurability)
+                {
+                    int customData = int.Parse(inventoryItem.customData);
+                    customData -= 1;
+                    inventoryItem.customData = customData.ToString();
+                    if (customData <= 0) inventoryManager.GetItem(inventoryManager.selectedSlot, true);
+                }
             }
         }
 

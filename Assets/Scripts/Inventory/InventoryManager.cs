@@ -112,7 +112,7 @@ public class InventoryManager : MonoBehaviourPunCallbacks
             {
                 ShowHint(inventorySlots[selectedSlot].currentInventoryItem.item.itemName + " (" + inventorySlots[selectedSlot].currentInventoryItem.customData + "/" + tempArmor.durability + ")");
             }
-            else if (tempTool != null)
+            else if (tempTool != null && tempTool.haveDurability)
             {
                 ShowHint(inventorySlots[selectedSlot].currentInventoryItem.item.itemName + " (" + inventorySlots[selectedSlot].currentInventoryItem.customData + "/" + tempTool.durability + ")");
             }

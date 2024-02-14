@@ -5,21 +5,22 @@ using UnityEngine;
 using UnityEngine.AI;
 
 [RequireComponent(typeof(PhotonView))]
-public class Animal : MonoBehaviourPunCallbacks, IDamageable
+public class Animal : HealthBarHandler, IDamageable
 {
     [SerializeField] private Mob mob;
 
     private NavMeshAgent agent;
     private Animator animator;
     [SerializeField] private int health;
+    private int maxHealth;
 
     [HideInInspector] public Herd herd;
-
-
+    [SerializeField] private GameObject healthBarPrefab;
 
     private void Start()
     {
         health = mob.health;
+        maxHealth = health;
         agent = GetComponent<NavMeshAgent>();
         animator = GetComponent<Animator>();
 
@@ -63,6 +64,10 @@ public class Animal : MonoBehaviourPunCallbacks, IDamageable
 
             Player.myPlayer.playerObject.GetComponent<ExperienceSystem>().ChangeExperience(mob.experiencePoints);
             PhotonNetwork.Destroy(this.gameObject);
+        }
+        else
+        {
+            UpdateHealthBar(health, maxHealth, healthBarPrefab);
         }
     }
 

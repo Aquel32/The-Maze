@@ -6,20 +6,23 @@ using UnityEngine.AI;
 using UnityEngine.UIElements;
 
 [RequireComponent(typeof(PhotonView))]
-public class Enemy : MonoBehaviourPunCallbacks, IDamageable
+public class Enemy : HealthBarHandler, IDamageable
 {
     [SerializeField] private Hostile mob;
 
     private NavMeshAgent agent;
     private Animator animator;
     [SerializeField] private int health;
+    private int maxHealth;
     [HideInInspector] public Herd herd;
 
     [SerializeField] private Transform target;
+    [SerializeField] private GameObject healthBarPrefab;
 
     private void Start()
     {
         health = mob.health;
+        maxHealth = health;
         agent = GetComponent<NavMeshAgent>();
         //animator = GetComponent<Animator>();
 
@@ -29,6 +32,7 @@ public class Enemy : MonoBehaviourPunCallbacks, IDamageable
         {
             StartCoroutine(movementCycle());
         }
+
     }
 
     void Update()
@@ -84,6 +88,10 @@ public class Enemy : MonoBehaviourPunCallbacks, IDamageable
 
             Player.myPlayer.playerObject.GetComponent<ExperienceSystem>().ChangeExperience(mob.experiencePoints);
             PhotonNetwork.Destroy(this.gameObject);
+        }
+        else
+        {
+            UpdateHealthBar(health, maxHealth, healthBarPrefab);
         }
     }
 

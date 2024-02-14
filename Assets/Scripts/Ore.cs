@@ -3,17 +3,26 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Ore : MonoBehaviourPunCallbacks, IDamageable
+public class Ore : HealthBarHandler, IDamageable
 {
     public Item ore;
-    public int health = 100;
+    public int health;
+    private int maxHealth;
     public int howManyItemDrops = 3;
+    [SerializeField] private GameObject healthBarPrefab;
+
+    void Start()
+    {
+        maxHealth = health;
+    }
 
     public void Damage(int damage, ToolType toolType)
     {
         photonView.RPC("HitOreRPC", RpcTarget.AllBuffered, DamageBuffer.instance.BufferDamage(damage, toolType, TargetType.Ore));
 
-        if(health <= 0)
+        MaterialOre m_ore = ore as MaterialOre;
+
+        if (health <= 0)
         {
             for (int i = 0; i < howManyItemDrops; i++)
             {
@@ -21,10 +30,12 @@ public class Ore : MonoBehaviourPunCallbacks, IDamageable
             }
             PhotonNetwork.Destroy(this.gameObject);
             
-            MaterialOre m_ore = ore as MaterialOre;
             if(m_ore != null) Player.myPlayer.playerObject.GetComponent<ExperienceSystem>().ChangeExperience(m_ore.experiencePoints);
         }
-        
+        else
+        {
+            UpdateHealthBar(health, maxHealth, healthBarPrefab);
+        }
     }
 
     [PunRPC]
