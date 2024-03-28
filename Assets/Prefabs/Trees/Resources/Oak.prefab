@@ -33,7 +33,7 @@ Transform:
   m_Children:
   - {fileID: 3803006380673818337}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &3407940083982389023
 MonoBehaviour:
@@ -47,18 +47,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 70970d650658346439686703dd1625c9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  healthBar: {fileID: 0}
   health: 100
-  howManyItemsDrop: 3
-  dropItemPrefab: {fileID: 7169247204010394858, guid: 053a6b202bd86054c908124b8286e151,
-    type: 3}
+  dropsPrefabs:
+  - {fileID: 7169247204010394858, guid: 053a6b202bd86054c908124b8286e151, type: 3}
+  - {fileID: 7169247204010394858, guid: 053a6b202bd86054c908124b8286e151, type: 3}
+  - {fileID: 7169247204010394858, guid: 053a6b202bd86054c908124b8286e151, type: 3}
+  - {fileID: 466716929826389674, guid: 3fb8a47010a59b14593508204fc1f258, type: 3}
+  - {fileID: 5486794033594431120, guid: f24063e5a83a6eb43a1a996f3efa82c1, type: 3}
   possibleModels:
   - {fileID: 6941765000743290380, guid: c60edd51c065ceb46b345849a03bc106, type: 3}
   - {fileID: 2222111361404534124, guid: 88f2fd29f58b9734683512546acec310, type: 3}
   - {fileID: 2807449429036958551, guid: f0c16f0ea935ea64297ca1d4d55d9746, type: 3}
   stumpObject: {fileID: 3803006380673909441}
-  applePrefab: {fileID: 466716929826389674, guid: 3fb8a47010a59b14593508204fc1f258,
-    type: 3}
   healthBarPrefab: {fileID: 5146569065832745692, guid: eb94ca31b18c0144691fa93a26d964f8,
     type: 3}
 --- !u!65 &3158182113414064083

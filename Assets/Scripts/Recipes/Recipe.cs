@@ -8,4 +8,6 @@ public class Recipe : ScriptableObject
     [Header("General")]
     public Item product;
     public List<Item> ingredients;
+    public AdditionalPanelType recipeType;
+    public int expToUnlock;
 }

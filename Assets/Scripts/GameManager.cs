@@ -16,6 +16,8 @@ public class GameManager : MonoBehaviourPunCallbacks
 
     public List<Item> items = new List<Item>();
 
+    [SerializeField] private MapGenerator mapGenerator;
+
     void Start()
     {
         if (!PhotonNetwork.IsConnected)
@@ -64,6 +66,11 @@ public class GameManager : MonoBehaviourPunCallbacks
         playerToSpawn.playerObject = playerToSpawnObject;
 
         playerToSpawnObject.GetComponent<PlayerReference>().referencedPlayer = playerToSpawn;
+
+        if(PhotonNetwork.IsMasterClient && !mapGenerator.IsMapGenerated)
+        {
+            mapGenerator.GenerateMap();
+        }
     }
 
     public void DespawnPlayer(Player playerToDespawn)

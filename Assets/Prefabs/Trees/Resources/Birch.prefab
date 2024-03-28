@@ -47,17 +47,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 70970d650658346439686703dd1625c9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  healthBar: {fileID: 0}
   health: 500
-  howManyItemsDrop: 3
-  dropItemPrefab: {fileID: 7903993367719098049, guid: 812a6683279a44a4383449a11502944a,
-    type: 3}
+  dropsPrefabs:
+  - {fileID: 7903993367719098049, guid: 812a6683279a44a4383449a11502944a, type: 3}
+  - {fileID: 7903993367719098049, guid: 812a6683279a44a4383449a11502944a, type: 3}
+  - {fileID: 7903993367719098049, guid: 812a6683279a44a4383449a11502944a, type: 3}
+  - {fileID: 3988077311344260513, guid: 12c5dfff4eda2fd44bc6b81b153c23a9, type: 3}
   possibleModels:
   - {fileID: 9154215057541871321, guid: 2554008d6447a2540b44e55f0c0b576e, type: 3}
   - {fileID: 2636820298107493410, guid: a2bd798ea40c7e341aa61ad124d95342, type: 3}
   stumpObject: {fileID: 3803006380673909441}
-  applePrefab: {fileID: 466716929826389674, guid: 3fb8a47010a59b14593508204fc1f258,
-    type: 3}
   healthBarPrefab: {fileID: 5146569065832745692, guid: eb94ca31b18c0144691fa93a26d964f8,
     type: 3}
 --- !u!65 &3158182113414064083

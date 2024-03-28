@@ -8,14 +8,11 @@ public class Tree : HealthBarHandler, IDamageable
     [SerializeField] private int health = 100;
     private int maxHealth = 100;
 
-    [SerializeField] private int howManyItemsDrop = 3;
-    [SerializeField] private GameObject dropItemPrefab;
+    [SerializeField] private GameObject[] dropsPrefabs;
 
     [SerializeField] private GameObject[] possibleModels;
     [SerializeField] private GameObject stumpObject;
     private GameObject mainTreeObject;
-
-    [SerializeField] private GameObject applePrefab;
 
     private bool state = true;
 
@@ -23,6 +20,7 @@ public class Tree : HealthBarHandler, IDamageable
 
     void Start()
     {
+        maxHealth = health;
         mainTreeObject = Instantiate(possibleModels[Random.Range(0, possibleModels.Length)], transform);
     }
 
@@ -31,8 +29,10 @@ public class Tree : HealthBarHandler, IDamageable
         if(state) photonView.RPC("HitTreeRPC", RpcTarget.AllBuffered, DamageBuffer.instance.BufferDamage(damage, toolType, TargetType.Tree));
         if (!state)
         {
-            for (int i = 0; i < howManyItemsDrop; i++) PhotonNetwork.Instantiate(dropItemPrefab.name, transform.position + Vector3.up, Quaternion.identity);
-            PhotonNetwork.Instantiate(applePrefab.name, transform.position + Vector3.up, Quaternion.identity);
+            for(int i = 0; i < dropsPrefabs.Length; i++)
+            {
+                PhotonNetwork.Instantiate(dropsPrefabs[i].name, transform.position + Vector3.up, Quaternion.identity);
+            }
         }
         else
         {

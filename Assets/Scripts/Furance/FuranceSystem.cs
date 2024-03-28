@@ -8,7 +8,7 @@ public class FuranceSystem : MonoBehaviour, ITable
     public Transform recipesParent;
     public FuranceSlot recipeSlotPrefab;
 
-    [SerializeField] private List<Recipe> recipes;
+    public List<Recipe> recipes;
     public InventoryManager inventoryManager;
 
     public void Initialize()

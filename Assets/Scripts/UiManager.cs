@@ -9,7 +9,7 @@ public class UiManager : MonoBehaviour
 
     public Panels currentPanel;
 
-    public GameObject pauseMenu, mainInventory, craftingPanel, furancePanel, anvilPanel;
+    public GameObject pauseMenu, mainInventory, craftingPanel, furancePanel, anvilPanel, researchPanel;
     public GameObject crosshair;
 
     public bool somePanelTurnedOn;
@@ -28,47 +28,20 @@ public class UiManager : MonoBehaviour
 
     public void ChangeCurrentPanel(Panels newPanel)
     {
+        if(newPanel == Panels.None) ChangeAdditionalPanelState(AdditionalPanelType.None);
+        if (newPanel == currentPanel) newPanel = Panels.None;
         currentPanel = newPanel;
 
-        switch (currentPanel)
-        {
-            case Panels.None:
-                pauseMenu.SetActive(false);
-                mainInventory.SetActive(false);
-                playerMovement.canMove = true;
-                playerCamera.canUseMouse = true;
-                CursorOff();
-                CrosshairState(true);
-                somePanelTurnedOn = false;
-                break;
-            case Panels.Pause:
-                pauseMenu.SetActive(true);
-                mainInventory.SetActive(false);
-                playerMovement.canMove = false;
-                playerCamera.canUseMouse = false;
-                CursorOn();
-                CrosshairState(false);
-                somePanelTurnedOn = true;
-                break;
-            case Panels.Inventory:
-                pauseMenu.SetActive(false);
-                mainInventory.SetActive(true);
-                playerMovement.canMove = true;
-                playerCamera.canUseMouse = false;
-                CursorOn();
-                CrosshairState(false);
-                somePanelTurnedOn = true;
-                break;
-            default:
-                pauseMenu.SetActive(false);
-                mainInventory.SetActive(false);
-                playerMovement.canMove = true;
-                playerCamera.canUseMouse = true;
-                CursorOff();
-                CrosshairState(true);
-                somePanelTurnedOn = false;
-                break;
-        }   
+        pauseMenu.SetActive(newPanel == Panels.Pause);
+        mainInventory.SetActive(newPanel == Panels.Inventory);
+        researchPanel.SetActive(newPanel == Panels.Research);
+
+        ChangeCursorState(newPanel != Panels.None);
+        CrosshairState(newPanel == Panels.None);
+        somePanelTurnedOn = newPanel != Panels.None;
+
+        playerMovement.canMove = newPanel == Panels.None || newPanel == Panels.Inventory;
+        playerCamera.canUseMouse = newPanel == Panels.None;
     }
 
     public void SetChestPanel(GameObject chestPanel) { currentChestPanel = chestPanel; }
@@ -99,16 +72,10 @@ public class UiManager : MonoBehaviour
         if (currentAdditionalPanel.TryGetComponent<ITable>(out ITable table)) table.Initialize();
     }
 
-    public void CursorOn()
+    public void ChangeCursorState(bool newState)
     {
-        Cursor.lockState = CursorLockMode.None;
-        Cursor.visible = true;
-    }
-
-    public void CursorOff()
-    {
-        Cursor.lockState = CursorLockMode.Locked;
-        Cursor.visible = false;
+        Cursor.lockState = newState ? CursorLockMode.None : CursorLockMode.Locked;
+        Cursor.visible = newState;
     }
 
     public void CrosshairState(bool newState)
@@ -122,6 +89,7 @@ public enum Panels
     None,
     Pause,
     Inventory,
+    Research
 }
 
 public enum AdditionalPanelType { Crafting, Furance, Anvil, Chest, None }

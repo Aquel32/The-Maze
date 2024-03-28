@@ -19,7 +19,7 @@ MonoBehaviour:
   inHandModel: {fileID: 1225456013651038878, guid: 22b710f1233b66342a9659539bc70bec,
     type: 3}
   stackable: 0
-  defaultData: 
+  defaultData: 30
   maxInStack: 1
   slotType: 0
   damage: 10

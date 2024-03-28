@@ -69,7 +69,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: efd4336072e2b4d49b649cfcac64c78f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  healthBar: {fileID: 0}
   ore: {fileID: 11400000, guid: 76e83182280043946a5d80b36c06d5a6, type: 2}
   health: 400
   howManyItemDrops: 1

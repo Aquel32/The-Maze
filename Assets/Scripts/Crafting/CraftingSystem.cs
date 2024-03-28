@@ -8,7 +8,7 @@ public class CraftingSystem : MonoBehaviour, ITable
     public Transform recipesParent;
     public CraftingSlot recipeSlotPrefab;
 
-    [SerializeField] private List<Recipe> recipes;
+    public List<Recipe> recipes;
     public InventoryManager inventoryManager;
 
     public void Initialize()

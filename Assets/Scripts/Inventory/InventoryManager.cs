@@ -1,12 +1,9 @@
 using Photon.Pun;
 using System.Collections;
 using System.Collections.Generic;
-using System.Diagnostics.Contracts;
-using System.Linq;
 using TMPro;
 using UnityEngine;
 using UnityEngine.Animations.Rigging;
-using static UnityEditor.Progress;
 
 public interface IUsableItem
 {
@@ -34,7 +31,6 @@ public class InventoryManager : MonoBehaviourPunCallbacks
     public bool isThereSomethingInHand;
 
     public UiManager uiManager;
-    public CraftingSystem craftingSystem;
 
     public List<Item> items;
 
@@ -63,7 +59,7 @@ public class InventoryManager : MonoBehaviourPunCallbacks
 
         if (Input.GetKeyDown(KeyCode.Tab))
         {
-            ChangeUIState(AdditionalPanelType.None);
+            uiManager.ChangeCurrentPanel(Panels.Inventory);
         }
 
         if(uiManager != null ) if (uiManager.somePanelTurnedOn) return;

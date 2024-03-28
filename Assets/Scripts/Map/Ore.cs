@@ -6,6 +6,7 @@ using UnityEngine;
 public class Ore : HealthBarHandler, IDamageable
 {
     public Item ore;
+    private MaterialOre m_ore;
     public int health;
     private int maxHealth;
     public int howManyItemDrops = 3;
@@ -14,13 +15,12 @@ public class Ore : HealthBarHandler, IDamageable
     void Start()
     {
         maxHealth = health;
+        MaterialOre m_ore = ore as MaterialOre;
     }
 
     public void Damage(int damage, ToolType toolType)
     {
         photonView.RPC("HitOreRPC", RpcTarget.AllBuffered, DamageBuffer.instance.BufferDamage(damage, toolType, TargetType.Ore));
-
-        MaterialOre m_ore = ore as MaterialOre;
 
         if (health <= 0)
         {
@@ -41,8 +41,6 @@ public class Ore : HealthBarHandler, IDamageable
     [PunRPC]
     public void HitOreRPC(int damage)
     {
-        print("Ore was hitted");
-
         health -= damage;
     }
 

@@ -8,7 +8,7 @@ public class AnvilSystem : MonoBehaviour, ITable
     public Transform recipesParent;
     public AnvilSlot recipeSlotPrefab;
 
-    [SerializeField] private List<Recipe> recipes;
+    public List<Recipe> recipes;
     public InventoryManager inventoryManager;
 
     public void Initialize()

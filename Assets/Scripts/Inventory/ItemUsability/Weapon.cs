@@ -68,7 +68,6 @@ public class Weapon : MonoBehaviourPunCallbacks, IUsableItem
         photonView.RPC("PlaySoundRPC", RpcTarget.All);
         //StartCoroutine(WeaponAnimation("IsAttacking"));
         StartCoroutine(Cooldown());
-
     }
 
     public IEnumerator WeaponAnimation(string animation)
