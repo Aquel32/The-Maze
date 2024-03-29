@@ -22,5 +22,6 @@ public class PlayerInitializer : MonoBehaviour
         GetComponent<Footstep>().enabled = true;
         GetComponent<PauseMenu>().enabled = true;
         GetComponent<ExperienceSystem>().enabled = true;
+        GetComponent<RecipeManager>().enabled = true;
     }
 }

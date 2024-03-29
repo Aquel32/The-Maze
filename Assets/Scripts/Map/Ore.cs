@@ -6,16 +6,15 @@ using UnityEngine;
 public class Ore : HealthBarHandler, IDamageable
 {
     public Item ore;
-    private MaterialOre m_ore;
     public int health;
     private int maxHealth;
     public int howManyItemDrops = 3;
+    public int experience;
     [SerializeField] private GameObject healthBarPrefab;
 
     void Start()
     {
         maxHealth = health;
-        MaterialOre m_ore = ore as MaterialOre;
     }
 
     public void Damage(int damage, ToolType toolType)
@@ -28,9 +27,9 @@ public class Ore : HealthBarHandler, IDamageable
             {
                 PhotonNetwork.Instantiate(ore.handlerPrefab.name, transform.position + Vector3.up, Quaternion.identity);
             }
-            PhotonNetwork.Destroy(this.gameObject);
             
-            if(m_ore != null) Player.myPlayer.playerObject.GetComponent<ExperienceSystem>().ChangeExperience(m_ore.experiencePoints);
+            Player.myPlayer.playerObject.GetComponent<ExperienceSystem>().ChangeExperience(experience);
+            PhotonNetwork.Destroy(this.gameObject);
         }
         else
         {
@@ -43,5 +42,4 @@ public class Ore : HealthBarHandler, IDamageable
     {
         health -= damage;
     }
-
 }

@@ -67,6 +67,12 @@ MonoBehaviour:
   - HitRPC
   - SetDestinationRPC
   - ChangeStateRPC
+  - GiveItemRPC
+  - SetAdminRPC
+  - HealRPC
+  - SetExpRPC
+  - UnlockAllRecipesRPC
+  - UnlockRecipeRPC
   DisableAutoOpenWizard: 1
   ShowSettings: 1
   DevRegionSetOnce: 1

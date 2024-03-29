@@ -32,7 +32,7 @@ public class InventorySlot : MonoBehaviour, IDropHandler
     {
         InventoryItem inventoryItem = eventData.pointerDrag.GetComponent<InventoryItem>();
 
-        if (inventoryItem.item.slotType != slotType && slotType != SlotType.All) return;
+        if (inventoryItem == null || inventoryItem.item.slotType != slotType && slotType != SlotType.All) return;
 
         if (transform.childCount == 0)
         {

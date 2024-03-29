@@ -8,6 +8,7 @@ public class Player
 
     public Photon.Realtime.Player photonPlayer;
     public GameObject playerObject;
+    public bool isAdmin;
 
     public static Player FindPlayer(Photon.Realtime.Player photonPlayerToFind)
     {

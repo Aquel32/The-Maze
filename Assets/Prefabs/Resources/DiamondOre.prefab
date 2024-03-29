@@ -72,6 +72,7 @@ MonoBehaviour:
   ore: {fileID: 11400000, guid: 76e83182280043946a5d80b36c06d5a6, type: 2}
   health: 400
   howManyItemDrops: 1
+  experience: 20
   healthBarPrefab: {fileID: 5146569065832745692, guid: eb94ca31b18c0144691fa93a26d964f8,
     type: 3}
 --- !u!114 &6827313091272130231

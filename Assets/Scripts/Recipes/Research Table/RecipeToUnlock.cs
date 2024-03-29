@@ -4,8 +4,8 @@ using UnityEngine.UI;
 
 public class RecipeToUnlock : MonoBehaviour
 {
-    [SerializeField] private Recipe recipe;
-    [SerializeField] private RecipeToUnlock[] recipesToShow;
+    public Recipe recipe;
+    [SerializeField] private RecipeToUnlock[] requirements;
 
     private ExperienceSystem experienceSystem;
     private Button unlockButton;
@@ -14,35 +14,47 @@ public class RecipeToUnlock : MonoBehaviour
 
     private void Start()
     {
-        unlocked = false;
-
         experienceSystem = Player.myPlayer.playerObject.GetComponent<ExperienceSystem>();
         unlockButton = GetComponentInChildren<Button>();
 
         transform.Find("RecipeIcon").GetComponent<Image>().sprite = recipe.product.image;
         transform.Find("ProductNameText").GetComponent<TextMeshProUGUI>().text = recipe.product.name;
         transform.Find("CostText").GetComponent<TextMeshProUGUI>().text = "COST: " + recipe.expToUnlock;
-        unlockButton.onClick.AddListener(Unlock);
+        unlockButton.onClick.AddListener(UnlockButton);
+
+        if(unlocked == true)
+        {
+            SwtichState(true);
+        }
+    }
+
+    public void UnlockButton()
+    {
+        if (experienceSystem.experience < recipe.expToUnlock) return;
+
+        for (int i = 0; i < requirements.Length; i++)
+        {
+            if (requirements[i].unlocked == false)
+            {
+                return;
+            }
+        }
+
+        Unlock();
     }
 
     public void Unlock()
     {
-        if (experienceSystem.experience < recipe.expToUnlock) return;
         experienceSystem.ChangeExperience(-recipe.expToUnlock);
+        experienceSystem.GetComponent<RecipeManager>().UnlockRecipe(recipe);
+        SwtichState(true);
+    }
 
-        unlocked = true;
-
-        unlockButton.interactable = false;
-        unlockButton.GetComponentInChildren<TextMeshProUGUI>().text = "UNLOCKED";
-        unlockButton.GetComponentInChildren<TextMeshProUGUI>().color = Color.green;
-
-        if(recipe.recipeType == AdditionalPanelType.Crafting) experienceSystem.craftingSystem.recipes.Add(recipe);
-        if(recipe.recipeType == AdditionalPanelType.Furance) experienceSystem.furanceSystem.recipes.Add(recipe);
-        if(recipe.recipeType == AdditionalPanelType.Anvil) experienceSystem.anvilSystem.recipes.Add(recipe);
-
-        for(int i = 0; i < recipesToShow.Length; i++)
-        {
-            recipesToShow[i].gameObject.SetActive(true);
-        }
+    public void SwtichState(bool newState)
+    {
+        unlocked = newState;
+        unlockButton.interactable = !newState;
+        unlockButton.GetComponentInChildren<TextMeshProUGUI>().text = newState ? "UNLOCKED" : "UNLOCK";
+        unlockButton.GetComponentInChildren<TextMeshProUGUI>().color = newState ? Color.green : Color.white;
     }
 }

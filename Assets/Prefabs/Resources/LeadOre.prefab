@@ -69,10 +69,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: efd4336072e2b4d49b649cfcac64c78f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  healthBar: {fileID: 0}
   ore: {fileID: 11400000, guid: d00c5a0dd8d44b141a37119f03db81c5, type: 2}
   health: 600
   howManyItemDrops: 3
+  experience: 20
   healthBarPrefab: {fileID: 5146569065832745692, guid: eb94ca31b18c0144691fa93a26d964f8,
     type: 3}
 --- !u!114 &4609361639155269161

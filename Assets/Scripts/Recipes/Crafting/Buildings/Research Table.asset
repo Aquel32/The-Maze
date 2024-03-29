@@ -10,12 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d6bdcf4c5687d3a4fab30e885c2b8d21, type: 3}
-  m_Name: Lead Dagger
+  m_Name: Research Table
   m_EditorClassIdentifier: 
-  product: {fileID: 11400000, guid: ba8a4a9881d13424d8b120d8ae37d743, type: 2}
+  product: {fileID: 11400000, guid: 9813f17417ff0d64f8fb8309eda09c8e, type: 2}
   ingredients:
-  - {fileID: 11400000, guid: 50e596ce0686072459820c0e20cdd34c, type: 2}
-  - {fileID: 11400000, guid: cbe62f9c5ec3f66438cbb5935088fe58, type: 2}
-  - {fileID: 11400000, guid: cbe62f9c5ec3f66438cbb5935088fe58, type: 2}
+  - {fileID: 11400000, guid: 0ecaf823dd8fa8f41adef49d3d84c99a, type: 2}
+  - {fileID: 11400000, guid: 0ecaf823dd8fa8f41adef49d3d84c99a, type: 2}
+  - {fileID: 11400000, guid: 0ecaf823dd8fa8f41adef49d3d84c99a, type: 2}
+  - {fileID: 11400000, guid: d0d62e01996f772469b136ff4951eb17, type: 2}
   recipeType: 0
-  expToUnlock: 150
+  expToUnlock: 0

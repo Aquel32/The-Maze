@@ -14,12 +14,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemName: Platinum
   image: {fileID: 21300000, guid: a21b332c61aa0064eba04316bd23b4c3, type: 3}
-  handlerPrefab: {fileID: 1706752288697444723, guid: 6f6b7d827abafdc4786ea00e652e921c,
+  handlerPrefab: {fileID: 2982846279425987310, guid: a27af12eb7f06b447a50085bd56bd724,
     type: 3}
-  inHandModel: {fileID: 3100133552823643655, guid: cfaaf363f0a86e84797c5f4ca223d33e,
+  inHandModel: {fileID: 3875584881270739934, guid: 731c66d732c3594459705959ea1dd13d,
     type: 3}
   stackable: 1
   defaultData: 
   maxInStack: 4
   slotType: 0
-  experiencePoints: 100

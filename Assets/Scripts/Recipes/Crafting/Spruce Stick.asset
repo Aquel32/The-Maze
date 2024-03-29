@@ -16,3 +16,5 @@ MonoBehaviour:
   ingredients:
   - {fileID: 11400000, guid: bf6a9193e714f4c49b95bd079422e51b, type: 2}
   - {fileID: 11400000, guid: bf6a9193e714f4c49b95bd079422e51b, type: 2}
+  recipeType: 0
+  expToUnlock: 1000

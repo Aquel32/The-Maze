@@ -9,19 +9,20 @@ public class UiManager : MonoBehaviour
 
     public Panels currentPanel;
 
-    public GameObject pauseMenu, mainInventory, craftingPanel, furancePanel, anvilPanel, researchPanel;
+    public GameObject pauseMenu, mainInventory, craftingPanel, furancePanel, anvilPanel, researchPanel, consolePanel;
     public GameObject crosshair;
 
     public bool somePanelTurnedOn;
 
-    [SerializeField] private PlayerCamera playerCamera;
-    private PlayerMovement playerMovement;
+    public PlayerCamera playerCamera;
+    public PlayerMovement playerMovement;
 
     public GameObject currentChestPanel;
 
     private void Start()
     {
         playerMovement = GetComponent<PlayerMovement>();
+        consolePanel = FindObjectOfType<Console>().console;
 
         ChangeCurrentPanel(Panels.None);
     }
@@ -35,12 +36,13 @@ public class UiManager : MonoBehaviour
         pauseMenu.SetActive(newPanel == Panels.Pause);
         mainInventory.SetActive(newPanel == Panels.Inventory);
         researchPanel.SetActive(newPanel == Panels.Research);
+        consolePanel.SetActive(newPanel == Panels.Console);
 
         ChangeCursorState(newPanel != Panels.None);
         CrosshairState(newPanel == Panels.None);
         somePanelTurnedOn = newPanel != Panels.None;
 
-        playerMovement.canMove = newPanel == Panels.None || newPanel == Panels.Inventory;
+        playerMovement.canMove = newPanel == Panels.None;
         playerCamera.canUseMouse = newPanel == Panels.None;
     }
 
@@ -89,7 +91,8 @@ public enum Panels
     None,
     Pause,
     Inventory,
-    Research
+    Research,
+    Console
 }
 
 public enum AdditionalPanelType { Crafting, Furance, Anvil, Chest, None }

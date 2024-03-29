@@ -60,6 +60,7 @@ public class InventoryManager : MonoBehaviourPunCallbacks
         if (Input.GetKeyDown(KeyCode.Tab))
         {
             uiManager.ChangeCurrentPanel(Panels.Inventory);
+            uiManager.ChangeAdditionalPanelState(AdditionalPanelType.None);
         }
 
         if(uiManager != null ) if (uiManager.somePanelTurnedOn) return;

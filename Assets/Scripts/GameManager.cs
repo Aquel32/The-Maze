@@ -1,6 +1,7 @@
 using Photon.Pun;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -17,6 +18,8 @@ public class GameManager : MonoBehaviourPunCallbacks
     public List<Item> items = new List<Item>();
 
     [SerializeField] private MapGenerator mapGenerator;
+    public List<Item> itemList = new List<Item>();
+    public List<Recipe> recipeList = new List<Recipe>();
 
     void Start()
     {
@@ -67,9 +70,10 @@ public class GameManager : MonoBehaviourPunCallbacks
 
         playerToSpawnObject.GetComponent<PlayerReference>().referencedPlayer = playerToSpawn;
 
-        if(PhotonNetwork.IsMasterClient && !mapGenerator.IsMapGenerated)
+        if(PhotonNetwork.IsMasterClient)
         {
-            mapGenerator.GenerateMap();
+            playerToSpawn.isAdmin = true;
+            if(!mapGenerator.IsMapGenerated) mapGenerator.GenerateMap();
         }
     }
 
