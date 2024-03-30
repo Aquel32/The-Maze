@@ -13,6 +13,7 @@ public class MapGenerator : MonoBehaviourPunCallbacks
     [SerializeField] private GameObject[] treesPrefabs;
     [SerializeField] private GameObject[] oresPrefabs;
     [SerializeField] private GameObject rockPrefab;
+    [SerializeField] private GameObject mushroomPrefab;
 
     public void GenerateMap()
     {
@@ -29,6 +30,11 @@ public class MapGenerator : MonoBehaviourPunCallbacks
                 if(treeValue > 0.65f)
                 {
                     PhotonNetwork.Instantiate(treesPrefabs[Random.Range(0, treesPrefabs.Length)].name, GetPositionFromOnMap(x - half + Random.Range(-3, 3), z- half + Random.Range(-3, 3)), Quaternion.identity);
+                }
+
+                if (treeValue > 0.55 && treeValue < 0.555)
+                {
+                    PhotonNetwork.Instantiate(mushroomPrefab.name, GetPositionFromOnMap(x - half + Random.Range(-3, 3), z - half + Random.Range(-3, 3)), Quaternion.identity);
                 }
                 
                 float oreValue = Mathf.PerlinNoise(x/Random.Range(1,50), z/Random.Range(1, 50));

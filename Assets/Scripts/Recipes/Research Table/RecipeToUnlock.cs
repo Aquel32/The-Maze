@@ -12,7 +12,7 @@ public class RecipeToUnlock : MonoBehaviour
 
     public bool unlocked;
 
-    private void Start()
+    public void Initialize()
     {
         experienceSystem = Player.myPlayer.playerObject.GetComponent<ExperienceSystem>();
         unlockButton = GetComponentInChildren<Button>();

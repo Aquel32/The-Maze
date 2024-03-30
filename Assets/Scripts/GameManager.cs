@@ -1,6 +1,7 @@
 using Photon.Pun;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -21,8 +22,15 @@ public class GameManager : MonoBehaviourPunCallbacks
     public List<Item> itemList = new List<Item>();
     public List<Recipe> recipeList = new List<Recipe>();
 
+    public float time;
+    public int dayLenght;
+    [SerializeField] private Transform sun;
+    private float sunRotationMultiplier;
+    private float timer;
+
     void Start()
     {
+        sunRotationMultiplier = 1 / (dayLenght / 360f);
         if (!PhotonNetwork.IsConnected)
         {
             SceneManager.LoadScene(0);
@@ -32,6 +40,22 @@ public class GameManager : MonoBehaviourPunCallbacks
         photonView.RPC("CreateNewPlayerRPC", RpcTarget.AllBuffered);
 
         SpawnPlayer(Player.myPlayer);
+    }
+
+    private void Update()
+    {
+        if (!PhotonNetwork.IsConnected) return;
+        if (!PhotonNetwork.IsMasterClient) return;
+
+        timer += Time.deltaTime;
+        time = (int)(timer);
+
+        if (time > dayLenght)
+        {
+            time = 0;
+        }
+
+        sun.Rotate(Time.deltaTime * sunRotationMultiplier, 0,0);
     }
 
     [PunRPC]

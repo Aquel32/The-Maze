@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9cd5e32be95578242925b4282ed35205, type: 3}
+  m_Name: Uranium Ramp
+  m_EditorClassIdentifier: 
+  itemName: Uranium Ramp
+  image: {fileID: 21300000, guid: f383d11cb664c6b4da93a97f361cba50, type: 3}
+  handlerPrefab: {fileID: 2908242909902533917, guid: b110e466f20bbef4885a255f51535cac,
+    type: 3}
+  inHandModel: {fileID: 4054417333331366620, guid: 7ce6e62ffc916d64d87fc8aa04935933,
+    type: 3}
+  stackable: 1
+  defaultData: 
+  maxInStack: 4
+  slotType: 0
+  health: 60

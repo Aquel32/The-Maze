@@ -10,6 +10,11 @@ public class RecipeManager : MonoBehaviour
     private void Start()
     {
         experienceSystem = GetComponent<ExperienceSystem>();
+
+        for (int i = 0; i < recipesToUnlock.Count; i++)
+        {
+            recipesToUnlock[i].Initialize();
+        }
     }
 
     public void UnlockAllRecipes()

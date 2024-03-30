@@ -18,5 +18,5 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 14119f60172a7a94facbc338789ad2c9, type: 2}
   - {fileID: 11400000, guid: 14119f60172a7a94facbc338789ad2c9, type: 2}
   - {fileID: 11400000, guid: 14119f60172a7a94facbc338789ad2c9, type: 2}
-  recipeType: 0
+  recipeType: 2
   expToUnlock: 230

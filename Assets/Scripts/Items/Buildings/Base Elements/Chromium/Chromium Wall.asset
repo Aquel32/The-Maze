@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9cd5e32be95578242925b4282ed35205, type: 3}
+  m_Name: Chromium Wall
+  m_EditorClassIdentifier: 
+  itemName: Chromium Wall
+  image: {fileID: 21300000, guid: 7cbe16569b87ea5499663237526f12f5, type: 3}
+  handlerPrefab: {fileID: 1731364193289792598, guid: 9a96d9c8793206b4c905e36642f3ef6f,
+    type: 3}
+  inHandModel: {fileID: 6770807535506565416, guid: 625873820e99cce498e64d5545a6e046,
+    type: 3}
+  stackable: 1
+  defaultData: 
+  maxInStack: 4
+  slotType: 0
+  health: 60
