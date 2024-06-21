@@ -21,20 +21,9 @@ public class GameManager : MonoBehaviourPunCallbacks
     public List<Recipe> recipeList = new List<Recipe>();
 
 
-    /*public float time;
-    public int dayLenght;
-    [SerializeField] private Transform sun;
-    private float sunRotationMultiplier;
-    private float timer;
-
-    public float timeSpeed;
-
-    [SerializeField] private Animator doorAnimator;*/
-
 
     void Start()
     {
-        //sunRotationMultiplier = 1 / (dayLenght / 360f);
         if (!PhotonNetwork.IsConnected)
         {
             SceneManager.LoadScene(0);
@@ -48,22 +37,7 @@ public class GameManager : MonoBehaviourPunCallbacks
 
     private void Update()
     {
-        /*if (!PhotonNetwork.IsConnected) return;
-        if (!PhotonNetwork.IsMasterClient) return;
-
-        timer += Time.deltaTime * timeSpeed;
-        time = (int)(timer);
-
-        if (time > dayLenght)
-        {
-            timer = 0;
-            time = 0;
-        }
-
-        if (time == 440) doorAnimator.SetBool("IsOpen", true);
-        if (time == 0) doorAnimator.SetBool("IsOpen", false);
-
-        sun.Rotate(Time.deltaTime * sunRotationMultiplier * timeSpeed, 0,0);*/
+        
     }
 
     [PunRPC]

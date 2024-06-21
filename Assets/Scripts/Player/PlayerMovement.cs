@@ -87,8 +87,8 @@ public class PlayerMovement : MonoBehaviour
 
 
         //Move animations
-        animator.SetFloat("verticalInput", verticalInput);
-        animator.SetFloat("horizontalInput", horizontalInput);
+        if (animator != null) animator.SetFloat("verticalInput", verticalInput);
+        if (animator != null) animator.SetFloat("horizontalInput", horizontalInput);
 
         if (UiManager.Instance.somePanelTurnedOn) return;
 

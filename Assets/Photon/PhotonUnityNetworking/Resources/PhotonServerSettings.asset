@@ -78,6 +78,8 @@ MonoBehaviour:
   - GenerateMazeRPC
   - SetSeedRPC
   - SetScaleRPC
+  - SwitchAnimationRPC
+  - SetTimeRPC
   DisableAutoOpenWizard: 1
   ShowSettings: 1
   DevRegionSetOnce: 1

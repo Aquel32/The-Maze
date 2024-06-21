@@ -54,6 +54,7 @@ public class Console : MonoBehaviourPunCallbacks
             SendResponse("recipelist");
             SendResponse("unlockall [player_id]");
             SendResponse("unlock [player_id] [recipe_id]");
+            SendResponse("time [1-24]");
         }
         else if(args[0] == "give")
         {
@@ -198,6 +199,23 @@ public class Console : MonoBehaviourPunCallbacks
             {
                 SendResponse(i + ": " + GameManager.Instance.recipeList[i].product.name);
             }
+        }
+        else if (args[0] == "time")
+        {
+            if (args.Length <= 1)
+            {
+                SendResponse("Empty argument(s)");
+                return;
+            }
+
+            if (int.TryParse(args[1], out int time))
+            {
+                TimeManager.Instance.SetTime(time);
+                SendResponse("Time changed to " + time);
+                return;
+            }
+
+            SendResponse("Invalid argument(s)");
         }
         else
         {
