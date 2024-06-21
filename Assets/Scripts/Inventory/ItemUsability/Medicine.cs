@@ -5,7 +5,6 @@ using UnityEngine;
 
 public class Medicine : MonoBehaviourPunCallbacks, IUsableItem
 {
-    private InventoryManager inventoryManager;
     public Medical item;
 
     public AudioClip useSound;
@@ -20,12 +19,12 @@ public class Medicine : MonoBehaviourPunCallbacks, IUsableItem
 
     public void Initialize(InventoryItem newInventoryItem)
     {
-        inventoryManager = newInventoryItem.inventoryManager;
+        
     }
 
     public void Update() 
     {
-        if (Player.myPlayer.playerObject.GetComponent<UiManager>().somePanelTurnedOn) return;
+        if (UiManager.Instance.somePanelTurnedOn) return;
 
         if (Input.GetKeyDown(KeyCode.Mouse0))
         {
@@ -35,9 +34,9 @@ public class Medicine : MonoBehaviourPunCallbacks, IUsableItem
 
     public void Heal()
     {
-        Player.myPlayer.playerObject.GetComponent<PlayerAudioSource>().PlaySound(useSound);
-        Player.myPlayer.playerObject.GetComponent<HealthSystem>().AddHealth(item.healthToAdd);
-        inventoryManager.GetItem(inventoryManager.selectedSlot, true);
+        //Player.myPlayer.playerObject.GetComponent<PlayerAudioSource>().PlaySound(useSound);
+        //Player.myPlayer.playerObject.GetComponent<HealthSystem>().AddHealth(item.healthToAdd);
+        InventoryManager.Instance.GetItem(InventoryManager.Instance.selectedSlot, true);
     }
 
     public void Deinitialize()

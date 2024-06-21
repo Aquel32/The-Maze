@@ -5,7 +5,6 @@ using UnityEngine;
 
 public class Building : HealthBarHandler, IDamageable
 {
-
     [SerializeField] private Build build;
     [SerializeField] private int health;
     [SerializeField] private GameObject dropPrefab;

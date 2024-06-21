@@ -7,6 +7,6 @@ public class FuranceOpener : MonoBehaviourPunCallbacks, IInteractible
 {
     public void Interact()
     {
-        Player.myPlayer.playerObject.GetComponent<InventoryManager>().ChangeUIState(AdditionalPanelType.Furance);
+        UiManager.Instance.ChangeAdditionalPanelState(AdditionalPanelType.Furance);
     }
 }

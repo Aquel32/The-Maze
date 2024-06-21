@@ -4,8 +4,9 @@ using UnityEngine;
 
 public class UiManager : MonoBehaviour
 {
+    public static UiManager Instance;
+    private void Awake() { Instance = this; }
 
-    public TextMeshProUGUI ammoIndicatorText;
 
     public Panels currentPanel;
 
@@ -13,19 +14,6 @@ public class UiManager : MonoBehaviour
     public GameObject crosshair;
 
     public bool somePanelTurnedOn;
-
-    public PlayerCamera playerCamera;
-    public PlayerMovement playerMovement;
-
-    public GameObject currentChestPanel;
-
-    private void Start()
-    {
-        playerMovement = GetComponent<PlayerMovement>();
-        consolePanel = FindObjectOfType<Console>().console;
-
-        ChangeCurrentPanel(Panels.None);
-    }
 
     public void ChangeCurrentPanel(Panels newPanel)
     {
@@ -42,28 +30,19 @@ public class UiManager : MonoBehaviour
         CrosshairState(newPanel == Panels.None);
         somePanelTurnedOn = newPanel != Panels.None;
 
-        playerMovement.canMove = newPanel == Panels.None;
-        playerCamera.canUseMouse = newPanel == Panels.None;
+        PlayerMovement.Instance.canMove = newPanel == Panels.None;
+        PlayerCamera.Instance.canUseMouse = newPanel == Panels.None;
     }
-
-    public void SetChestPanel(GameObject chestPanel) { currentChestPanel = chestPanel; }
 
     public void ChangeAdditionalPanelState(AdditionalPanelType tableType)
     {
         GameObject currentAdditionalPanel = null;
 
-        if (currentChestPanel != null)
-        {
-            currentChestPanel.SetActive(tableType == AdditionalPanelType.Chest);
-            if(tableType == AdditionalPanelType.None)
-            {
-                currentChestPanel.GetComponentInParent<Chest>().animationState = false;
-                currentChestPanel.GetComponentInParent<Chest>().photonView.RPC("ChangeAnimationStateRPC", RpcTarget.AllBuffered, false);
-            }
-        }
         furancePanel.SetActive(tableType == AdditionalPanelType.Furance);
         craftingPanel.SetActive(tableType == AdditionalPanelType.Crafting);
         anvilPanel.SetActive(tableType == AdditionalPanelType.Anvil);
+
+        if (tableType != AdditionalPanelType.None) ChangeCurrentPanel(Panels.Inventory);
 
         if (tableType == AdditionalPanelType.Furance) currentAdditionalPanel = furancePanel;
         if (tableType == AdditionalPanelType.Crafting) currentAdditionalPanel = craftingPanel;
@@ -95,4 +74,4 @@ public enum Panels
     Console
 }
 
-public enum AdditionalPanelType { Crafting, Furance, Anvil, Chest, None }
+public enum AdditionalPanelType { Crafting, Furance, Anvil, None }

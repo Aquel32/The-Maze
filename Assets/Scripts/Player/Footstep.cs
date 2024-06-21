@@ -6,15 +6,12 @@ using UnityEngine;
 [RequireComponent(typeof(AudioSource))]
 public class Footstep : MonoBehaviourPunCallbacks
 {
-    AudioSource audioSource;
+    private AudioSource audioSource;
     public AudioClip[] possibleClips;
     public float timeBetweenFootsteps = 0.3f;
 
-    private PlayerMovement playerMovement;
-
     private void Start()
     {
-        playerMovement = GetComponent<PlayerMovement>();
         audioSource = GetComponent<AudioSource>();
 
         StartCoroutine(FootstepsSoundCycle());
@@ -25,7 +22,7 @@ public class Footstep : MonoBehaviourPunCallbacks
         while (true)
         {
             yield return new WaitForSeconds(timeBetweenFootsteps);
-            if (playerMovement.grounded && playerMovement.horizontalInput != 0 || playerMovement.grounded && playerMovement.verticalInput != 0) PlayFootstepSound();
+            if (PlayerMovement.Instance.grounded && PlayerMovement.Instance.horizontalInput != 0 || PlayerMovement.Instance.grounded && PlayerMovement.Instance.verticalInput != 0) PlayFootstepSound();
         }
     }
 

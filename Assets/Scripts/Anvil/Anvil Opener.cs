@@ -7,6 +7,6 @@ public class AnvilOpener : MonoBehaviourPunCallbacks, IInteractible
 {
     public void Interact()
     {
-        Player.myPlayer.playerObject.GetComponent<InventoryManager>().ChangeUIState(AdditionalPanelType.Anvil);
+        UiManager.Instance.ChangeAdditionalPanelState(AdditionalPanelType.Anvil);
     }
 }

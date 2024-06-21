@@ -13,24 +13,28 @@ public class GameManager : MonoBehaviourPunCallbacks
 
     public List<Player> playerList = new List<Player>();
 
-    public GameObject playerPrefab;
     public Transform spawnsParent;
 
-    public List<Item> items = new List<Item>();
+    [SerializeField] private GameObject playerScriptsHandler;
 
-    [SerializeField] private MapGenerator mapGenerator;
     public List<Item> itemList = new List<Item>();
     public List<Recipe> recipeList = new List<Recipe>();
 
-    public float time;
+
+    /*public float time;
     public int dayLenght;
     [SerializeField] private Transform sun;
     private float sunRotationMultiplier;
     private float timer;
 
+    public float timeSpeed;
+
+    [SerializeField] private Animator doorAnimator;*/
+
+
     void Start()
     {
-        sunRotationMultiplier = 1 / (dayLenght / 360f);
+        //sunRotationMultiplier = 1 / (dayLenght / 360f);
         if (!PhotonNetwork.IsConnected)
         {
             SceneManager.LoadScene(0);
@@ -44,18 +48,22 @@ public class GameManager : MonoBehaviourPunCallbacks
 
     private void Update()
     {
-        if (!PhotonNetwork.IsConnected) return;
+        /*if (!PhotonNetwork.IsConnected) return;
         if (!PhotonNetwork.IsMasterClient) return;
 
-        timer += Time.deltaTime;
+        timer += Time.deltaTime * timeSpeed;
         time = (int)(timer);
 
         if (time > dayLenght)
         {
+            timer = 0;
             time = 0;
         }
 
-        sun.Rotate(Time.deltaTime * sunRotationMultiplier, 0,0);
+        if (time == 440) doorAnimator.SetBool("IsOpen", true);
+        if (time == 0) doorAnimator.SetBool("IsOpen", false);
+
+        sun.Rotate(Time.deltaTime * sunRotationMultiplier * timeSpeed, 0,0);*/
     }
 
     [PunRPC]
@@ -67,8 +75,9 @@ public class GameManager : MonoBehaviourPunCallbacks
         playerList.Add(newPlayer);
 
         newPlayer.photonPlayer = photonPlayer;
+        newPlayer.isAdmin = PhotonNetwork.IsMasterClient;
 
-        if(PhotonNetwork.NickName == newPlayer.photonPlayer.NickName)
+        if (PhotonNetwork.NickName == newPlayer.photonPlayer.NickName)
         {
             Player.myPlayer = newPlayer;
         }
@@ -76,10 +85,11 @@ public class GameManager : MonoBehaviourPunCallbacks
 
     public void SpawnPlayer(Player playerToSpawn)
     {
-        GameObject newPlayerObject = PhotonNetwork.Instantiate(playerPrefab.name, GetRandomSpawn(), Quaternion.identity);
+        GameObject newPlayerObject = PhotonNetwork.Instantiate("Player", GetRandomSpawn(), Quaternion.identity);
 
-        //Initialize local scripts
+        playerScriptsHandler.SetActive(true);
         newPlayerObject.GetComponent<PlayerInitializer>().enabled = true;
+        UiManager.Instance.ChangeCurrentPanel(Panels.None);
 
         photonView.RPC("SpawnPlayerRPC", RpcTarget.AllBuffered, newPlayerObject.GetComponent<PhotonView>().ViewID);
     }
@@ -93,16 +103,11 @@ public class GameManager : MonoBehaviourPunCallbacks
         playerToSpawn.playerObject = playerToSpawnObject;
 
         playerToSpawnObject.GetComponent<PlayerReference>().referencedPlayer = playerToSpawn;
-
-        if(PhotonNetwork.IsMasterClient)
-        {
-            playerToSpawn.isAdmin = true;
-            if(!mapGenerator.IsMapGenerated) mapGenerator.GenerateMap();
-        }
     }
 
     public void DespawnPlayer(Player playerToDespawn)
     {
+        playerScriptsHandler.SetActive(false);
         photonView.RPC("DespawnPlayerRPC", RpcTarget.AllBuffered, playerToDespawn.playerObject.GetComponent<PhotonView>().ViewID);
     }
     [PunRPC]
@@ -125,9 +130,9 @@ public class GameManager : MonoBehaviourPunCallbacks
 
     public Item getItemFromName(string name)
     {
-        for (int i = 0; i < items.Count; i++)
+        for (int i = 0; i < itemList.Count; i++)
         {
-            if (items[i].name == name) return items[i];
+            if (itemList[i].name == name) return itemList[i];
         }
 
         return null;

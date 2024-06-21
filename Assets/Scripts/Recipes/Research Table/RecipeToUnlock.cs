@@ -7,14 +7,12 @@ public class RecipeToUnlock : MonoBehaviour
     public Recipe recipe;
     [SerializeField] private RecipeToUnlock[] requirements;
 
-    private ExperienceSystem experienceSystem;
     private Button unlockButton;
 
     public bool unlocked;
 
     public void Initialize()
     {
-        experienceSystem = Player.myPlayer.playerObject.GetComponent<ExperienceSystem>();
         unlockButton = GetComponentInChildren<Button>();
 
         transform.Find("RecipeIcon").GetComponent<Image>().sprite = recipe.product.image;
@@ -30,7 +28,7 @@ public class RecipeToUnlock : MonoBehaviour
 
     public void UnlockButton()
     {
-        if (experienceSystem.experience < recipe.expToUnlock) return;
+        if (ExperienceSystem.Instance.experience < recipe.expToUnlock) return;
 
         for (int i = 0; i < requirements.Length; i++)
         {
@@ -45,8 +43,8 @@ public class RecipeToUnlock : MonoBehaviour
 
     public void Unlock()
     {
-        experienceSystem.ChangeExperience(-recipe.expToUnlock);
-        experienceSystem.GetComponent<RecipeManager>().UnlockRecipe(recipe);
+        ExperienceSystem.Instance.ChangeExperience(-recipe.expToUnlock);
+        RecipeManager.Instance.UnlockRecipe(recipe);
         SwtichState(true);
     }
 

@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: PhotonServerSettings
   m_EditorClassIdentifier: 
   AppSettings:
-    AppIdRealtime: d0af6b0a-f9b3-43ab-bf6c-ffb4d8808ba9
+    AppIdRealtime: 3a79887a-5a7e-497e-a493-24775ef7f53d
     AppIdFusion: 
     AppIdChat: 
     AppIdVoice: 
@@ -74,6 +74,7 @@ MonoBehaviour:
   - UnlockAllRecipesRPC
   - UnlockRecipeRPC
   - SetRecipeToPickup
+  - DestroyOreRPC
   DisableAutoOpenWizard: 1
   ShowSettings: 1
   DevRegionSetOnce: 1

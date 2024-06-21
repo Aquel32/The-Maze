@@ -7,7 +7,7 @@ public class CraftingOpener : MonoBehaviourPunCallbacks, IInteractible
 {
     public void Interact()
     {
-        Player.myPlayer.playerObject.GetComponent<InventoryManager>().ChangeUIState(AdditionalPanelType.Crafting);
+        UiManager.Instance.ChangeAdditionalPanelState(AdditionalPanelType.Crafting);
     }
 }
 

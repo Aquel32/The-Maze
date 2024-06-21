@@ -6,16 +6,14 @@ using UnityEngine.UI;
 public class FuranceSlot : MonoBehaviour
 {
     public Recipe recipe;
-    public FuranceSystem furanceSystem;
 
     public Transform IngredientsImagesParent;
     public Image productImage;
     public IngredientSlot IngredientImagePrefab;
 
-    public void Initialize(Recipe _recipe, FuranceSystem _furanceSystem)
+    public void Initialize(Recipe _recipe)
     {
         recipe = _recipe;
-        furanceSystem = _furanceSystem;
 
         productImage.sprite = recipe.product.image;
 
@@ -30,16 +28,16 @@ public class FuranceSlot : MonoBehaviour
 
     public void Craft()
     {
-        furanceSystem.Craft(this);
+        FuranceSystem.Instance.Craft(this);
     }
 
     public void ShowProductHint()
     {
-        furanceSystem.inventoryManager.ShowHint(recipe.product.itemName);
+        InventoryManager.Instance.ShowHint(recipe.product.itemName);
     }
 
     public void ShowIngredientHint(Item item)
     {
-        furanceSystem.inventoryManager.ShowHint(item.itemName);
+        InventoryManager.Instance.ShowHint(item.itemName);
     }
 }

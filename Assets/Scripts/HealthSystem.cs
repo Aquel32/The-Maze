@@ -12,6 +12,9 @@ public interface IDamageable
 
 public class HealthSystem : MonoBehaviourPunCallbacks, IDamageable
 {
+    public static HealthSystem Instance;
+    public void Awake() { Instance = this; }
+
     public int health;
     public int armor;
     public int armorMaxValue;

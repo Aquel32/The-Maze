@@ -15,9 +15,6 @@ public class Weapon : MonoBehaviourPunCallbacks, IUsableItem
     public AudioSource audioSource;
     public AudioClip attackSound;
 
-    private UiManager uiManager;
-    private InventoryManager inventoryManager;
-    private Transform attackDirection;
 
     void Start()
     {
@@ -27,15 +24,12 @@ public class Weapon : MonoBehaviourPunCallbacks, IUsableItem
 
     public void Initialize(InventoryItem newInventoryItem)
     {
-        uiManager = Player.myPlayer.playerObject.GetComponent<UiManager>();
-        inventoryManager = Player.myPlayer.playerObject.GetComponent<InventoryManager>();
         inventoryItem = newInventoryItem;
-        attackDirection = inventoryManager.cameraTransform;
     }
 
     public void Update()
     {
-        if (uiManager.somePanelTurnedOn) return;
+        if (UiManager.Instance.somePanelTurnedOn) return;
 
         if(Input.GetKeyDown(KeyCode.Mouse0)) 
         {
@@ -48,7 +42,7 @@ public class Weapon : MonoBehaviourPunCallbacks, IUsableItem
 
         print("Attacked with " + item.name);
 
-        Ray ray = new Ray(attackDirection.position, attackDirection.forward);
+        Ray ray = new Ray(InventoryManager.Instance.playerCamera.position, InventoryManager.Instance.playerCamera.forward);
         if (Physics.Raycast(ray, out RaycastHit hitInfo, item.effectiveRange))
         {
             if (hitInfo.collider.gameObject.TryGetComponent(out IDamageable damageObj))
@@ -60,7 +54,7 @@ public class Weapon : MonoBehaviourPunCallbacks, IUsableItem
                     int customData = int.Parse(inventoryItem.customData);
                     customData -= 1;
                     inventoryItem.customData = customData.ToString();
-                    if (customData <= 0) inventoryManager.GetItem(inventoryManager.selectedSlot, true);
+                    if (customData <= 0) InventoryManager.Instance.GetItem(InventoryManager.Instance.selectedSlot, true);
                 }
             }
         }

@@ -7,7 +7,7 @@ public class ResearchTableOpener : MonoBehaviourPunCallbacks, IInteractible
 {
     public void Interact()
     {
-        Player.myPlayer.playerObject.GetComponent<InventoryManager>().uiManager.ChangeCurrentPanel(Panels.Research);
-        Player.myPlayer.playerObject.GetComponent<ExperienceSystem>().UpdateExperienceText();
+        UiManager.Instance.ChangeCurrentPanel(Panels.Research);
+        ExperienceSystem.Instance.UpdateExperienceText();
     }
 }

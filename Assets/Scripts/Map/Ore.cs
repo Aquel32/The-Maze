@@ -28,8 +28,8 @@ public class Ore : HealthBarHandler, IDamageable
                 PhotonNetwork.Instantiate(ore.handlerPrefab.name, transform.position + Vector3.up, Quaternion.identity);
             }
             
-            Player.myPlayer.playerObject.GetComponent<ExperienceSystem>().ChangeExperience(experience);
-            PhotonNetwork.Destroy(this.gameObject);
+            ExperienceSystem.Instance.ChangeExperience(experience);
+            photonView.RPC("DestroyOreRPC", RpcTarget.AllBuffered, DamageBuffer.instance.BufferDamage(damage, toolType, TargetType.Ore));
         }
         else
         {
@@ -41,5 +41,11 @@ public class Ore : HealthBarHandler, IDamageable
     public void HitOreRPC(int damage)
     {
         health -= damage;
+    }
+
+    [PunRPC]
+    public void DestroyOreRPC(int damage)
+    {
+        Destroy(this.gameObject);
     }
 }

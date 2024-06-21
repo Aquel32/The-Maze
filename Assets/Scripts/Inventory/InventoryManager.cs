@@ -18,31 +18,31 @@ public interface ITable
 
 public class InventoryManager : MonoBehaviourPunCallbacks
 {
+    public static InventoryManager Instance;
+    private void Awake() { Instance = this; }
+
     public InventorySlot[] inventorySlots;
     public InventoryItem inventoryItemPrefab;
 
     public int selectedSlot = -1;
 
-    public Transform hand;
+    public Transform itemHolder;
     public Transform mainHand;
-
     public Transform playerCamera;
-    public Transform handBoneTarget;
-    public bool isThereSomethingInHand;
 
-    public UiManager uiManager;
+    public Transform handBoneTarget;
+    private bool isThereSomethingInHand;
 
     public List<Item> items;
 
     public TextMeshProUGUI hintItemNameText;
 
-    public Transform cameraTransform;
-
-    public ArmorSystem armorSystem;
     private void Start()
     {
-        uiManager = GetComponent<UiManager>();
-        armorSystem = GetComponent<ArmorSystem>();
+        mainHand = Player.myPlayer.playerObject.transform.Find("Hand");
+        itemHolder = mainHand.Find("ItemHolder");
+
+        playerCamera = Player.myPlayer.playerObject.transform.Find("Camera");
 
         ChangeSelectedSlot(0);
     }
@@ -51,19 +51,18 @@ public class InventoryManager : MonoBehaviourPunCallbacks
     {
         if (isThereSomethingInHand)
         {
-            handBoneTarget.position = hand.GetChild(0).Find("HandPosition").position;
-            handBoneTarget.rotation = hand.GetChild(0).Find("HandPosition").rotation;
+            handBoneTarget.position = itemHolder.GetChild(0).Find("HandPosition").position;
+            handBoneTarget.rotation = itemHolder.GetChild(0).Find("HandPosition").rotation;
         }
 
         if(playerCamera != null) mainHand.rotation = playerCamera.rotation;
 
         if (Input.GetKeyDown(KeyCode.Tab))
         {
-            uiManager.ChangeCurrentPanel(Panels.Inventory);
-            uiManager.ChangeAdditionalPanelState(AdditionalPanelType.None);
+            UiManager.Instance.ChangeCurrentPanel(Panels.Inventory);
         }
 
-        if(uiManager != null ) if (uiManager.somePanelTurnedOn) return;
+        if (UiManager.Instance.somePanelTurnedOn) return;
 
         if (Input.inputString != null)
         {
@@ -82,16 +81,7 @@ public class InventoryManager : MonoBehaviourPunCallbacks
 
     public void ChangeUIState(AdditionalPanelType additionalPanel)
     {
-        if (uiManager.currentPanel == Panels.None)
-        {
-            uiManager.ChangeCurrentPanel(Panels.Inventory);
-            uiManager.ChangeAdditionalPanelState(additionalPanel);
-        }
-        else if (uiManager.currentPanel == Panels.Inventory)
-        {
-            uiManager.ChangeCurrentPanel(Panels.None);
-            uiManager.ChangeAdditionalPanelState(AdditionalPanelType.None);
-        }
+        UiManager.Instance.ChangeCurrentPanel(Panels.Inventory);
     }
 
     void ChangeSelectedSlot(int newValue)
@@ -132,7 +122,7 @@ public class InventoryManager : MonoBehaviourPunCallbacks
         {
             GameObject itemInHandModel = PhotonNetwork.Instantiate(inventoryItem.item.inHandModel.name, Vector3.zero, Quaternion.identity);
 
-            photonView.RPC("InstantiateItemInHandModelRPC", RpcTarget.AllBuffered, itemInHandModel.GetComponent<PhotonView>().ViewID);
+            photonView.RPC("InstantiateItemInHandModelRPC", RpcTarget.AllBuffered, itemInHandModel.GetComponent<PhotonView>().ViewID, itemHolder.GetComponent<PhotonView>().ViewID);
 
             if (itemInHandModel.TryGetComponent(out IUsableItem usableItem))
             {
@@ -151,17 +141,16 @@ public class InventoryManager : MonoBehaviourPunCallbacks
     }
 
     [PunRPC]
-    public void InstantiateItemInHandModelRPC(int itemInHandPhotonView, PhotonMessageInfo pmi)
+    public void InstantiateItemInHandModelRPC(int itemInHandPhotonView, int itemHolderPhotonView, PhotonMessageInfo pmi)
     {
-        Transform itemInHandParent = Player.FindPlayer(pmi.Sender).playerObject.transform.Find("Hand").Find("ItemHolder");
-        PhotonView.Find(itemInHandPhotonView).transform.SetParent(itemInHandParent, false);
+        PhotonView.Find(itemInHandPhotonView).transform.SetParent(PhotonView.Find(itemHolderPhotonView).transform, false);
     }
 
     public void ClearHand()
     {
-        if (hand.childCount > 0) 
+        if (itemHolder.childCount > 0) 
         {
-            foreach (Transform child in hand)
+            foreach (Transform child in itemHolder)
             {
                 if(child.gameObject.TryGetComponent<IUsableItem>(out IUsableItem item))
                 {
@@ -210,7 +199,7 @@ public class InventoryManager : MonoBehaviourPunCallbacks
     void SpawnNewItem(Item item, InventorySlot slot, string customData)
     {
         InventoryItem inventoryItem = Instantiate(inventoryItemPrefab, slot.transform);
-        inventoryItem.InitializeItem(item, customData, this, slot);
+        inventoryItem.InitializeItem(item, customData, slot);
     }
 
     public Item GetItem(int index, bool use)
@@ -256,8 +245,8 @@ public class InventoryManager : MonoBehaviourPunCallbacks
         InventoryItem inventoryItem = inventorySlots[index].GetComponentInChildren<InventoryItem>();
         if(inventoryItem != null) 
         {
-            Vector3 position = transform.Find("Hand").Find("ItemHolder").position;
-            if (transform.Find("Hand").Find("ItemHolder").childCount > 0) position = transform.Find("Hand").Find("ItemHolder").GetChild(0).position;
+            Vector3 position = itemHolder.position;
+            if (itemHolder.childCount > 0) position = itemHolder.GetChild(0).position;
 
             GameObject handlerObject = PhotonNetwork.Instantiate(inventoryItem.item.handlerPrefab.name, position, Quaternion.identity);
             photonView.RPC("SpawnNewItemHandler", RpcTarget.AllBuffered, inventoryItem.customData, handlerObject.GetComponent<PhotonView>().ViewID);

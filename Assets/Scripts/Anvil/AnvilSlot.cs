@@ -6,16 +6,14 @@ using UnityEngine.UI;
 public class AnvilSlot : MonoBehaviour
 {
     public Recipe recipe;
-    public AnvilSystem anvilSystem;
 
     public Transform IngredientsImagesParent;
     public Image productImage;
     public IngredientSlot IngredientImagePrefab;
 
-    public void Initialize(Recipe _recipe, AnvilSystem _anvilSystem)
+    public void Initialize(Recipe _recipe)
     {
         recipe = _recipe;
-        anvilSystem = _anvilSystem;
 
         productImage.sprite = recipe.product.image;
 
@@ -30,16 +28,16 @@ public class AnvilSlot : MonoBehaviour
 
     public void Craft()
     {
-        anvilSystem.Craft(this);
+        AnvilSystem.Instance.Craft(this);
     }
 
     public void ShowProductHint()
     {
-        anvilSystem.inventoryManager.ShowHint(recipe.product.itemName);
+        InventoryManager.Instance.ShowHint(recipe.product.itemName);
     }
 
     public void ShowIngredientHint(Item item)
     {
-        anvilSystem.inventoryManager.ShowHint(item.itemName);
+        InventoryManager.Instance.ShowHint(item.itemName);
     }
 }

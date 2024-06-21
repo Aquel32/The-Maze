@@ -11,7 +11,7 @@ public class ItemHandler : MonoBehaviourPunCallbacks, IInteractible
 
     public void Interact()
     {
-        if(Player.myPlayer.playerObject.GetComponent<InventoryManager>().AddItem(item, customData) == true)
+        if(InventoryManager.Instance.AddItem(item, customData) == true)
         {
             photonView.RPC("DestroyHandlerObjectRPC", RpcTarget.AllBuffered);
         }

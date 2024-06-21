@@ -5,23 +5,14 @@ using UnityEngine;
 public class PlayerInitializer : MonoBehaviour
 {
     [SerializeField] private GameObject cam;
-    [SerializeField] private GameObject canvas;
     [SerializeField] private GameObject model;
 
     private void Start()
     {
-        model.GetComponent<RandomModelChooser>().enabled = true;
-        GetComponent<UiManager>().enabled = true;
-        canvas.SetActive(true);
-        GetComponent<InventoryManager>().enabled = true;
-        GetComponent<ArmorSystem>().enabled = true;
         cam.SetActive(true);
-        GetComponent<PlayerMovement>().enabled = true;
-        GetComponent<HealthSystem>().enabled = true;
+        model.GetComponent<RandomModelChooser>().enabled = true;
+        //GetComponent<HealthSystem>().enabled = true;
         GetComponent<PlayerAudioSource>().enabled = true;
         GetComponent<Footstep>().enabled = true;
-        GetComponent<PauseMenu>().enabled = true;
-        GetComponent<ExperienceSystem>().enabled = true;
-        GetComponent<RecipeManager>().enabled = true;
     }
 }

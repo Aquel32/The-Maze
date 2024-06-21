@@ -5,11 +5,7 @@ public class Placeable : MonoBehaviourPunCallbacks, IUsableItem
 {
     public GameObject buildPrefab;
 
-    private UiManager uiManager;
-    private InventoryManager inventoryManager;
-
     private Transform placeholder;
-    private Transform attackDirection;
 
     private float yRotation;
     private float zRotation;
@@ -25,7 +21,7 @@ public class Placeable : MonoBehaviourPunCallbacks, IUsableItem
 
     public void Update()
     {
-        if (uiManager.somePanelTurnedOn) return;
+        if (UiManager.Instance.somePanelTurnedOn) return;
 
         if (placeholder == null)
         {
@@ -34,7 +30,7 @@ public class Placeable : MonoBehaviourPunCallbacks, IUsableItem
         }
 
         Vector3 pos;
-        Ray ray = new Ray(attackDirection.position, attackDirection.forward);
+        Ray ray = new Ray(InventoryManager.Instance.playerCamera.position, InventoryManager.Instance.playerCamera.forward);
         if (Physics.Raycast(ray, out RaycastHit hitInfo, 4f)) pos = hitInfo.point;
         else pos = ray.GetPoint(4f);
 
@@ -45,7 +41,7 @@ public class Placeable : MonoBehaviourPunCallbacks, IUsableItem
         {
             PhotonNetwork.Instantiate(buildPrefab.name, pos, placeholder.rotation);
             Destroy(placeholder.gameObject);
-            inventoryManager.GetItem(inventoryManager.selectedSlot, true);
+            InventoryManager.Instance.GetItem(InventoryManager.Instance.selectedSlot, true);
         }
 
         if (Input.GetKey(KeyCode.R)) yRotation = (yRotation + 200 * Time.deltaTime) % 360;
@@ -53,9 +49,6 @@ public class Placeable : MonoBehaviourPunCallbacks, IUsableItem
 
     public void Initialize(InventoryItem newInventoryItem)
     {
-        inventoryManager = newInventoryItem.inventoryManager;
-        uiManager = inventoryManager.uiManager;
-        attackDirection = inventoryManager.cameraTransform;
     }
 
     public void Deinitialize()

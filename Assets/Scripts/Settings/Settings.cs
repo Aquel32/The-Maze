@@ -7,6 +7,9 @@ using UnityEngine.Audio;
 
 public class Settings : MonoBehaviour
 {
+    public static Settings Instance;
+    private void Awake() { Instance = this; }
+
     public AudioMixer mixer;
 
     public TMP_Dropdown resolutionDropdown;
@@ -18,7 +21,6 @@ public class Settings : MonoBehaviour
 
     public GameObject uiGroup;
 
-    public static Settings Instance;
 
 
     public bool displayFPSCounter;
@@ -26,11 +28,7 @@ public class Settings : MonoBehaviour
     string display = "{0} FPS";
     public TextMeshProUGUI m_Text;
 
-    private void Awake()
-    {
-        Instance = this;
-    }
-
+    
     private void Start()
     {
         DontDestroyOnLoad(transform.parent.gameObject);
@@ -87,7 +85,6 @@ public class Settings : MonoBehaviour
     public void SetFullscreen(bool isFullscreen)
     {
         Screen.fullScreen = isFullscreen;
-
     }
 
     public void SetQuality(int qualityIndex)

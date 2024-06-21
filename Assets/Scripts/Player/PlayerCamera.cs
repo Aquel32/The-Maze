@@ -4,22 +4,25 @@ using UnityEngine;
 
 public class PlayerCamera : MonoBehaviour
 {
+    public static PlayerCamera Instance;
+    public void Awake() { Instance = this; }
+
     public float sensX;
     public float sensY;
 
-    public Transform orientation;
-    public Transform hand;
+    private Transform orientation;
+    private Transform cam;
 
     float xRotation;
     float yRotation;
 
     public bool canUseMouse;
 
-    [SerializeField] private InventoryManager inventoryManager;
-
     private void Start()
     {
-        inventoryManager.playerCamera = transform;
+        //inventoryManager.playerCamera = transform;
+        orientation = Player.myPlayer.playerObject.transform;
+        cam = Player.myPlayer.playerObject.transform.Find("Camera");
     }
 
     private void Update()
@@ -36,7 +39,7 @@ public class PlayerCamera : MonoBehaviour
         xRotation = Mathf.Clamp(xRotation, -90f, 90f);
 
         // rotate cam and orientation
-        transform.localRotation = Quaternion.Euler(xRotation, 0, 0);
+        cam.localRotation = Quaternion.Euler(xRotation, 0, 0);
         orientation.rotation = Quaternion.Euler(0, yRotation, 0);
     }
 }

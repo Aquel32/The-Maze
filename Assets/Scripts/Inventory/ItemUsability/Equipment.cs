@@ -6,7 +6,6 @@ using UnityEngine;
 public class Equipment : MonoBehaviourPunCallbacks, IUsableItem
 {
     private InventoryItem inventoryItem;
-    private ArmorSystem armorSystem;
     public Armor item;
 
     void Awake()
@@ -20,12 +19,11 @@ public class Equipment : MonoBehaviourPunCallbacks, IUsableItem
     public void Initialize(InventoryItem newInventoryItem)
     {
         inventoryItem = newInventoryItem;
-        armorSystem = Player.myPlayer.playerObject.GetComponent<ArmorSystem>();
     }
 
     public void Update()
     {
-        if (Player.myPlayer.playerObject.GetComponent<UiManager>().somePanelTurnedOn) return;
+        if (UiManager.Instance.somePanelTurnedOn) return;
 
         if (Input.GetKeyDown(KeyCode.Mouse0))
         {
@@ -35,14 +33,14 @@ public class Equipment : MonoBehaviourPunCallbacks, IUsableItem
 
     public void Equip()
     {
-        if (armorSystem.inventorySlots[(int)(item.slotType) - 2].currentInventoryItem != null) return;
+        if (ArmorSystem.Instance.inventorySlots[(int)(item.slotType) - 2].currentInventoryItem != null) return;
 
-        inventoryItem.transform.SetParent(armorSystem.inventorySlots[(int)(item.slotType) - 2].transform);
-        armorSystem.inventorySlots[(int)(item.slotType) - 2].currentInventoryItem = inventoryItem;
-        inventoryItem.currentSlot = armorSystem.inventorySlots[(int)(item.slotType) - 2];
-        armorSystem.LookForChanges();
+        inventoryItem.transform.SetParent(ArmorSystem.Instance.inventorySlots[(int)(item.slotType) - 2].transform);
+        ArmorSystem.Instance.inventorySlots[(int)(item.slotType) - 2].currentInventoryItem = inventoryItem;
+        inventoryItem.currentSlot = ArmorSystem.Instance.inventorySlots[(int)(item.slotType) - 2];
+        ArmorSystem.Instance.LookForChanges();
 
-        inventoryItem.inventoryManager.UpdateHand();
+        InventoryManager.Instance.UpdateHand();
     }
 
     public void Deinitialize()

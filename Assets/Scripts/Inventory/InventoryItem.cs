@@ -20,7 +20,6 @@ public class InventoryItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
     public Transform whileDraggingParent;
 
     private InventoryItem secondInventoryItem;
-    public InventoryManager inventoryManager;
     public InventorySlot currentSlot;
 
     void Start()
@@ -29,12 +28,11 @@ public class InventoryItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
         parentBeforeDrag = transform.parent;
     }
 
-    public void InitializeItem(Item newItem, string newCustomData, InventoryManager _inventoryManager, InventorySlot slot)
+    public void InitializeItem(Item newItem, string newCustomData, InventorySlot slot)
     {
         item = newItem;
         image.sprite = newItem.image;
         customData = newCustomData;
-        inventoryManager = _inventoryManager;
         currentSlot = slot;
         currentSlot.currentInventoryItem = this;
         RefreshCount();
@@ -61,7 +59,7 @@ public class InventoryItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
                 RefreshCount();
             }
 
-            secondInventoryItem.InitializeItem(item, customData, inventoryManager, currentSlot);
+            secondInventoryItem.InitializeItem(item, customData, currentSlot);
         }
 
         currentSlot = null;
@@ -98,8 +96,9 @@ public class InventoryItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
 
         image.raycastTarget = true;
         transform.SetParent(parentAfterDrag);
-        Player.myPlayer.playerObject.GetComponent<InventoryManager>().UpdateHand();
-        Player.myPlayer.playerObject.GetComponent<InventoryManager>().armorSystem.LookForChanges();
+
+        InventoryManager.Instance.UpdateHand();
+        ArmorSystem.Instance.LookForChanges();
     }
 
     public void OnPointerEnter(PointerEventData eventData)
@@ -108,15 +107,15 @@ public class InventoryItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
         Tool tempTool = item as Tool;
         if (tempArmor != null)
         {
-            inventoryManager.ShowHint(item.itemName + " (" + customData + "/" + tempArmor.durability + ")");
+            InventoryManager.Instance.ShowHint(item.itemName + " (" + customData + "/" + tempArmor.durability + ")");
         }
         else if(tempTool != null && tempTool.haveDurability)
         {
-            inventoryManager.ShowHint(item.itemName + " (" + customData + "/" + tempTool.durability + ")");
+            InventoryManager.Instance.ShowHint(item.itemName + " (" + customData + "/" + tempTool.durability + ")");
         }
         else
         {
-            inventoryManager.ShowHint(item.itemName);
+            InventoryManager.Instance.ShowHint(item.itemName);
         }
     }
 }

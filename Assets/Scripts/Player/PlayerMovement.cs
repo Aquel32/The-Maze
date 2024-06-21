@@ -7,6 +7,9 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
+    public static PlayerMovement Instance;
+    public void Awake() { Instance = this; }
+
     public bool canMove;
 
     [Header("Movement")]
@@ -30,23 +33,24 @@ public class PlayerMovement : MonoBehaviour
     public LayerMask whatIsGround;
     public bool grounded;
 
-    public Transform orientation;
 
     public float horizontalInput;
     public float verticalInput;
 
     Vector3 moveDirection;
 
-    Rigidbody rb;
 
-    public Animator animator;
-    public Footstep footstep;
+    private Rigidbody rb;
+    private Transform orientation;
+    [HideInInspector] public Animator animator;
+    private Footstep footstep;
 
 
     private void Start()
     {
-        footstep = GetComponent<Footstep>();
-        rb = GetComponent<Rigidbody>();
+        orientation = Player.myPlayer.playerObject.transform;
+        footstep = Player.myPlayer.playerObject.GetComponent<Footstep>();
+        rb = Player.myPlayer.playerObject.GetComponent<Rigidbody>();
         rb.freezeRotation = true;
 
         readyToJump = true;
@@ -55,10 +59,9 @@ public class PlayerMovement : MonoBehaviour
     private void Update()
     {
         // ground check
-        grounded = Physics.Raycast(transform.position, Vector3.down, playerHeight * 0.5f + 0.2f, whatIsGround);
+        grounded = Physics.Raycast(orientation.position, Vector3.down, playerHeight * 0.5f + 0.2f, whatIsGround);
         
-        
-        if(animator != null) animator.SetBool("IsGrounded", grounded);
+        animator.SetBool("IsGrounded", grounded);
 
         if (Input.GetKey(KeyCode.LeftShift)) moveSpeed = sprintSpeed; else moveSpeed = walkSpeed;
 
@@ -84,9 +87,10 @@ public class PlayerMovement : MonoBehaviour
 
 
         //Move animations
-        if (animator != null) animator.SetFloat("verticalInput", verticalInput);
-        if (animator != null) animator.SetFloat("horizontalInput", horizontalInput);
+        animator.SetFloat("verticalInput", verticalInput);
+        animator.SetFloat("horizontalInput", horizontalInput);
 
+        if (UiManager.Instance.somePanelTurnedOn) return;
 
         // when to jump
         if (Input.GetKey(jumpKey) && readyToJump && grounded)
@@ -94,7 +98,7 @@ public class PlayerMovement : MonoBehaviour
             readyToJump = false;
 
             Jump();
-            if (animator != null) animator.SetBool("isJumping", true);
+            animator.SetBool("isJumping", true);
 
             Invoke(nameof(ResetJump), jumpCooldown);
         }

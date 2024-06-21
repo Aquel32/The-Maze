@@ -6,16 +6,14 @@ using UnityEngine.UI;
 public class CraftingSlot : MonoBehaviour
 {
     public Recipe recipe;
-    public CraftingSystem craftingSystem;
 
     public Transform IngredientsImagesParent;
     public Image productImage;
     public IngredientSlot IngredientImagePrefab;
 
-    public void Initialize(Recipe _recipe, CraftingSystem _craftingSystem)
+    public void Initialize(Recipe _recipe)
     {
         recipe = _recipe;
-        craftingSystem = _craftingSystem;
 
         productImage.sprite = recipe.product.image;
 
@@ -30,16 +28,16 @@ public class CraftingSlot : MonoBehaviour
 
     public void Craft()
     {
-        craftingSystem.Craft(this);
+        CraftingSystem.Instance.Craft(this);
     }
     
     public void ShowProductHint()
     {
-        craftingSystem.inventoryManager.ShowHint(recipe.product.itemName);
+        InventoryManager.Instance.ShowHint(recipe.product.itemName);
     }
 
     public void ShowIngredientHint(Item item) 
     {
-        craftingSystem.inventoryManager.ShowHint(item.itemName);
+        InventoryManager.Instance.ShowHint(item.itemName);
     }
 }

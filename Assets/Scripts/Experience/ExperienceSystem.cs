@@ -5,11 +5,10 @@ using UnityEngine;
 
 public class ExperienceSystem : MonoBehaviour
 {
-    public int experience;
+    public static ExperienceSystem Instance;
+    public void Awake() { Instance = this; }
 
-    public CraftingSystem craftingSystem;
-    public AnvilSystem anvilSystem;
-    public FuranceSystem furanceSystem;
+    public int experience;
 
     [SerializeField] private TextMeshProUGUI experienceText;
 

@@ -5,11 +5,13 @@ using UnityEngine;
 
 public class CraftingSystem : MonoBehaviour, ITable
 {
+    public static CraftingSystem Instance;
+    public void Awake() { Instance = this; }
+
     public Transform recipesParent;
     public CraftingSlot recipeSlotPrefab;
 
     public List<Recipe> recipes;
-    public InventoryManager inventoryManager;
 
     public void Initialize()
     {
@@ -22,12 +24,12 @@ public class CraftingSystem : MonoBehaviour, ITable
 
         ClearSlots();
 
-        if (inventoryManager.items == null) return;
+        if (InventoryManager.Instance.items == null) return;
 
         for (int i = 0; i < recipes.Count; i++)
         {
             List<Item> tempItems = new List<Item>();
-            foreach (Item item in inventoryManager.items) tempItems.Add(item);
+            foreach (Item item in InventoryManager.Instance.items) tempItems.Add(item);
 
             int contained = 0;
             for(int j = 0; j < recipes[i].ingredients.Count; j++)
@@ -41,7 +43,7 @@ public class CraftingSystem : MonoBehaviour, ITable
             if(contained == recipes[i].ingredients.Count)
             {
                 CraftingSlot recipeSlot = Instantiate(recipeSlotPrefab, recipesParent);
-                recipeSlot.Initialize(recipes[i], this);
+                recipeSlot.Initialize(recipes[i]);
                 print(recipeSlot.recipe.name);
             }
         }
@@ -56,19 +58,17 @@ public class CraftingSystem : MonoBehaviour, ITable
     {
         for (int i = 0; i < craftingSlot.recipe.ingredients.Count; i++)
         {
-            inventoryManager.GetItem(craftingSlot.recipe.ingredients[i], true);
+            InventoryManager.Instance.GetItem(craftingSlot.recipe.ingredients[i], true);
             yield return new WaitForSeconds(0.1f);
         }
 
         yield return new WaitForSeconds(0.1f);
-        if(inventoryManager.AddItem(craftingSlot.recipe.product, craftingSlot.recipe.product.defaultData) == false)
+        if(InventoryManager.Instance.AddItem(craftingSlot.recipe.product, craftingSlot.recipe.product.defaultData) == false)
         {
             PhotonNetwork.Instantiate(craftingSlot.recipe.product.handlerPrefab.name, transform.position + Vector3.up, transform.rotation);
         }
 
         LookForNewPossibleRecipes();
-
-        //SOME EFFECTS TO CRAFING
     }
 
     public void ClearSlots()

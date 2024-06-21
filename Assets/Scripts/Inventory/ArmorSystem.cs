@@ -5,15 +5,15 @@ using UnityEngine;
 
 public class ArmorSystem : MonoBehaviourPunCallbacks
 {
+    public static ArmorSystem Instance;
+    public void Awake() { Instance = this; }
+
     public List<InventorySlot> inventorySlots = new List<InventorySlot>();
     public List<Armor> equipment = new List<Armor>();
     [HideInInspector] public Transform headBone, chestBone, RightLegBone, LeftLegBone, RightFootBone, LeftFootBone;
 
-    private HealthSystem healthSystem;
-
     private void Start()
     {
-        healthSystem = GetComponent<HealthSystem>();
         LookForChanges();
     }
 
@@ -164,9 +164,9 @@ public class ArmorSystem : MonoBehaviourPunCallbacks
 
         }
 
-        healthSystem.armorMaxValue = maxValue;
-        healthSystem.armor = value;
-        healthSystem.RefreshCounter();
+        HealthSystem.Instance.armorMaxValue = maxValue;
+        HealthSystem.Instance.armor = value;
+        HealthSystem.Instance.RefreshCounter();
     }
 
 }

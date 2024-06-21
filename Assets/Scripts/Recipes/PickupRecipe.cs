@@ -9,7 +9,7 @@ public class PickupRecipe : MonoBehaviourPunCallbacks, IInteractible
 
     public void Interact()
     {
-        Player.myPlayer.playerObject.GetComponent<RecipeManager>().UnlockRecipe(recipe);
+        RecipeManager.Instance.UnlockRecipe(recipe);
         PhotonNetwork.Destroy(this.gameObject);
     }
 }
