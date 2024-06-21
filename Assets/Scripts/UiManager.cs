@@ -17,8 +17,9 @@ public class UiManager : MonoBehaviour
 
     public void ChangeCurrentPanel(Panels newPanel)
     {
-        if(newPanel == Panels.None) ChangeAdditionalPanelState(AdditionalPanelType.None);
         if (newPanel == currentPanel) newPanel = Panels.None;
+        if(newPanel == Panels.None) ChangeAdditionalPanelState(AdditionalPanelType.None);
+        
         currentPanel = newPanel;
 
         pauseMenu.SetActive(newPanel == Panels.Pause);
@@ -28,6 +29,7 @@ public class UiManager : MonoBehaviour
 
         ChangeCursorState(newPanel != Panels.None);
         CrosshairState(newPanel == Panels.None);
+
         somePanelTurnedOn = newPanel != Panels.None;
 
         PlayerMovement.Instance.canMove = newPanel == Panels.None;

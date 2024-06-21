@@ -22,7 +22,6 @@ public class Console : MonoBehaviourPunCallbacks
     {
         if (!PhotonNetwork.IsConnected) return;
         if(!Player.myPlayer.isAdmin) return;
-        if (UiManager.Instance.somePanelTurnedOn) return;
 
         if (Input.GetKeyDown(KeyCode.BackQuote)) 
         {
@@ -68,7 +67,7 @@ public class Console : MonoBehaviourPunCallbacks
             {
                 if (playerId >= 0 && playerId < GameManager.Instance.playerList.Count && itemId >= 0 && itemId < GameManager.Instance.itemList.Count)
                 {
-                    photonView.RPC("GiveItemRPC", RpcTarget.AllBuffered, GameManager.Instance.playerList[playerId].photonPlayer, itemId);
+                    photonView.RPC("GiveItemRPC", GameManager.Instance.playerList[playerId].photonPlayer, itemId);
                     SendResponse("Added " + GameManager.Instance.itemList[itemId].name + " for " + GameManager.Instance.playerList[playerId].photonPlayer.NickName);
                     return;
                 }
@@ -88,7 +87,7 @@ public class Console : MonoBehaviourPunCallbacks
             {
                 if (playerId >= 0 && playerId < GameManager.Instance.playerList.Count && recipeId >= 0 && recipeId < GameManager.Instance.recipeList.Count)
                 {
-                    photonView.RPC("UnlockRecipeRPC", RpcTarget.AllBuffered, GameManager.Instance.playerList[playerId].photonPlayer, recipeId);
+                    photonView.RPC("UnlockRecipeRPC", GameManager.Instance.playerList[playerId].photonPlayer, recipeId);
                     SendResponse("Unlocked " + GameManager.Instance.recipeList[recipeId].name + " recipe for " + GameManager.Instance.playerList[playerId].photonPlayer.NickName);
                     return;
                 }
@@ -108,7 +107,7 @@ public class Console : MonoBehaviourPunCallbacks
             {
                 if (playerId >= 0 && playerId < GameManager.Instance.playerList.Count)
                 {
-                    photonView.RPC("SetExpRPC", RpcTarget.AllBuffered, playerId, newValue);
+                    photonView.RPC("SetExpRPC", GameManager.Instance.playerList[playerId].photonPlayer, newValue);
                     SendResponse(GameManager.Instance.playerList[playerId].photonPlayer.NickName + " exp = " + GameManager.Instance.playerList[playerId].playerObject.GetComponent<ExperienceSystem>().experience);
                     return;
                 }
@@ -128,7 +127,7 @@ public class Console : MonoBehaviourPunCallbacks
             {
                 if (playerId >= 0 && playerId < GameManager.Instance.playerList.Count)
                 {
-                    photonView.RPC("SetAdminRPC", RpcTarget.AllBuffered, playerId, newValue);
+                    photonView.RPC("SetAdminRPC", GameManager.Instance.playerList[playerId].photonPlayer, newValue);
                     SendResponse(GameManager.Instance.playerList[playerId].photonPlayer.NickName + " isAdmin = " + newValue);
                     return;
                 }
@@ -148,7 +147,7 @@ public class Console : MonoBehaviourPunCallbacks
             {
                 if (playerId >= 0 && playerId < GameManager.Instance.playerList.Count)
                 {
-                    photonView.RPC("HealRPC", RpcTarget.AllBuffered, GameManager.Instance.playerList[playerId].photonPlayer);
+                    photonView.RPC("HealRPC", GameManager.Instance.playerList[playerId].photonPlayer);
                     SendResponse("Healed " + GameManager.Instance.playerList[playerId].photonPlayer.NickName);
                     return;
                 }
@@ -168,7 +167,7 @@ public class Console : MonoBehaviourPunCallbacks
             {
                 if (playerId >= 0 && playerId < GameManager.Instance.playerList.Count)
                 {
-                    photonView.RPC("UnlockAllRecipesRPC", RpcTarget.AllBuffered, GameManager.Instance.playerList[playerId].photonPlayer);
+                    photonView.RPC("UnlockAllRecipesRPC", GameManager.Instance.playerList[playerId].photonPlayer);
                     SendResponse("Unlocked all recipes for " + GameManager.Instance.playerList[playerId].photonPlayer.NickName);
                     return;
                 }
@@ -207,51 +206,39 @@ public class Console : MonoBehaviourPunCallbacks
     }
 
     [PunRPC]
-    public void GiveItemRPC(Photon.Realtime.Player pp, int itemId)
+    public void GiveItemRPC(int itemId)
     {
-        if (pp == Player.myPlayer.photonPlayer)
-        {
-            InventoryManager.Instance.AddItem(GameManager.Instance.itemList[itemId], GameManager.Instance.itemList[itemId].defaultData);
-        }
+        InventoryManager.Instance.AddItem(GameManager.Instance.itemList[itemId], GameManager.Instance.itemList[itemId].defaultData);
     }
 
     [PunRPC]
-    public void UnlockAllRecipesRPC(Photon.Realtime.Player pp)
+    public void UnlockAllRecipesRPC()
     {
-        if (pp == Player.myPlayer.photonPlayer)
-        {
-            RecipeManager.Instance.UnlockAllRecipes();
-        }
+        RecipeManager.Instance.UnlockAllRecipes();
     }
     [PunRPC]
-    public void UnlockRecipeRPC(Photon.Realtime.Player pp, int recipeId)
+    public void UnlockRecipeRPC(int recipeId)
     {
-        if (pp == Player.myPlayer.photonPlayer)
-        {
-            RecipeManager.Instance.UnlockRecipe(GameManager.Instance.recipeList[recipeId]);
-        }
+        RecipeManager.Instance.UnlockRecipe(GameManager.Instance.recipeList[recipeId]);
     }
     
     [PunRPC]
-    public void SetExpRPC(Photon.Realtime.Player pp, int newExp)
+    public void SetExpRPC(int newExp)
     {
-        if (pp == Player.myPlayer.photonPlayer)
-        {
-            ExperienceSystem.Instance.ChangeExperience(newExp);
-        }
+        ExperienceSystem.Instance.ChangeExperience(newExp);
     }
 
     [PunRPC]
-    public void SetAdminRPC(Photon.Realtime.Player pp, bool newValue)
+    public void SetAdminRPC(bool newValue)
     {
-        Player.FindPlayer(pp).isAdmin = newValue;
-        if(pp == Player.myPlayer.photonPlayer) UiManager.Instance.ChangeCurrentPanel(Panels.None);
+        Player.myPlayer.isAdmin = newValue;
+        UiManager.Instance.ChangeCurrentPanel(Panels.None);
     }
 
     [PunRPC]
-    public void HealRPC(Photon.Realtime.Player pp)
+    public void HealRPC()
     {
-        Player.FindPlayer(pp).playerObject.GetComponent<HealthSystem>().AddHealth(100);
+        HealthSystem.Instance.AddHealth(100);
     }
 
     public void SendResponse(string response)

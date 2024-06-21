@@ -28,7 +28,6 @@ public class Settings : MonoBehaviour
     string display = "{0} FPS";
     public TextMeshProUGUI m_Text;
 
-    
     private void Start()
     {
         DontDestroyOnLoad(transform.parent.gameObject);
@@ -80,6 +79,15 @@ public class Settings : MonoBehaviour
     public void SetVolume(float volume)
     {
         mixer.SetFloat("volume", volume);
+    }
+    
+    public void SetSensivity(float sensitivity)
+    {
+        if(PlayerCamera.Instance != null)
+        {
+            PlayerCamera.Instance.sensX = sensitivity;
+            PlayerCamera.Instance.sensY = sensitivity;
+        }
     }
 
     public void SetFullscreen(bool isFullscreen)

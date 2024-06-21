@@ -8,8 +8,6 @@ public class PauseMenu : MonoBehaviour
 {
     private void Update()
     {
-        if (UiManager.Instance.somePanelTurnedOn) return;
-
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             Settings.Instance.CloseSettingsMenu();
