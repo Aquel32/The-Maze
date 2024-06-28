@@ -10,24 +10,17 @@ public class PlayerCamera : MonoBehaviour
     public float sensX;
     public float sensY;
 
-    private Transform orientation;
-    private Transform cam;
+    [HideInInspector] public Transform orientation;
+    [HideInInspector] public Transform cam;
 
     float xRotation;
     float yRotation;
 
     public bool canUseMouse;
 
-    private void Start()
-    {
-        //inventoryManager.playerCamera = transform;
-        orientation = Player.myPlayer.playerObject.transform;
-        cam = Player.myPlayer.playerObject.transform.Find("Camera");
-    }
-
     private void Update()
     {
-        if (!canUseMouse) return;
+        if (!canUseMouse || orientation == null) return;
 
         // get mouse input
         float mouseX = Input.GetAxisRaw("Mouse X") * Time.deltaTime * sensX;

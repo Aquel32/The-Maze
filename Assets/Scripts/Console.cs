@@ -55,6 +55,7 @@ public class Console : MonoBehaviourPunCallbacks
             SendResponse("unlockall [player_id]");
             SendResponse("unlock [player_id] [recipe_id]");
             SendResponse("time [1-24]");
+            SendResponse("kill [player_id]");
         }
         else if(args[0] == "give")
         {
@@ -70,6 +71,26 @@ public class Console : MonoBehaviourPunCallbacks
                 {
                     photonView.RPC("GiveItemRPC", GameManager.Instance.playerList[playerId].photonPlayer, itemId);
                     SendResponse("Added " + GameManager.Instance.itemList[itemId].name + " for " + GameManager.Instance.playerList[playerId].photonPlayer.NickName);
+                    return;
+                }
+            }
+
+            SendResponse("Invalid argument(s)");
+        }
+        else if(args[0] == "kill")
+        {
+            if(args.Length <= 1)
+            {
+                SendResponse("Empty argument(s)");
+                return;
+            }
+
+            if (int.TryParse(args[1], out int playerId))
+            {
+                if (playerId >= 0 && playerId < GameManager.Instance.playerList.Count)
+                {
+                    photonView.RPC("KillRPC", GameManager.Instance.playerList[playerId].photonPlayer);
+                    SendResponse("Killed " + GameManager.Instance.playerList[playerId].photonPlayer.NickName);
                     return;
                 }
             }
@@ -210,9 +231,12 @@ public class Console : MonoBehaviourPunCallbacks
 
             if (int.TryParse(args[1], out int time))
             {
-                TimeManager.Instance.SetTime(time);
-                SendResponse("Time changed to " + time);
-                return;
+                if (time >= 1 && time <= 24)
+                {
+                    TimeManager.Instance.SetTime(time);
+                    SendResponse("Time changed to " + time);
+                    return;
+                }
             }
 
             SendResponse("Invalid argument(s)");
@@ -228,6 +252,15 @@ public class Console : MonoBehaviourPunCallbacks
     {
         InventoryManager.Instance.AddItem(GameManager.Instance.itemList[itemId], GameManager.Instance.itemList[itemId].defaultData);
     }
+    
+    
+    [PunRPC]
+    public void KillRPC()
+    {
+        HealthSystem.Instance.Die();
+    }
+
+
 
     [PunRPC]
     public void UnlockAllRecipesRPC()

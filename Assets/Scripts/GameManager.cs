@@ -35,11 +35,6 @@ public class GameManager : MonoBehaviourPunCallbacks
         SpawnPlayer(Player.myPlayer);
     }
 
-    private void Update()
-    {
-        
-    }
-
     [PunRPC]
     public void CreateNewPlayerRPC(PhotonMessageInfo photonMessageInfo)
     {
@@ -81,13 +76,16 @@ public class GameManager : MonoBehaviourPunCallbacks
 
     public void DespawnPlayer(Player playerToDespawn)
     {
-        playerScriptsHandler.SetActive(false);
+        if(Player.myPlayer == playerToDespawn) playerScriptsHandler.SetActive(false);
         photonView.RPC("DespawnPlayerRPC", RpcTarget.AllBuffered, playerToDespawn.playerObject.GetComponent<PhotonView>().ViewID);
     }
     [PunRPC]
     public void DespawnPlayerRPC(int goViewId)
     {
-        Destroy(PhotonView.Find(goViewId).gameObject);
+        if(PhotonView.Find(goViewId) != null)
+        {
+            Destroy(PhotonView.Find(goViewId).gameObject);
+        }
     }
 
     public Vector3 GetRandomSpawn()

@@ -19,6 +19,25 @@ public class TimeManager : MonoBehaviourPunCallbacks
 
     private float timeMultiplier;
 
+    private void Start()
+    {
+        if (PhotonNetwork.IsConnected == false) return;
+
+        photonView.RPC("AskForTimeRPC", RpcTarget.MasterClient);
+    }
+
+    [PunRPC]
+    public void AskForTimeRPC(PhotonMessageInfo pmi)
+    {
+        photonView.RPC("SyncTimeRPC", pmi.Sender, time);
+    }
+
+    [PunRPC]
+    public void SyncTimeRPC(float newTime)
+    {
+        time = newTime;
+    }
+
     private void Update()
     {
         if (!PhotonNetwork.IsConnected) return;

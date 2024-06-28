@@ -31,7 +31,7 @@ public class RandomModelChooser : MonoBehaviourPunCallbacks
         ArmorSystem.Instance.LeftLegBone = model.transform.Find(bonesParent).Find("LowManHips").Find("LowManLeftUpLeg").Find("LowManLeftLeg");
         ArmorSystem.Instance.RightFootBone = model.transform.Find(bonesParent).Find("LowManHips").Find("LowManRightUpLeg").Find("LowManRightLeg").Find("LowManRightFoot").Find("LowManRightToeBase");
         ArmorSystem.Instance.LeftFootBone = model.transform.Find(bonesParent).Find("LowManHips").Find("LowManLeftUpLeg").Find("LowManLeftLeg").Find("LowManLeftFoot").Find("LowManLeftToeBase");
-    
+
         PlayerMovement.Instance.animator = model.GetComponent<Animator>();
     }
 

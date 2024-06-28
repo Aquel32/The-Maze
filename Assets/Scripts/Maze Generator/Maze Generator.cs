@@ -10,26 +10,31 @@ public class MazeGenerator : MonoBehaviourPunCallbacks
     [SerializeField] private int _mazeWidth;
     [SerializeField] private int _mazeDepth;
 
-    private MazeCell[,] _mazeGrid;
+    [SerializeField] private MazeCell[,] mazeGrid;
 
     private string seedString;
     private int seedIndex;
 
+    public Vector2 start;
+
     public List<int> seed;
+
+    public Vector2 zoneX;
+    public Vector2 zoneZ;
 
     private void Start()
     {
         if (PhotonNetwork.IsConnected == false) return;
         if (PhotonNetwork.IsMasterClient == false) return;
 
-        seedString = Random.Range(10000000, 99999999).ToString();
+        seedString = Random.Range(1111111111, 2147483647).ToString() + Random.Range(1111111111, 2147483647).ToString() + Random.Range(1111111111, 2147483647).ToString() + Random.Range(1111111111, 2147483647).ToString() + Random.Range(1111111111, 2147483647).ToString();
         photonView.RPC("GenerateMazeRPC", RpcTarget.AllBuffered, seedString);
     }
 
     [PunRPC]
     public void GenerateMazeRPC(string seedString)
     {
-        for(int i = 0; i < seedString.Length; i++)
+        for (int i = 0; i < seedString.Length; i++)
         {
             int number = seedString[i] % 9;
             if (number == 0) number = 1;
@@ -38,45 +43,63 @@ public class MazeGenerator : MonoBehaviourPunCallbacks
 
         seedIndex = 0;
 
-        _mazeGrid = new MazeCell[_mazeWidth, _mazeDepth];
+        mazeGrid = new MazeCell[_mazeWidth, _mazeDepth];
 
         for (int x = 0; x < _mazeWidth; x++)
         {
             for (int z = 0; z < _mazeDepth; z++)
             {
-                _mazeGrid[x, z] = Instantiate(_mazeCellPrefab, new Vector3(transform.position.x + x, transform.position.y, transform.position.z + z), Quaternion.identity, transform);
+                mazeGrid[x, z] = Instantiate(_mazeCellPrefab, new Vector3(transform.position.x + x * 30, transform.position.y, transform.position.z + z * 30), Quaternion.identity, transform);
+                mazeGrid[x, z].IsVisited = false;
+                mazeGrid[x, z].x = x;
+                mazeGrid[x, z].z = z;
+
+                if (x >= zoneX.x && x <= zoneX.y && z >= zoneZ.x && z <= zoneZ.y)
+                {
+                    mazeGrid[x, z].IsVisited = true;
+                    mazeGrid[x, z].ClearBackWall();
+                    mazeGrid[x, z].ClearFrontWall();
+                    mazeGrid[x, z].ClearLeftWall();
+                    mazeGrid[x, z].ClearRightWall();
+                }
+
+                if (x == 30 && z == 41) { mazeGrid[x, z].ClearRightWall(); }
+                if (x == 41 && z == 52) { mazeGrid[x, z].ClearBackWall(); }
+                if (x == 52 && z == 41) { mazeGrid[x, z].ClearLeftWall(); }
+                if (x == 41 && z == 30) { mazeGrid[x, z].ClearFrontWall(); }
             }
         }
 
-        GenerateMaze(null, _mazeGrid[0, 0]);
-
-        transform.localScale = new Vector3(25.7f, 40, 25.7f);
-
-        foreach(Collider col in GetComponents<Collider>())
-        {
-            col.enabled = false;
-        }
+        GenerateMaze(mazeGrid[(int)start.x, (int)start.y]);
     }
 
-    private void GenerateMaze(MazeCell previousCell, MazeCell currentCell)
+    public void GenerateMaze(MazeCell cell)
     {
-        currentCell.Visit();
-        ClearWalls(previousCell, currentCell);
+        cell.IsVisited = true;
 
-        MazeCell nextCell;
+        List<MazeCell> nextCells = new List<MazeCell>();
 
-        do
+        if (cell.x + 1 < _mazeWidth) nextCells.Add(mazeGrid[cell.x + 1, cell.z]);
+        if (cell.x - 1 >= 0) nextCells.Add(mazeGrid[cell.x - 1, cell.z]);
+        if (cell.z + 1 < _mazeDepth) nextCells.Add(mazeGrid[cell.x, cell.z + 1]);
+        if (cell.z - 1 >= 0) nextCells.Add(mazeGrid[cell.x, cell.z - 1]);
+
+        nextCells = nextCells.OrderBy(x => GetNextSeedNumber()).ToList();
+
+        for (int i = 0; i < nextCells.Count; i++)
         {
-            nextCell = GetNextUnvisitedCell(currentCell);
-            if (nextCell != null)
-            {
-                GenerateMaze(currentCell, nextCell);
-            }
-        } while (nextCell != null);
+            if (nextCells[i].IsVisited == true) { continue; }
 
+            if (nextCells[i].x > cell.x) { nextCells[i].ClearLeftWall(); cell.ClearRightWall(); }
+            if (nextCells[i].x < cell.x) { nextCells[i].ClearRightWall(); cell.ClearLeftWall(); }
+            if (nextCells[i].z > cell.z) { nextCells[i].ClearBackWall(); cell.ClearFrontWall(); }
+            if (nextCells[i].z < cell.z) { nextCells[i].ClearFrontWall(); cell.ClearBackWall(); }
+
+            GenerateMaze(nextCells[i]);
+        }
     }
 
-    public int GetNextOrder()
+    public int GetNextSeedNumber()
     {
         seedIndex++;
         if (seedIndex >= seed.Count) seedIndex = 0;
@@ -84,91 +107,8 @@ public class MazeGenerator : MonoBehaviourPunCallbacks
         return seed[seedIndex];
     }
 
-    private MazeCell GetNextUnvisitedCell(MazeCell currentCell)
-    {
-        var unvisitedCells = GetUnvistedCells(currentCell);
-
-        return unvisitedCells.OrderBy(_ => GetNextOrder()).FirstOrDefault();
-    }
-
-    private IEnumerable<MazeCell> GetUnvistedCells(MazeCell currentCell)
-    {
-        int x = (int)currentCell.transform.position.x - (int)transform.position.x;
-        int z = (int)currentCell.transform.position.z- (int)transform.position.z;
-
-        if(x + 1 < _mazeWidth)
-        {
-            var cellToRight = _mazeGrid[x + 1, z];
-
-            if(cellToRight.IsVisited == false)
-            {
-                yield return cellToRight;
-            }
-        }
-        
-        if(x - 1 >= 0)
-        {
-            var cellToLeft = _mazeGrid[x - 1, z];
-
-            if(cellToLeft.IsVisited == false)
-            {
-                yield return cellToLeft;
-            }
-        }
-        
-        if(z + 1 < _mazeDepth)
-        {
-            var cellToFront = _mazeGrid[x, z + 1];
-
-            if(cellToFront.IsVisited == false)
-            {
-                yield return cellToFront;
-            }
-        }
-        
-        if(z - 1 >= 0)
-        {
-            var cellToBack = _mazeGrid[x, z - 1];
-
-            if(cellToBack.IsVisited == false)
-            {
-                yield return cellToBack;
-            }
-        }
-    }
-
+    
     
 
-    private void ClearWalls(MazeCell previousCell, MazeCell currentCell)
-    {
-        if (previousCell == null) return;
 
-        if(previousCell.transform.position.x < currentCell.transform.position.x)
-        {
-            previousCell.ClearRightWall();
-            currentCell.ClearLeftWall();
-            return;
-        }
-
-        if(previousCell.transform.position.x > currentCell.transform.position.x)
-        {
-            previousCell.ClearLeftWall();
-            currentCell.ClearRightWall();
-            return;
-        }
-        
-        if(previousCell.transform.position.z < currentCell.transform.position.z)
-        {
-            previousCell.ClearFrontWall();
-            currentCell.ClearBackWall();
-            return;
-        }
-        
-        if(previousCell.transform.position.z > currentCell.transform.position.z)
-        {
-            previousCell.ClearBackWall();
-            currentCell.ClearFrontWall();
-            return;
-        }
-    }
 }

@@ -39,25 +39,20 @@ public class PlayerMovement : MonoBehaviour
 
     Vector3 moveDirection;
 
-
-    private Rigidbody rb;
-    private Transform orientation;
+    [HideInInspector] public Rigidbody rb;
+    [HideInInspector] public Transform orientation;
     [HideInInspector] public Animator animator;
-    private Footstep footstep;
-
+    [HideInInspector] public Footstep footstep;
 
     private void Start()
     {
-        orientation = Player.myPlayer.playerObject.transform;
-        footstep = Player.myPlayer.playerObject.GetComponent<Footstep>();
-        rb = Player.myPlayer.playerObject.GetComponent<Rigidbody>();
-        rb.freezeRotation = true;
-
         readyToJump = true;
     }
 
     private void Update()
     {
+        if (orientation == null) return;
+
         // ground check
         grounded = Physics.Raycast(orientation.position, Vector3.down, playerHeight * 0.5f + 0.2f, whatIsGround);
         
@@ -77,7 +72,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if(canMove) MovePlayer();
+        if(canMove && orientation != null) MovePlayer();
     }
 
     private void MyInput()

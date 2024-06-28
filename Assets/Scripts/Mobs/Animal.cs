@@ -62,8 +62,8 @@ public class Animal : HealthBarHandler, IDamageable
                 PhotonNetwork.Instantiate(mob.drops[i].handlerPrefab.name, transform.position, Quaternion.identity);
             }
 
-            Player.myPlayer.playerObject.GetComponent<ExperienceSystem>().ChangeExperience(mob.experiencePoints);
-            PhotonNetwork.Destroy(this.gameObject);
+            ExperienceSystem.Instance.ChangeExperience(mob.experiencePoints);
+            photonView.RPC("KillRPC", RpcTarget.AllBuffered);
         }
         else
         {
@@ -80,5 +80,11 @@ public class Animal : HealthBarHandler, IDamageable
         {
             herd.animals.Remove(gameObject);
         }
+    }
+
+    [PunRPC]
+    public void KillRPC()
+    {
+        Destroy(gameObject);
     }
 }

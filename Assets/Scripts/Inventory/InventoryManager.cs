@@ -39,11 +39,6 @@ public class InventoryManager : MonoBehaviourPunCallbacks
 
     private void Start()
     {
-        mainHand = Player.myPlayer.playerObject.transform.Find("Hand");
-        itemHolder = mainHand.Find("ItemHolder");
-
-        playerCamera = Player.myPlayer.playerObject.transform.Find("Camera");
-
         ChangeSelectedSlot(0);
     }
 
@@ -148,6 +143,8 @@ public class InventoryManager : MonoBehaviourPunCallbacks
 
     public void ClearHand()
     {
+        if (itemHolder == null) return;
+
         if (itemHolder.childCount > 0) 
         {
             foreach (Transform child in itemHolder)
