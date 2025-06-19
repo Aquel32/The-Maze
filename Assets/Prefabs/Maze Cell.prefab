@@ -248,6 +248,8 @@ MonoBehaviour:
   x: 0
   z: 0
   IsVisited: 0
+  distance: 0
+  zone: 0
 --- !u!1 &4737534483975407984
 GameObject:
   m_ObjectHideFlags: 0
